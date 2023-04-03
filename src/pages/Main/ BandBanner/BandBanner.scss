@@ -9,11 +9,21 @@
   font-size: 14px;
   font-weight: 300;
   text-align: center;
-  &:hover {
-    cursor: pointer;
-  }
 
   div {
-    width: 300px;
+    height: 30px;
+    padding-top: 5px;
+    font-weight: 300;
+    &:hover {
+      border-bottom: 1px solid #f9f8ec;
+      cursor: pointer;
+    }
+  }
+
+  span {
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 15px;
+    font-weight: 400;
   }
 }
