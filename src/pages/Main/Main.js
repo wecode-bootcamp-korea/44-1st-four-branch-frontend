@@ -1,7 +1,12 @@
 import React from 'react';
+import BandBanner from './ BandBanner/BandBanner';
 
 function Main() {
-  return <div></div>;
+  return (
+    <div>
+      <BandBanner />
+    </div>
+  );
 }
 
 export default Main;
