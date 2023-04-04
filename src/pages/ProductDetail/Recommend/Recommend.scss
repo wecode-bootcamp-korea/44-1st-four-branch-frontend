@@ -1,0 +1,81 @@
+.recommend {
+  position: relative;
+  margin-bottom: 240px;
+  padding-top: 120px;
+
+  .arrowPrevBtn {
+    position: absolute;
+    top: 50%;
+    left: -80px;
+    width: 80px;
+    height: 80px;
+    background-color: #333;
+
+    .icon24 {
+      width: 24px;
+      height: 24px;
+      transform: translate(100%, 100%);
+    }
+  }
+
+  .arrowNextBtn {
+    position: absolute;
+    top: 50%;
+    right: -80px;
+
+    right: 0;
+    width: 80px;
+    height: 80px;
+    transition: left 0.5s;
+    background-color: #333;
+
+    .icon24 {
+      width: 24px;
+      height: 24px;
+      transform: translate(100%, 100%);
+    }
+  }
+
+  .product {
+    display: flex;
+    position: relative;
+    z-index: 3;
+    margin-top: 120px;
+    padding-right: 0;
+    overflow-x: scroll;
+    list-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    li {
+      width: 450px;
+      height: 520px;
+      text-align: center;
+
+      .title {
+        width: 450px;
+      }
+
+      img {
+        width: 450px;
+        height: 340px;
+        object-fit: contain;
+      }
+    }
+  }
+  .indicator {
+    position: absolute;
+    right: 80px;
+    bottom: 0;
+    left: 80px;
+    height: 2px;
+    background-color: #ccc;
+
+    .indicatorBar {
+      width: 20%;
+      border-bottom: 2px solid #333;
+    }
+  }
+}

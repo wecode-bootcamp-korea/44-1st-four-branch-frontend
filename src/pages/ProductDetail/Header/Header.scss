@@ -1,0 +1,99 @@
+.header {
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  margin: 120px 0;
+  padding: 0 80px;
+
+  .logoContainer {
+    img {
+      position: absolute;
+      top: 0;
+      width: 120px;
+    }
+  }
+
+  .productImageContainer {
+    position: relative;
+    img {
+      position: absolute;
+      top: 0;
+      width: 400px;
+      height: 540px;
+      transform: translate(0, -50%);
+    }
+  }
+
+  .productDetailContainer {
+    padding-right: 80px;
+
+    .productTitle {
+      margin-bottom: 32px;
+
+      .productCategoryLink {
+        display: flex;
+        align-items: end;
+        margin-bottom: 40px;
+      }
+    }
+
+    .productDetail {
+      padding-right: 0;
+      padding-left: 0;
+      border-top: 2px solid #333;
+
+      li {
+        padding-top: 32px;
+        padding-bottom: 32px;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .productIngredient {
+        position: relative;
+
+        /* stylelint-disable-next-line max-nesting-depth */
+        .detailViewButton {
+          position: absolute;
+          top: 32px;
+          right: 10px;
+        }
+      }
+
+      .productSize {
+        border-style: none;
+      }
+    }
+
+    .primaryButton {
+      width: 100%;
+      height: 60px;
+      margin-bottom: 40px;
+      border-style: none;
+      background-color: #333;
+      color: #f8f8f8;
+    }
+
+    .wishList {
+      display: flex;
+      align-items: center;
+      margin-bottom: 60px;
+
+      p {
+        margin-left: 4px;
+        color: #333;
+      }
+    }
+
+    .productRelated {
+      position: relative;
+
+      img {
+        position: absolute;
+        right: 0;
+        bottom: -50%;
+        width: 160px;
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.benefits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 120px 80px;
+
+  section {
+    border-right: 1px solid #ccc;
+    text-align: center;
+  }
+
+  .benefitsLastChild {
+    border-style: none;
+  }
+}
