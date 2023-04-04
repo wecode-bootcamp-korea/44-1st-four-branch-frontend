@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Header.scss';
+import './ProductHeader.scss';
 import { FiPlusCircle, FiHeart } from 'react-icons/fi';
 import Logo from '../../../assets/ProductDetail/aesop-logo.png';
 import Product from '../../../assets/ProductDetail/product(00).png';
 import ProductRelatedImage from '../../../assets/ProductDetail/kit.png';
 
-function Header() {
+function ProductHeader() {
   return (
-    <div className="header">
+    <div className="productHeader">
       <section className="logoContainer">
         <img src={Logo} alt="logo" />
       </section>
@@ -55,4 +55,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default ProductHeader;

@@ -1,6 +1,6 @@
 import React from 'react';
 import './ProductDetail.scss';
-import Header from './Header/Header';
+import ProductHeader from './ProductHeader/ProductHeader';
 import Benefits from './Benefits/Benefits';
 import HowToUse from './HowToUse/HowToUse';
 import Recommend from './Recommend/Recommend';
@@ -11,7 +11,7 @@ function ProductDetail() {
   return (
     <div className="productDetail">
       {/* <ModalDetailView /> */}
-      <Header />
+      <ProductHeader />
       <Benefits />
       <HowToUse />
       <Recommend />

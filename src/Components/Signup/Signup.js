@@ -1,23 +1,9 @@
-import React, { useState } from 'react';
-import './Signup.scss';
-import { FiArrowLeft, FiX } from 'react-icons/fi';
+import React from 'react';
+import './Login.scss';
 
-function Signup() {
-  const [passwordType, setPasswordType] = useState({
-    type: 'password',
-    text: '보기',
-  });
-
-  const handlePasswordType = e => {
-    e.preventDefault();
-    if (passwordType.type === 'password') {
-      return setPasswordType({ type: 'text', text: '숨기기' });
-    }
-    return setPasswordType({ type: 'password', text: '보기' });
-  };
-
+function Login() {
   return (
-    <div className="signup">
+    <div className="login">
       <div className="container">
         <div className="iconHandlePage">
           <FiArrowLeft className="icon20 prevButton" />
@@ -98,7 +84,7 @@ function Signup() {
             </div>
           </div>
         </form>
-        <button className="primaryButton">회원가입</button>
+        <button className="primaryButtonSolid">회원가입</button>
       </div>
     </div>
   );
