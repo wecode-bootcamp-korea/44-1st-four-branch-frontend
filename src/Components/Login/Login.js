@@ -19,6 +19,7 @@ function Login() {
               type="password"
             />
             <div className="passwordTypeButton">보기</div>
+
             <div className="passwordReset">비밀번호 재설정하기</div>
           </div>
         </form>
