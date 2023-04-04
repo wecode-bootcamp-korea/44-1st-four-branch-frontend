@@ -1,10 +1,11 @@
 import React from 'react';
-import BandBanner from './ BandBanner/BandBanner';
+
+import Search from '../../Components/Search/Search';
 
 function Main() {
   return (
     <div>
-      <BandBanner />
+      <Search />
     </div>
   );
 }
