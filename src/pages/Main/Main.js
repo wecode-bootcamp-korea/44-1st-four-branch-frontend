@@ -1,11 +1,10 @@
 import React from 'react';
-import BandBanner from './ BandBanner/BandBanner';
-import Login from '../../Components/Login';
+
+import Login from '../../Components/Login/Login';
 function Main() {
   return (
     <div>
       <Login />
-      <BandBanner />
     </div>
   );
 }
