@@ -1,0 +1,17 @@
+.selection {
+  padding-top: 150px;
+
+  h2 {
+    margin-bottom: 30px;
+    padding-left: 80px;
+    font-size: 30px;
+    font-weight: 400;
+  }
+
+  .selectionItemList {
+    display: flex;
+    gap: 40px;
+    padding-top: 50px;
+    padding-left: 80px;
+  }
+}
