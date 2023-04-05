@@ -7,7 +7,7 @@ function Footer() {
     <footer className="footer">
       <div className="grid">
         <div className="subscription">
-          <h2>이솝 커뮤니케이션</h2>
+          <h1>이솝 커뮤니케이션</h1>
           <p className="subscript">
             제품, 서비스, 스토어, 이벤트, 문화적 관심사 등 다양한 소식을
             받아보실 수 있도록 이솝 이메일을 구독해주세요.
@@ -32,8 +32,12 @@ function Footer() {
             뉴스레터 이메일을 통한 광고성 정보 수신에 동의합니다.
           </p>
           <form className="email">
-            <input type="email" placeholder="이메일 주소" />
-            <button>→</button>
+            <input
+              className="emailAddress"
+              type="email"
+              placeholder="이메일 주소"
+            />
+            <button className="emailSubmit">→</button>
           </form>
           <h2>지속가능성</h2>
           <p>

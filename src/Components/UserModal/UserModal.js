@@ -7,9 +7,9 @@ function UserModal({ userInfoClose, data, modalChangehandle, backhandle }) {
   return (
     <div className="userModal">
       <div className="userInfo">
-        <div className="closeBtn" onClick={userInfoClose}>
+        <span className="closeBtn" onClick={userInfoClose}>
           ✕
-        </div>
+        </span>
         <div className="title">{title}</div>
         {title === '회원가입' && (
           <div className="subTitle">

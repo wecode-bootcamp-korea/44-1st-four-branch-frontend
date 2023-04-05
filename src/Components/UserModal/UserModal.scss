@@ -12,9 +12,11 @@
     margin: 0 auto;
 
     .closeBtn {
-      padding-top: 40px;
+      display: inline-block;
+      margin-top: 40px;
+      margin-left: 490px;
       font-size: 20px;
-      text-align: right;
+
       &:hover {
         cursor: pointer;
       }
