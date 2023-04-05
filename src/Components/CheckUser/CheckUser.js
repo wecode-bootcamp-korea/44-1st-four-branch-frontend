@@ -9,6 +9,10 @@ function CheckUser({ userInfoClose }) {
     setModalChange(SIGNUP_DATA);
   }
 
+  function backhandle() {
+    setModalChange(LOGIN_DATA);
+  }
+
   console.log(modalChange);
 
   return (
@@ -16,15 +20,15 @@ function CheckUser({ userInfoClose }) {
       userInfoClose={userInfoClose}
       data={modalChange}
       modalChangehandle={modalChangehandle}
+      backhandle={backhandle}
     />
   );
 }
 
 export default CheckUser;
 
-const LOGIN_DATA = { title: '로그인', button: '로그인', button2: '회원가입' };
+const LOGIN_DATA = { title: '로그인', button: '로그인' };
 const SIGNUP_DATA = {
   title: '회원가입',
   button: '회원가입',
-  button2: '< 이전',
 };
