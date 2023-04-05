@@ -4,7 +4,7 @@
   left: -950px;
   width: 100vh;
   height: 100vh;
-  overflow: scroll;
+  overflow-y: scroll;
   transition: transform 0.5s;
   background-color: #f1f0e8;
   &.slide {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import BlackModal from '../BlackModal/BlackModal';
+import BlackWindow from '../BlackWindow/BlackWindow';
+import BlackModal from '../BlackWindow/BlackWindow';
 import GuideModal from '../GuideModal/GuideModal';
 import './BandBanner.scss';
 
@@ -23,7 +24,7 @@ function BandBanner() {
   return (
     <>
       <GuideModal guideModalClose={guideModalClose} slide={slide} />
-      {guideModal && <BlackModal guideModalClose={guideModalClose} />}
+      {guideModal && <BlackWindow guideModalClose={guideModalClose} />}
       <div className="bandBanner" onClick={guideModalOpen}>
         <div>
           전 구매 무료 배송과 선물 포장 혜택을 즐겨보세요.

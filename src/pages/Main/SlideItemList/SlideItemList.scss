@@ -1,9 +1,19 @@
 .slideItemList {
   display: flex;
+  position: relative;
   align-items: center;
   margin: 150px 0 0 80px;
   overflow: hidden;
   gap: 50px;
+
+  .leftarrow {
+    position: absolute;
+    font-size: 30px;
+  }
+
+  .rightarrow {
+    position: absolute;
+  }
 
   .itemInfo {
     flex-shrink: 0;

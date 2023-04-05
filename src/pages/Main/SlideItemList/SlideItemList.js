@@ -1,10 +1,18 @@
 import React from 'react';
 import SlideItem from '../SlideItem/SlideItem';
 import './SlideItemList.scss';
+import { HiChevronLeft } from 'react-icons/hi';
+import { HiChevronRight } from 'react-icons/hi';
 
 function SlideItemList() {
   return (
     <div className="slideItemList">
+      <div>
+        <HiChevronLeft className="leftarrow" />
+      </div>
+      <div>
+        <HiChevronRight className="rightarrow" />
+      </div>
       <div className="itemInfo">
         <div>향수</div>
         <h2>이솝의 퍼스널 향</h2>

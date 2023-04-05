@@ -7,9 +7,8 @@ import LeftBanner from './LeftBanner/LeftBanner';
 import RightBanner from './RightBanner/RightBanner';
 import StoreLocator from './StoreLocator/StoreLocator';
 import Selection from './Selection/Selection';
-import './Main.scss';
 import Footer from '../../Components/Footer/Footer';
-import BlackModal from './BlackModal/BlackModal';
+import './Main.scss';
 
 function Main() {
   return (
