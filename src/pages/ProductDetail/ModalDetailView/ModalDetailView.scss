@@ -18,6 +18,13 @@
       }
     }
 
+    .ingredients {
+      width: 50%;
+      height: 100vh;
+      margin: 80px;
+      transform: translate(0%, 30%);
+    }
+
     &.slide {
       left: 0;
       transition: left 0.5s;

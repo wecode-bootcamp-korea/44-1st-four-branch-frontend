@@ -3,18 +3,19 @@ import ModalDim from './ModalDim/ModalDim';
 import { FiX } from 'react-icons/fi';
 import './ModalDetailView.scss';
 
-function ModalDetailView({ modalView, productDetailList }) {
+function ModalDetailView({ modalView, productDetailList, isCloseModal }) {
   return (
-    <div className="modalDetailView">
+    <div className="modalDetailView" onClick={isCloseModal}>
       <ModalDim modalView={modalView} />
       <div className={`modalDetailContents ${modalView}`}>
         <div className="iconHandlePage">
           <FiX className="icon20 closeButton" />
         </div>
-        {productDetailList.map(({ ingredients }) => {
-          const ingredientList = JSON.parse(ingredients).join(', ');
-          return <p>{ingredientList}</p>;
-        })}
+        <div className="ingredients">
+          {productDetailList.map(({ ingredients }) => {
+            return JSON.parse(ingredients).join(', ');
+          })}
+        </div>
       </div>
     </div>
   );

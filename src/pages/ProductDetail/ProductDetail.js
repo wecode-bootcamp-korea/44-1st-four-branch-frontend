@@ -15,9 +15,18 @@ function ProductDetail() {
     window.document.body.style.overflow = 'hidden';
   }
 
+  function isCloseModal() {
+    setModalView('close');
+    window.document.body.style.overflow = 'scroll';
+  }
+
   return (
     <div className={`productDetail ${modalView}`}>
-      <ProductHeader isOpenModal={isOpenModal} modalView={modalView} />
+      <ProductHeader
+        isOpenModal={isOpenModal}
+        isCloseModal={isCloseModal}
+        modalView={modalView}
+      />
       <Benefits />
       <HowToUse />
       <Recommend />

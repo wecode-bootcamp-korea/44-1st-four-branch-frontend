@@ -6,7 +6,7 @@ import ModalDetailView from '../ModalDetailView/ModalDetailView';
 
 import './ProductHeader.scss';
 
-function ProductHeader({ isOpenModal, modalView, slide }) {
+function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
   const [productDetailList, setProductDetailList] = useState([]);
 
   useEffect(() => {
@@ -21,6 +21,7 @@ function ProductHeader({ isOpenModal, modalView, slide }) {
         <ModalDetailView
           modalView={modalView}
           productDetailList={productDetailList}
+          isCloseModal={isCloseModal}
         />
       )}
       {productDetailList.map(
