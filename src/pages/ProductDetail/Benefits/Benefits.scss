@@ -3,12 +3,12 @@
   grid-template-columns: 1fr 1fr;
   padding: 120px 80px;
 
-  section {
+  .benefitsList {
     border-right: 1px solid #ccc;
     text-align: center;
   }
 
-  .benefitsLastChild {
+  .benefitsList:last-child {
     border-style: none;
   }
 }

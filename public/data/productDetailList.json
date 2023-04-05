@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "name": "레저럭션 아로마틱 핸드밤",
+    "price": "33,000",
+    "size": "75mL",
+    "description": "지친 손과 큐티클에 풍부한 수분을 공급해주는 향긋한 보태니컬 핸드 밤",
+    "ingredient": ["만다린", "로즈마리 리프", "시더우드 아틀라스"],
+    "mainCategory": "바디&핸드",
+    "subCategory": "핸드",
+    "image": "https://www.aesop.com/u1nb1km7t5q7/4ze2bcpxbM6beIttF3HOTi/d70f2347da3abf7f4060a9238bee7a26/Aesop-Body-Resurrection-Aromatique-Hand-Balm-75mL-large.png"
+  }
+]

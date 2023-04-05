@@ -51,13 +51,12 @@
 
       .productIngredient {
         position: relative;
+      }
 
-        /* stylelint-disable-next-line max-nesting-depth */
-        .detailViewButton {
-          position: absolute;
-          top: 32px;
-          right: 10px;
-        }
+      .detailViewButton {
+        position: absolute;
+        top: 32px;
+        right: 10px;
       }
 
       .productSize {
@@ -82,17 +81,6 @@
       p {
         margin-left: 4px;
         color: #333;
-      }
-    }
-
-    .productRelated {
-      position: relative;
-
-      img {
-        position: absolute;
-        right: 0;
-        bottom: -50%;
-        width: 160px;
       }
     }
   }

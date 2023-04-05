@@ -13,7 +13,6 @@ function HowToUse() {
           <p className="quotationFrom">Friedrich Nietzsche</p>
         </div>
       </section>
-
       <section className="useDetail">
         <div className="contents">
           <h6>사용법</h6>

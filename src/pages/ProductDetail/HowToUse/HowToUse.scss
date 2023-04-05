@@ -48,15 +48,14 @@
       ul {
         margin-top: 32px;
         padding-left: 0;
-        border-top: 2px solid #333;
+        border-top: 2px solid #333333;
         list-style: none;
+      }
 
-        /* stylelint-disable-next-line max-nesting-depth */
-        li {
-          padding-top: 32px;
-          padding-bottom: 32px;
-          border-bottom: 1px solid #ccc;
-        }
+      li {
+        padding-top: 32px;
+        padding-bottom: 32px;
+        border-bottom: 1px solid #cccccc;
       }
     }
   }

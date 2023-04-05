@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Recommend.scss';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import Product01 from '../../../assets/ProductDetail/product(01).png';
 import Product02 from '../../../assets/ProductDetail/product(02).png';
 import Product03 from '../../../assets/ProductDetail/product(03).png';
 import Product04 from '../../../assets/ProductDetail/product(04).png';
 import Product05 from '../../../assets/ProductDetail/product(05).png';
 import Product06 from '../../../assets/ProductDetail/product(06).png';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import './Recommend.scss';
+import { RECOMMEND_PRODUCT_LIST } from './RecommendProductData';
 
 function Recommend() {
   return (
@@ -22,48 +23,15 @@ function Recommend() {
         <li>
           <h3 className="title">함께 사용하기 좋은 제품</h3>
         </li>
-        <li>
-          <Link to="/">
-            <img src={Product01} alt="product" />
-            <h6>레저럭션 아로마틱 핸드 워시</h6>
-            <p>지친 손을 위한 부드러운 클렌징</p>
-          </Link>
-        </li>
-        <li>
-          <Link to="/">
-            <img src={Product02} alt="product" />
-            <h6>레저럭션 아로마틱 핸드 워시</h6>
-            <p>지친 손을 위한 부드러운 클렌징</p>
-          </Link>
-        </li>
-        <li>
-          <Link to="/">
-            <img src={Product03} alt="product" />
-            <h6>레저럭션 아로마틱 핸드 워시</h6>
-            <p>지친 손을 위한 부드러운 클렌징</p>
-          </Link>
-        </li>
-        <li>
-          <Link to="/">
-            <img src={Product04} alt="product" />
-            <h6>레저럭션 아로마틱 핸드 워시</h6>
-            <p>지친 손을 위한 부드러운 클렌징</p>
-          </Link>
-        </li>
-        <li>
-          <Link to="/">
-            <img src={Product05} alt="product" />
-            <h6>레저럭션 아로마틱 핸드 워시</h6>
-            <p>지친 손을 위한 부드러운 클렌징</p>
-          </Link>
-        </li>
-        <li>
-          <Link to="/">
-            <img src={Product06} alt="product" />
-            <h6>레저럭션 아로마틱 핸드 워시</h6>
-            <p>지친 손을 위한 부드러운 클렌징</p>
-          </Link>
-        </li>
+        {RECOMMEND_PRODUCT_LIST.map(item => (
+          <li key={item.id}>
+            <Link to={item.link}>
+              <img src={item.image} alt={item.name} />
+              <h6>{item.name}</h6>
+              <p>{item.description}</p>
+            </Link>
+          </li>
+        ))}
       </ul>
       <div className="indicator">
         <div className="indicatorBar" />
