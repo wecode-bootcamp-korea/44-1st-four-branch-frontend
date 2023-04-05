@@ -3,6 +3,7 @@ import './UserModal.scss';
 
 function UserModal({ userInfoClose, data, modalChangehandle, backhandle }) {
   const { title, button } = data;
+
   return (
     <div className="userModal">
       <div className="userInfo">

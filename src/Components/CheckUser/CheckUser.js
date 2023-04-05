@@ -11,9 +11,8 @@ function CheckUser({ userInfoClose }) {
 
   function backhandle() {
     setModalChange(LOGIN_DATA);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
-  console.log(modalChange);
 
   return (
     <UserModal
