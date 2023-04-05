@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ProductHeader from './ProductHeader/ProductHeader';
 import Benefits from './Benefits/Benefits';
 import HowToUse from './HowToUse/HowToUse';
 import Recommend from './Recommend/Recommend';
 import Info from './Info/Info';
+
 import './ProductDetail.scss';
 
 function ProductDetail() {
+  const [modalView, setModalView] = useState('');
+
+  function isOpenModal() {
+    setModalView('slide');
+    window.document.body.style.overflow = 'hidden';
+  }
+
   return (
-    <div className="productDetail">
-      <ProductHeader />
+    <div className={`productDetail ${modalView}`}>
+      <ProductHeader isOpenModal={isOpenModal} modalView={modalView} />
       <Benefits />
       <HowToUse />
       <Recommend />

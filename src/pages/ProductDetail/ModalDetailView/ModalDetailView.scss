@@ -1,21 +1,26 @@
 .modalDetailView {
   .modalDetailContents {
     position: absolute;
-    z-index: 3;
+    z-index: 5;
     top: 0;
-    left: 0px;
+    left: -100%;
     width: 50%;
     height: 100vh;
-    background-color: #af3535;
-  }
+    background-color: #fffef2;
 
-  .modalBackDim {
-    position: fixed;
-    z-index: 2;
-    top: 0;
-    left: 0px;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(000, 000, 000, 50%);
+    .iconHandlePage {
+      position: relative;
+      margin: 20px;
+
+      .closeButton {
+        position: absolute;
+        right: 0;
+      }
+    }
+
+    &.slide {
+      left: 0;
+      transition: left 0.5s;
+    }
   }
 }
