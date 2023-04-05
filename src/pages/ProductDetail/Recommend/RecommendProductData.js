@@ -20,7 +20,7 @@ export const RECOMMEND_PRODUCT_LIST = [
     name: '휠 오 드 퍼퓸',
     description: '이끼, 안개, 히바 나무',
     image:
-      'https://www.aesop.com/u1nb1km7t5q7/4HSK3XP7EifCH3zX1dpEz8/a702430fe70a11d5941c57bb3e4b0dfd/Aesop-Reverence-Duet-with-Product-Large-1584x962px.png',
+      'https://www.aesop.com/u1nb1km7t5q7/2ct0ouUr0ao2RJ6ZJS4uJn/951049b3301a0c82f4f1260e6951f8fb/Aesop_Fragrance_Hwyl_Eau_de_Parfum_50mL_Web_Large_1000x977px.png',
     link: 'https://www.aesop.com/kr/p/body-hand/hand/resurrection-aromatique-hand-wash/',
   },
   {

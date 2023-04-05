@@ -10,7 +10,7 @@ function Info() {
         {INFO_LIST.map(item => (
           <li key={item.id}>
             <div className="title">
-              <h2>{item.headline}</h2>
+              <h2 className="titleText">{item.headline}</h2>
               <FiChevronUp className="icon20 closeButton" />
             </div>
             <p>{item.text}</p>
