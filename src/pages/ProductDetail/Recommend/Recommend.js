@@ -7,18 +7,17 @@ function Recommend() {
   const [recommendList, setRecommendList] = useState([]);
 
   useEffect(() => {
-    fetch('/data/productDetailList.json')
+    // fetch('/data/productDetailList.json')
+    //   .then(response => response.json())
+    //   .then(result => setRecommendList(result));
+    fetch('http://10.58.52.89:3000/products', {
+      // method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
       .then(response => response.json())
       .then(result => setRecommendList(result));
-
-    //   fetch('http://10.58.52.89:3000/products?pid=1', {
-    //     // method: 'GET',
-    //     headers: {
-    //       'Content-Type': 'application/json;charset=utf-8',
-    //     },
-    //   })
-    //     .then(response => response.json())
-    //     .then(result => setProductDetailList(result));
   }, []);
 
   return (

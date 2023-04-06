@@ -42,7 +42,7 @@
 
     .productList {
       display: flex;
-      overflow-x: hidden;
+      overflow-x: scroll;
       list-style: none;
 
       &::-webkit-scrollbar {
