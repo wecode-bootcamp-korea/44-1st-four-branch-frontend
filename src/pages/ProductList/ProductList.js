@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import rogoImg from '../../assets/productlist/aesop-logo.png';
 import ItemDisplay from './ItemDisplay/ItemDisplay';
 import './ProductList.scss';
 
 function ProductList() {
+  const [productData, setProductData] = useState([]);
+  useEffect(() => {
+    fetch('http://10.58.52.89:3000/products')
+      .then(response => response.json())
+      .then(result => {
+        setProductData(result);
+      });
+  }, []);
+
   return (
     <div className="productList">
       <img src={rogoImg} alt="로고 이미지" />
@@ -27,13 +36,9 @@ function ProductList() {
             깨끗하게 하는 것은 <br /> 인텔리전트 스킨케어의 기초입니다.
           </p>
         </div>
-        <ItemDisplay />
-        <ItemDisplay />
-        <ItemDisplay />
-        <ItemDisplay />
-        <ItemDisplay />
-        <ItemDisplay />
-        <ItemDisplay />
+        {productData.map(data => {
+          return <ItemDisplay key={data.id} data={data} />;
+        })}
       </section>
     </div>
   );
