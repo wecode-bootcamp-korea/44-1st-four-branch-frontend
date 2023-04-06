@@ -38,11 +38,18 @@
       margin: auto;
       transform: translate(0%, 100%);
 
-      h5 {
+      .title {
         margin-bottom: 8px;
         color: #111;
         font-size: 14px;
         font-weight: 500;
+      }
+
+      .text {
+        color: #888;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 120%;
       }
 
       ul {

@@ -1,0 +1,14 @@
+.infoItem {
+  padding: 32px 32px 20px 32px;
+  border-bottom: 1px solid #ccc;
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .text {
+    margin-top: 20px;
+    line-height: 1.5;
+  }
+}

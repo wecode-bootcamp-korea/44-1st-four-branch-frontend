@@ -1,6 +1,6 @@
 import React from 'react';
-import { FiChevronUp } from 'react-icons/fi';
 import { INFO_LIST } from './InfoData';
+import InfoItem from './InfoItem/InfoItem';
 import './Info.scss';
 
 function Info() {
@@ -8,13 +8,7 @@ function Info() {
     <div className="info">
       <ul>
         {INFO_LIST.map(item => (
-          <li key={item.id}>
-            <div className="title">
-              <h2 className="titleText">{item.headline}</h2>
-              <FiChevronUp className="icon20 closeButton" />
-            </div>
-            <p>{item.text}</p>
-          </li>
+          <InfoItem key={item.id} headline={item.headline} text={item.text} />
         ))}
       </ul>
     </div>

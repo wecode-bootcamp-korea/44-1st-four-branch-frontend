@@ -9,6 +9,9 @@ import './ProductDetail.scss';
 
 function ProductDetail() {
   const [modalView, setModalView] = useState('');
+  const [scrollView, setScrollView] = useState('');
+  const [arrowPrevButton, setArrowPrevButton] = useState('');
+  const [arrowNextButton, setArrowNextButton] = useState('');
 
   function isOpenModal() {
     setModalView('slide');
@@ -20,6 +23,24 @@ function ProductDetail() {
     window.document.body.style.overflow = 'scroll';
   }
 
+  function handleRightScroll() {
+    setScrollView('rightScroll');
+  }
+
+  function handleLeftScroll() {
+    setScrollView('leftScroll');
+  }
+
+  function appearArrowButton() {
+    setArrowPrevButton('hover');
+    setArrowNextButton('hover');
+  }
+
+  function removeArrowButton() {
+    setArrowPrevButton('');
+    setArrowNextButton('');
+  }
+
   return (
     <div className={`productDetail ${modalView}`}>
       <ProductHeader
@@ -29,7 +50,15 @@ function ProductDetail() {
       />
       <Benefits />
       <HowToUse />
-      <Recommend />
+      <Recommend
+        handleRightScroll={handleRightScroll}
+        handleLeftScroll={handleLeftScroll}
+        scrollView={scrollView}
+        appearArrowButton={appearArrowButton}
+        removeArrowButton={removeArrowButton}
+        arrowPrevButton={arrowPrevButton}
+        arrowNextButton={arrowNextButton}
+      />
       <Info />
     </div>
   );

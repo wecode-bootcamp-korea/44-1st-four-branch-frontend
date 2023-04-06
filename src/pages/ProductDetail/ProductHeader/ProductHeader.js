@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FiPlusCircle, FiHeart } from 'react-icons/fi';
+import { FiPlusCircle } from 'react-icons/fi';
+import { IoHeartOutline, IoHeartSharp } from 'react-icons/io5';
 import Logo from '../../../assets/ProductDetail/aesop-logo.png';
 import ProductRelated from './ProductRelated/ProductRelated';
 import ModalDetailView from '../ModalDetailView/ModalDetailView';
@@ -8,6 +9,11 @@ import './ProductHeader.scss';
 
 function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
   const [productDetailList, setProductDetailList] = useState([]);
+  const [heart, setHeart] = useState(false);
+
+  function handleHeart() {
+    heart === false ? setHeart(true) : setHeart(false);
+  }
 
   useEffect(() => {
     fetch('/data/productDetailList.json')
@@ -59,7 +65,6 @@ function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
                   <li className="productIngredient">
                     <h6>주요 성분</h6>
                     <p>{`${ingredientList[1]}, ${ingredientList[2]}, ${ingredientList[3]}`}</p>
-                    {/* <p>만다린, 로즈마리 리프, 시더우드 아틀라스ß</p> */}
                     <FiPlusCircle
                       className="icon20 detailViewButton"
                       onClick={isOpenModal}
@@ -70,9 +75,21 @@ function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
                     <p>{size}</p>
                   </li>
                 </ul>
-                <button className="primaryButton">{`카트에 추가하기 - ${price}`}</button>
+                <button className="primaryButton">{`카트에 추가하기 - ₩${price}`}</button>
                 <div className="wishList">
-                  <FiHeart className="icon16 wishListOn" />
+                  <div className="likeIcon">
+                    {heart ? (
+                      <IoHeartSharp
+                        className="icon16 wishListOn"
+                        onClick={handleHeart}
+                      />
+                    ) : (
+                      <IoHeartOutline
+                        className="icon16 wishListOff"
+                        onClick={handleHeart}
+                      />
+                    )}
+                  </div>
                   <p>위시리스트에 담기</p>
                 </div>
                 <ProductRelated />

@@ -15,16 +15,16 @@ function HowToUse() {
       </section>
       <section className="useDetail">
         <div className="contents">
-          <h6>사용법</h6>
+          <h6 className="title">사용법</h6>
           <h2>필요할 때마다 깨끗한 손에 바릅니다.</h2>
           <ul>
             <li>
-              <h6>사용량</h6>
-              <p>반 티스푼</p>
+              <h6 className="title">사용량</h6>
+              <p className="text">반 티스푼</p>
             </li>
             <li>
-              <h6>텍스처</h6>
-              <p>크림 타입</p>
+              <h6 className="title">텍스처</h6>
+              <p className="text">크림 타입</p>
             </li>
           </ul>
         </div>
