@@ -16,7 +16,16 @@ function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
   }
 
   useEffect(() => {
-    fetch('/data/productDetailList.json')
+    // fetch('/data/productDetailList.json')
+    //   .then(response => response.json())
+    //   .then(result => setProductDetailList(result));
+
+    fetch('http://10.58.52.89:3000/products?pid=1', {
+      // method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
       .then(response => response.json())
       .then(result => setProductDetailList(result));
   }, []);
@@ -75,7 +84,9 @@ function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
                     <p className="sizeText">{size}</p>
                   </li>
                 </ul>
-                <button className="primarySolidButton">{`카트에 추가하기 - ₩${price}`}</button>
+                <button className="primarySolidButton">{`카트에 추가하기 - ₩${Math.floor(
+                  price
+                ).toLocaleString()}`}</button>
                 <ProductWishList
                   wishList={wishList}
                   handleWishList={handleWIshList}

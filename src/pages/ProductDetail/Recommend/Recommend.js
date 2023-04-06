@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import { RECOMMEND_PRODUCT_LIST } from './RecommendProductData';
 import './Recommend.scss';
 
 function Recommend() {
+  const [recommendList, setRecommendList] = useState([]);
+
+  useEffect(() => {
+    fetch('/data/productDetailList.json')
+      .then(response => response.json())
+      .then(result => setRecommendList(result));
+
+    //   fetch('http://10.58.52.89:3000/products?pid=1', {
+    //     // method: 'GET',
+    //     headers: {
+    //       'Content-Type': 'application/json;charset=utf-8',
+    //     },
+    //   })
+    //     .then(response => response.json())
+    //     .then(result => setProductDetailList(result));
+  }, []);
+
   return (
     <div className="recommend">
       <div className="arrowPrevBtn">
@@ -19,17 +35,15 @@ function Recommend() {
             <h3 className="title">함께 사용하기 좋은 제품</h3>
           </li>
 
-          {RECOMMEND_PRODUCT_LIST.map(
-            ({ id, image, link, name, description }) => (
-              <li key={id}>
-                <Link className="itemLink" to={link}>
-                  <img src={image} alt={name} />
-                  <h6 className="itemName">{name}</h6>
-                  <p className="itemDescription">{description}</p>
-                </Link>
-              </li>
-            )
-          )}
+          {recommendList.map(({ id, imageUrl, name, summary }) => (
+            <li key={id}>
+              <Link className="itemLink" to="">
+                <img src={imageUrl} alt={name} />
+                <h6 className="itemName">{name}</h6>
+                <p className="itemDescription">{summary}</p>
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
       <div className="indicator">
