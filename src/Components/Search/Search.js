@@ -13,15 +13,17 @@ function Search() {
     setSearchKeyword(e.target.value);
   };
 
-  const filteredItem = searchList.filter(item =>
-    item.name.toLowerCase().includes(searchKeyword.toLowerCase())
-  );
+  const filteredItem = [
+    searchList.filter(item =>
+      item.name.toLowerCase().includes(searchKeyword.toLowerCase())
+    ),
+  ];
 
   useEffect(() => {
     fetch('/data/searchItemList.json')
       .then(response => response.json())
       .then(result => setSearchList(result));
-  }, []);
+  });
 
   return (
     <div className="search">
