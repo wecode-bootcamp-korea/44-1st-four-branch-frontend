@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import SearchList from './SearchList/SearchList';
 import Logo from '../../assets/aesop-logo.png';
-import ProductImage from '../../assets/product(00).png';
 import { FiArrowRight } from 'react-icons/fi';
 import './Search.scss';
 
@@ -11,6 +9,7 @@ function Search() {
   const [searchKeyword, setSearchKeyword] = useState('');
 
   const itemSearch = e => {
+    e.preventDefault();
     setSearchKeyword(e.target.value);
   };
 
@@ -43,9 +42,7 @@ function Search() {
         </div>
       </section>
       <section className="resultWrap">
-        {searchList.map(item => (
-          <SearchList searchList={filteredItem} item={item} key={item.id} />
-        ))}
+        <SearchList searchList={filteredItem} setSearchList={setSearchList} />
 
         {/* <div className="searchList">
           <ul>
@@ -69,10 +66,6 @@ function Search() {
             </li>
           </ul>
         </div> */}
-      </section>
-      <section className="productImage">
-        <img src={ProductImage} alt="레저렉션 아로마틱 핸드 밤" />
-        <button className="primaryButton moreViewButton">더 알아보기 > </button>
       </section>
     </div>
   );

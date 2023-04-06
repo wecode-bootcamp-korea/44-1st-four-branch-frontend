@@ -1,4 +1,8 @@
 .search {
+  display: flex;
+
+  overflow-y: scroll;
+  background-color: #fffef2;
   h2 {
     margin-bottom: 12px;
     color: #333;
@@ -141,12 +145,9 @@
     color: #333;
   }
 
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  height: 100vh;
-  background-color: #fffef2;
-
   .searchWrap {
+    width: 33%;
+    height: 100vh;
     padding: 120px 40px;
     border-right: 1px solid #ccc;
 
