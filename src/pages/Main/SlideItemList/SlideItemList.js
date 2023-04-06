@@ -5,7 +5,9 @@ import './SlideItemList.scss';
 
 function SlideItemList() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [mainItem, setMainItem] = useState([]);
   const carousel = useRef();
+
   function prevSlide() {
     setCurrentSlide(currentSlide - 2);
   }
@@ -17,6 +19,16 @@ function SlideItemList() {
   useEffect(() => {
     carousel.current.style.transform = `translateX(-${currentSlide}0%)`;
   }, [currentSlide]);
+
+  useEffect(() => {
+    fetch('http://10.58.52.89:3000/products?ismain=1')
+      .then(response => response.json())
+      .then(result => {
+        setMainItem(result);
+      });
+  }, []);
+
+  console.log(mainItem);
 
   return (
     <div className="slideItemList">
@@ -39,7 +51,7 @@ function SlideItemList() {
             <div className="arrow">→</div>
           </div>
         </div>
-        {PRODUCT_DATA.map(data => {
+        {mainItem.map(data => {
           return <SlideItem key={data.id} data={data} />;
         })}
       </div>

@@ -4,17 +4,17 @@ import './UserModal.scss';
 
 function UserModal({ data, userInfoClose, modalChangehandle, backhandle }) {
   const { title, button } = data;
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
   const [isCheckingBox, setIsCheckingBox] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
 
-  function emailHandle(e) {
+  function firstNameHandle(e) {
     setFirstName(e.target.value);
   }
 
-  function emailHandle(e) {
+  function lastNameHandle(e) {
     setLastName(e.target.value);
   }
 
@@ -32,35 +32,50 @@ function UserModal({ data, userInfoClose, modalChangehandle, backhandle }) {
 
   function isPossible(e) {
     e.preventDefault();
-    if (!(emailCheck && passwordCheck && isChecked)) {
-      alert('회원가입 실패');
-    } else if (emailCheck && passwordCheck && isChecked) {
-      fetch('http://10.58.52.91:3000/users/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-        body: JSON.stringify({
-          email: emailValue,
-          password: passwordValue,
-        }),
-      })
-        .then(response => {
-          if (response.ok === true) {
-            return response.json();
-          } else {
-            throw new Error('통신 실패!');
-          }
+    if (title === '로그인') {
+      if (!(emailCheck && passwordCheck && isChecked)) {
+        alert('로그인 실패');
+      } else if (emailCheck && passwordCheck && isChecked) {
+        fetch('http://10.58.52.78:3000/users/signin', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+          },
+          body: JSON.stringify({
+            email: emailValue,
+            password: passwordValue,
+          }),
         })
-        .catch(error => console.log(error))
-        .then(result => {
-          if (result.accessToken) {
-            localStorage.setItem('token', result.accessToken);
-            alert('로그인 성공');
-          } else {
-            alert('아이디 혹은 비밀번호를 확인해주세요.');
-          }
-        });
+          .then(response => {
+            response.json();
+          })
+          .then(result => {
+            console.log(result);
+          });
+      }
+    } else if (title === '회원가입') {
+      if (!(emailCheck && passwordCheck && isChecked)) {
+        alert('회원가입 실패');
+      } else if (emailCheck && passwordCheck && isChecked) {
+        fetch('http://10.58.52.78:3000/users/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+          },
+          body: JSON.stringify({
+            firstName: firstName,
+            LastName: lastName,
+            email: emailValue,
+            password: passwordValue,
+          }),
+        })
+          .then(response => {
+            response.json();
+          })
+          .then(result => {
+            console.log(result);
+          });
+      }
     }
   }
 
@@ -84,8 +99,18 @@ function UserModal({ data, userInfoClose, modalChangehandle, backhandle }) {
         <form onSubmit={isPossible}>
           {title === '회원가입' && (
             <>
-              <input className="firstName" placeholder="성" value={firstName} />
-              <input className="lastName" placeholder="이름" value={lastName} />
+              <input
+                className="firstName"
+                placeholder="성"
+                value={firstName}
+                onChange={firstNameHandle}
+              />
+              <input
+                className="lastName"
+                placeholder="이름"
+                value={lastName}
+                onChange={lastNameHandle}
+              />
             </>
           )}
           <input
