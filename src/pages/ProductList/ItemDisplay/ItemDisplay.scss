@@ -18,6 +18,9 @@
     top: 30px;
     right: 20px;
     font-size: 18px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .itemImage {
@@ -46,13 +49,15 @@
     width: 90%;
     border-bottom: 1px solid #d3d1c7;
 
-    p {
+    .additional {
       padding: 20px 0;
       font-size: 15px;
     }
 
     .explain {
+      padding: 20px 0;
       color: #797977;
+      font-size: 15px;
     }
   }
 

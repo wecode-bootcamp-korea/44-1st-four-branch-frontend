@@ -1,19 +1,19 @@
 .productList {
   background-color: #fffef2;
 
-  img {
+  .logoImage {
     width: 120px;
     margin-top: 50px;
     margin-left: 40px;
   }
 
-  h2 {
+  .categoryTitle {
     margin: 50px 0 25px 0;
     padding-left: 40px;
     font-size: 25px;
   }
 
-  nav {
+  .categoryBar {
     display: flex;
     position: relative;
     flex-direction: column;
@@ -27,7 +27,7 @@
       gap: 25px;
       padding-left: 40px;
 
-      li {
+      .category {
         color: #252525;
         font-size: 14px;
         font-weight: 400;
@@ -64,12 +64,12 @@
     padding-top: 100px;
     padding-left: 50px;
 
-    h3 {
+    .title {
       margin-bottom: 30px;
       font-size: 30px;
     }
 
-    p {
+    .itemIntroduce {
       line-height: 2;
     }
   }

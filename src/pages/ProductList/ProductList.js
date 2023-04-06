@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import rogoImg from '../../assets/productlist/aesop-logo.png';
+import logoImg from '../../assets/productlist/aesop-logo.png';
 import ItemDisplay from './ItemDisplay/ItemDisplay';
 import './ProductList.scss';
 
@@ -15,12 +15,12 @@ function ProductList() {
 
   return (
     <div className="productList">
-      <img src={rogoImg} alt="로고 이미지" />
-      <h2>클렌저</h2>
-      <nav>
+      <img className="logoImage" src={logoImg} alt="로고 이미지" />
+      <h2 className="categoryTitle">클렌저</h2>
+      <nav className="categoryBar">
         <ul className="categoryList">
           {CATEGORY_LIST.map(category => {
-            return <li>{category}</li>;
+            return <li className="category">{category}</li>;
           })}
         </ul>
         <div className="filter">
@@ -30,10 +30,10 @@ function ProductList() {
       </nav>
       <section>
         <div className="itemListInfo">
-          <h3>처음의 시작</h3>
-          <p>
+          <h3 className="title">처음의 시작</h3>
+          <p className="itemIntroduce">
             각질, 불필요한 유분 그리고 기타 잔여물을 말끔히 씻어내어 피부를
-            깨끗하게 하는 것은 <br /> 인텔리전트 스킨케어의 기초입니다.
+            깨끗하게 하는 것은 인텔리전트 스킨케어의 기초입니다.
           </p>
         </div>
         {productData.map(data => {
