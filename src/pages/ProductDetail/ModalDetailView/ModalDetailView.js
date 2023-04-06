@@ -9,7 +9,7 @@ function ModalDetailView({ modalView, productDetailList, isCloseModal }) {
       <ModalDim modalView={modalView} />
       <div className={`modalDetailContents ${modalView}`}>
         <div className="iconHandlePage">
-          <FiX className="icon20 closeButton" />
+          <FiX className="closeButton" />
         </div>
         <div className="ingredients">
           {productDetailList.map(({ ingredients }) => {

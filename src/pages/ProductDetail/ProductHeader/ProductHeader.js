@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FiPlusCircle } from 'react-icons/fi';
-import { IoHeartOutline, IoHeartSharp } from 'react-icons/io5';
 import Logo from '../../../assets/ProductDetail/aesop-logo.png';
+import ProductWishList from './ProductWishList/ProductWishList';
 import ProductRelated from './ProductRelated/ProductRelated';
 import ModalDetailView from '../ModalDetailView/ModalDetailView';
 
@@ -9,10 +9,10 @@ import './ProductHeader.scss';
 
 function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
   const [productDetailList, setProductDetailList] = useState([]);
-  const [heart, setHeart] = useState(false);
+  const [wishList, setWishList] = useState(false);
 
-  function handleHeart() {
-    heart === false ? setHeart(true) : setHeart(false);
+  function handleWIshList() {
+    wishList === false ? setWishList(true) : setWishList(false);
   }
 
   useEffect(() => {
@@ -46,52 +46,40 @@ function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
           return (
             <div className={`productHeader ${slide}`} key={id}>
               <section className="logoContainer">
-                <img src={Logo} alt="logo" />
+                <img className="logo" src={Logo} alt="logo" />
               </section>
               <section className="productImageContainer">
-                <img src={imageUrl} alt={name} />
+                <img className="productImage" src={imageUrl} alt={name} />
               </section>
               <section className="productDetailContainer">
-                <div className="productTitle">
+                <div className="productTitleContainer">
                   <div className="productCategoryLink">
                     {mainCategoryName}
                     <div className="divideDot" />
                     {subCategoryName}
                   </div>
-                  <h2>{name}</h2>
-                  <p>{description}</p>
+                  <h2 className="productName">{name}</h2>
+                  <p className="productDescription">{description}</p>
                 </div>
                 <ul className="productDetail">
                   <li className="productIngredient">
-                    <h6>주요 성분</h6>
-                    <p>{`${ingredientList[1]}, ${ingredientList[2]}, ${ingredientList[3]}`}</p>
+                    <h6 className="ingredientTitle">주요 성분</h6>
+                    <p className="ingredientText">{`${ingredientList[1]}, ${ingredientList[2]}, ${ingredientList[3]}`}</p>
                     <FiPlusCircle
                       className="icon20 detailViewButton"
                       onClick={isOpenModal}
                     />
                   </li>
                   <li className="productSize">
-                    <h6>사이즈</h6>
-                    <p>{size}</p>
+                    <h6 className="sizeTitle">사이즈</h6>
+                    <p className="sizeText">{size}</p>
                   </li>
                 </ul>
-                <button className="primaryButton">{`카트에 추가하기 - ₩${price}`}</button>
-                <div className="wishList">
-                  <div className="likeIcon">
-                    {heart ? (
-                      <IoHeartSharp
-                        className="icon16 wishListOn"
-                        onClick={handleHeart}
-                      />
-                    ) : (
-                      <IoHeartOutline
-                        className="icon16 wishListOff"
-                        onClick={handleHeart}
-                      />
-                    )}
-                  </div>
-                  <p>위시리스트에 담기</p>
-                </div>
+                <button className="primarySolidButton">{`카트에 추가하기 - ₩${price}`}</button>
+                <ProductWishList
+                  wishList={wishList}
+                  handleWishList={handleWIshList}
+                />
                 <ProductRelated />
               </section>
             </div>

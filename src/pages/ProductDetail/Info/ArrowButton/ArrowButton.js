@@ -6,9 +6,9 @@ function ArrowButton({ handleTextView, textView }) {
   return (
     <div className="arrowButton" onClick={handleTextView}>
       {textView ? (
-        <FiChevronUp className="icon20 closeButton" />
+        <FiChevronUp className="closeButton" />
       ) : (
-        <FiChevronDown className="icon20 openButton" />
+        <FiChevronDown className="openButton" />
       )}
     </div>
   );

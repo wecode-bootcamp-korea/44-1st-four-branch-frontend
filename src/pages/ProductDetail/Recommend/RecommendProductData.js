@@ -5,7 +5,7 @@ export const RECOMMEND_PRODUCT_LIST = [
     description: '지친 손을 위한 부드러운 클렌징',
     image:
       'https://www.aesop.com/u1nb1km7t5q7/4oiBZSglPdvTkoGdSoZ2tq/b3c78e9a9a457ae4e350f24b49747a0d/Aesop-Body-Resurrection-Aromatique-Hand-Balm-75mL-large.png',
-    link: 'https://www.aesop.com/kr/p/body-hand/hand/resurrection-aromatique-hand-wash/',
+    link: '',
   },
   {
     id: 2,
