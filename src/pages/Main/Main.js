@@ -20,7 +20,7 @@ function Main() {
       <LeftBanner />
       <RightBanner />
       <LeftBanner />
-      <SlideItemList />
+      {/* <SlideItemList /> */}
       <StoreLocator />
       <Selection />
       <LeftBanner />

@@ -3,25 +3,25 @@
   padding-top: 150px;
   gap: 150px;
 
-  .contentImg {
+  .articleImg {
     width: 59%;
     height: 625px;
     background-image: url('https://www.aesop.com/u1nb1km7t5q7/zXTw8PFTGSDXO5IpheIGC/3661373231cab92c0b9a9bd437a79ca6/Aesop_Incense_2023_Web_Homepage_Secondary_Mid_Desktop_2560x1440px.jpg');
     background-size: cover;
   }
 
-  .content {
+  .articleContent {
     width: 555px;
     height: 510px;
 
-    h2 {
+    .mainTitle {
       margin-top: 30px;
       margin-bottom: 40px;
       color: rgb(51, 51, 51);
       font-size: 30px;
     }
 
-    p {
+    .content {
       margin-bottom: 30px;
       color: #545454;
       font-size: 16px;

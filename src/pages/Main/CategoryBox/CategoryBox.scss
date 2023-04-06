@@ -1,0 +1,66 @@
+.categoryBox {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    height: 80px;
+    background-color: #fffef2;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      margin: 0;
+      padding: 0 40px;
+      font-size: 14px;
+      font-weight: 300;
+      list-style: none;
+    }
+
+    li {
+      color: #000000;
+      &.skinCare {
+        padding: 30px 5px;
+        border-bottom: 2px solid #000000;
+      }
+    }
+
+    .flexStart {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .icon {
+        font-size: 18px;
+      }
+    }
+
+    .flexEnd {
+      display: flex;
+      gap: 20px;
+    }
+  }
+  .categoryMain {
+    display: flex;
+    height: 100%;
+    ul {
+      flex-grow: 1;
+      margin: 0;
+      padding: 0;
+      background-color: #f0efe0;
+    }
+    .categoryImg {
+      width: 610px;
+      height: 100%;
+      background-image: url('https://www.aesop.com/u1nb1km7t5q7/6Va39pw5RZBeMeQ9fdy2Zi/cdc6a081e7c8a3c361226cc5f86bb2cb/Aesop_Homepage_Navigation_Category_Skin_Desktop_1700x2400px.jpg');
+      background-size: cover;
+    }
+  }
+}

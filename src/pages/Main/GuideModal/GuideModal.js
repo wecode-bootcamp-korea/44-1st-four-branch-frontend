@@ -15,12 +15,12 @@ function GuideModal({ guideModalClose, slide }) {
       <div className="contentBox">
         <div className="freeDelivery">전 구매 무료 배송</div>
         <div className="deliveryInfo">
-          <h3>CJ 대한통운</h3>
-          <div>
+          <h3 className="subTitle">CJ 대한통운</h3>
+          <div className="delivery">
             <p>전 제품</p>
             <p>무료 배송</p>
           </div>
-          <div>
+          <div className="delivery">
             <p>전 지역</p>
             <p>영업일 기준, 2~3일</p>
           </div>
@@ -28,8 +28,8 @@ function GuideModal({ guideModalClose, slide }) {
         {SERVICE_INFO.map((info, i) => {
           return (
             <div className="service" key={i}>
-              <h3>{info.title}</h3>
-              <p>{info.content}</p>
+              <h3 className="subTitle">{info.title}</h3>
+              <p className="serviceContent">{info.content}</p>
             </div>
           );
         })}

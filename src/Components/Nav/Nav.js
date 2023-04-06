@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import CategoryBox from '../../pages/Main/CategoryBox/CategoryBox';
 import UserBlackWindow from '../../pages/Main/UserBlackWindow/UserBlackWindow';
 import CheckUser from '../CheckUser/CheckUser';
 import './Nav.scss';
@@ -17,10 +18,11 @@ function Nav() {
 
   return (
     <>
+      {/* <CategoryBox /> */}
       {userInfo && <CheckUser userInfoClose={userInfoClose} />}
       {userInfo && <UserBlackWindow userInfoClose={userInfoClose} />}
       <nav className="nav">
-        <ul>
+        <ul className="navigation">
           <div className="flexStart">
             {CATEGORY_LIST.map((category, index) => {
               return <li key={index}>{category}</li>;
@@ -49,3 +51,5 @@ const CATEGORY_LIST = [
   '향수',
   '스토어',
 ];
+
+const SKINCARE = ['홈', '스킨 케어', '바디 & 핸드', '헤어', '향수', '스토어'];

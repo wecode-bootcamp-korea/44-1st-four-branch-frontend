@@ -16,8 +16,8 @@ function CheckUser({ userInfoClose }) {
 
   return (
     <UserModal
-      userInfoClose={userInfoClose}
       data={modalChange}
+      userInfoClose={userInfoClose}
       modalChangehandle={modalChangehandle}
       backhandle={backhandle}
     />

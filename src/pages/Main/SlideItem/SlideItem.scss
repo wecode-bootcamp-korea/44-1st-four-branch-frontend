@@ -6,18 +6,18 @@
     cursor: pointer;
   }
 
-  img {
+  .carouselItem {
     width: 410px;
     height: 400px;
   }
 
-  h3 {
+  .itemName {
     margin-bottom: 20px;
     font-size: 15px;
     font-weight: 700;
   }
 
-  p {
+  .itemIngredient {
     font-size: 14px;
     font-weight: 400;
   }

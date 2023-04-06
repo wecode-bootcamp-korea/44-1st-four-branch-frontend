@@ -1,8 +1,72 @@
 import React from 'react';
+import { useState } from 'react';
 import './UserModal.scss';
 
-function UserModal({ userInfoClose, data, modalChangehandle, backhandle }) {
+function UserModal({ data, userInfoClose, modalChangehandle, backhandle }) {
   const { title, button } = data;
+  const [emailValue, setEmailValue] = useState('');
+  const [passwordValue, setPasswordValue] = useState('');
+  const [isCheckingBox, setIsCheckingBox] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+
+  function emailHandle(e) {
+    setFirstName(e.target.value);
+  }
+
+  function emailHandle(e) {
+    setLastName(e.target.value);
+  }
+
+  function emailHandle(e) {
+    setEmailValue(e.target.value);
+  }
+
+  function passwordHandle(e) {
+    setPasswordValue(e.target.value);
+  }
+
+  function checkBoxHandle(e) {
+    setIsCheckingBox(e.target.checked);
+  }
+
+  function isPossible(e) {
+    e.preventDefault();
+    if (!(emailCheck && passwordCheck && isChecked)) {
+      alert('회원가입 실패');
+    } else if (emailCheck && passwordCheck && isChecked) {
+      fetch('http://10.58.52.91:3000/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify({
+          email: emailValue,
+          password: passwordValue,
+        }),
+      })
+        .then(response => {
+          if (response.ok === true) {
+            return response.json();
+          } else {
+            throw new Error('통신 실패!');
+          }
+        })
+        .catch(error => console.log(error))
+        .then(result => {
+          if (result.accessToken) {
+            localStorage.setItem('token', result.accessToken);
+            alert('로그인 성공');
+          } else {
+            alert('아이디 혹은 비밀번호를 확인해주세요.');
+          }
+        });
+    }
+  }
+
+  const emailCheck = emailValue.includes('@');
+  const passwordCheck = passwordValue.length >= 5;
+  const isChecked = isCheckingBox === true;
 
   return (
     <div className="userModal">
@@ -10,32 +74,52 @@ function UserModal({ userInfoClose, data, modalChangehandle, backhandle }) {
         <span className="closeBtn" onClick={userInfoClose}>
           ✕
         </span>
-        <div className="title">{title}</div>
+        <div className="userTitle">{title}</div>
         {title === '회원가입' && (
           <div className="subTitle">
             회원가입을 통해 주문 내역을 확인하고 지난 구매 상품을 재구매하실 수
             있습니다.
           </div>
         )}
-        <form>
+        <form onSubmit={isPossible}>
           {title === '회원가입' && (
             <>
-              <input className="firstName" placeholder="성" />
-              <input className="lastName" placeholder="이름" />
+              <input className="firstName" placeholder="성" value={firstName} />
+              <input className="lastName" placeholder="이름" value={lastName} />
             </>
           )}
-          <input className="email" type="email" placeholder="이메일 주소" />
-          <input className="password" type="password" placeholder="비밀번호" />
+          <input
+            className="email"
+            type="email"
+            placeholder="이메일 주소"
+            value={emailValue}
+            onChange={emailHandle}
+          />
+          <input
+            className="password"
+            type="password"
+            placeholder="비밀번호"
+            value={passwordValue}
+            onChange={passwordHandle}
+          />
           {title === '로그인' && (
             <div className="passwordReset">비밀번호 재설정하기</div>
           )}
           {title === '회원가입' && (
             <div className="agreeInfo">
               <div className="ageConfirm">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  onClick={checkBoxHandle}
+                  defaultChecked={isCheckingBox}
+                />
                 <label>본인은 만 14세 이상입니다 (필수)</label>
               </div>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onClick={checkBoxHandle}
+                defaultChecked={isCheckingBox}
+              />
               <label>이용 약관에 동의합니다 (필수)</label>
               <div className="squareBox">
                 이솝 온라인 몰 서비스 이용약관 <br />
@@ -48,7 +132,11 @@ function UserModal({ userInfoClose, data, modalChangehandle, backhandle }) {
                 전체에서 제시하는 여타 조건과 정책에 따라, 이용자에게 본
                 사이트상 컨텐츠와 서비스를 제공합니다.
               </div>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onClick={checkBoxHandle}
+                defaultChecked={isCheckingBox}
+              />
               <label>개인정보 수집 및 이용 조건에 동의합니다 (필수)</label>
               <div className="squareBox">
                 개인정보수집항목: <br /> a) 성명, 이메일 주소, 전화번호, 주소,
@@ -72,14 +160,7 @@ function UserModal({ userInfoClose, data, modalChangehandle, backhandle }) {
               </div>
             </div>
           )}
-          <button
-            className="submitBtn"
-            onClick={e => {
-              e.preventDefault();
-            }}
-          >
-            {button}
-          </button>
+          <button className="submitBtn">{button}</button>
         </form>
         {title === '로그인' && (
           <div className="userConfirm">회원이 아니신가요?</div>
