@@ -75,7 +75,7 @@ function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
                     <h6 className="ingredientTitle">주요 성분</h6>
                     <p className="ingredientText">{`${ingredientList[1]}, ${ingredientList[2]}, ${ingredientList[3]}`}</p>
                     <FiPlusCircle
-                      className="icon20 detailViewButton"
+                      className="detailViewButton"
                       onClick={isOpenModal}
                     />
                   </li>

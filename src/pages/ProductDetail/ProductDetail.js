@@ -12,6 +12,7 @@ function ProductDetail() {
   function isOpenModal() {
     setModalView('slide');
     window.document.body.style.overflow = 'hidden';
+    window.scrollTo(0, 0);
   }
 
   function isCloseModal() {
