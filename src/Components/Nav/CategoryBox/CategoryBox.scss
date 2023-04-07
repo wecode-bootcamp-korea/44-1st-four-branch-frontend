@@ -40,9 +40,21 @@
       }
     }
 
+    .category {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
     .flexEnd {
       display: flex;
       gap: 20px;
+    }
+
+    .closeBtn {
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
   .categoryList {

@@ -1,8 +1,9 @@
 import React from 'react';
 import './CategoryBox.scss';
 import logoImg from '../../../assets/product/aesop-logo.png';
+import { CATEGORY_LIST } from '../NavData';
 
-function CategoryBox({ categoryChange, categoryHandle }) {
+function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
   return (
     <div className="categoryBox">
       <nav>
@@ -11,6 +12,7 @@ function CategoryBox({ categoryChange, categoryHandle }) {
             {CATEGORY_LIST.map(data => {
               return (
                 <li
+                  className="category"
                   key={data.id}
                   onClick={() => {
                     categoryHandle(data.id);
@@ -20,7 +22,14 @@ function CategoryBox({ categoryChange, categoryHandle }) {
                 </li>
               );
             })}
-            <li className="closeBtn">닫기 ✕</li>
+            <li
+              onClick={() => {
+                categoryBoxClose();
+              }}
+              className="closeBtn"
+            >
+              닫기 ✕
+            </li>
           </div>
           <div className="flexEnd">
             <li className="loginBtn">로그인</li>
@@ -60,12 +69,3 @@ function CategoryBox({ categoryChange, categoryHandle }) {
 }
 
 export default CategoryBox;
-
-const CATEGORY_LIST = [
-  { id: 1, categoryName: '홈' },
-  { id: 2, categoryName: '스킨 케어' },
-  { id: 3, categoryName: '바디 & 핸드' },
-  { id: 4, categoryName: '헤어' },
-  { id: 5, categoryName: '향수' },
-  { id: 6, categoryName: '스토어' },
-];

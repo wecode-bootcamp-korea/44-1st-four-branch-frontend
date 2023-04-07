@@ -1,15 +1,13 @@
 import React from 'react';
 import CategoryBox from '../CategoryBox/CategoryBox';
-import './CategoryForm.scss';
 
-function CategoryForm({ categoryChange, categoryHandle }) {
+function CategoryForm({ categoryChange, categoryHandle, categoryBoxClose }) {
   return (
-    <div>
-      <CategoryBox
-        categoryChange={categoryChange}
-        categoryHandle={categoryHandle}
-      />
-    </div>
+    <CategoryBox
+      categoryChange={categoryChange}
+      categoryHandle={categoryHandle}
+      categoryBoxClose={categoryBoxClose}
+    />
   );
 }
 
