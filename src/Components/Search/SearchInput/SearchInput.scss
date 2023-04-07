@@ -1,0 +1,38 @@
+@import '../../../styles/mixin';
+
+.searchInput {
+  width: 33%;
+  height: 100vh;
+  padding: 120px 40px;
+  border-right: 1px solid #ccc;
+
+  img {
+    width: 120px;
+  }
+
+  .searchBox {
+    position: relative;
+    margin-bottom: 40px;
+
+    .input {
+      width: 100%;
+      height: 60px;
+      padding-top: 60px;
+      padding-right: 60px;
+      padding-bottom: 32px;
+      border: none;
+      border-bottom: solid 1px #ccc;
+      outline: none;
+      background-color: rgba(000, 000, 000, 0);
+      color: #333;
+      font-size: 24px;
+      font-weight: 300;
+    }
+
+    .enterButton {
+      position: absolute;
+      top: 50%;
+      right: 0;
+    }
+  }
+}

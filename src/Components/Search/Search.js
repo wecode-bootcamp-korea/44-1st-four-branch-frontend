@@ -8,6 +8,18 @@ import './Search.scss';
 function Search() {
   const [searchList, setSearchList] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState('');
+  const [itemHover, setItemHover] = useState('');
+  const [buttonName, setButtonName] = useState('');
+
+  function imageView() {
+    setItemHover('itemHover');
+    setButtonName('더 알아보기 >');
+  }
+
+  function imageNotView() {
+    setItemHover('');
+    setButtonName('');
+  }
 
   const itemSearch = e => {
     e.preventDefault();
@@ -32,9 +44,13 @@ function Search() {
         itemSearch={itemSearch}
         FiArrowRight={FiArrowRight}
       />
-      <section className="resultWrap">
-        <SearchList searchList={filteredItem} setSearchList={setSearchList} />
-      </section>
+      <SearchList
+        searchList={filteredItem}
+        itemHover={itemHover}
+        imageView={imageView}
+        imageNotView={imageNotView}
+        buttonName={buttonName}
+      />
     </div>
   );
 }
