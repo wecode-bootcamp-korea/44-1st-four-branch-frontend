@@ -5,6 +5,7 @@ import './ProductList.scss';
 
 function ProductList() {
   const [productData, setProductData] = useState([]);
+
   useEffect(() => {
     fetch('http://10.58.52.89:3000/products')
       .then(response => response.json())
@@ -19,8 +20,12 @@ function ProductList() {
       <h2 className="categoryTitle">클렌저</h2>
       <nav className="categoryBar">
         <ul className="categoryList">
-          {CATEGORY_LIST.map(category => {
-            return <li className="category">{category}</li>;
+          {CATEGORY_LIST.map((category, index) => {
+            return (
+              <li key={index} className="category">
+                {category}
+              </li>
+            );
           })}
         </ul>
         <div className="filter">

@@ -7,16 +7,19 @@ function ItemDisplay({ data }) {
   const [heartChange, setHeartChange] = useState(false);
 
   function wishListHandle() {
-    setHeartChange(!heartChange);
+    setHeartChange(heartChange => !heartChange);
   }
 
   return (
     <div className="itemDisplay">
-      {!heartChange && <FiHeart className="heart" onClick={wishListHandle} />}
-      {heartChange && <FaHeart className="heart" onClick={wishListHandle} />}
+      {heartChange ? (
+        <FaHeart className="heart" onClick={wishListHandle} />
+      ) : (
+        <FiHeart className="heart" onClick={wishListHandle} />
+      )}
       <img className="itemImage" alt="제품 이미지" src={data.imageUrl} />
       <p className="itemName">{data.name}</p>
-      <p className="itemprice">{`${Math.floor(
+      <p className="itemPrice">{`${Math.floor(
         data.price
       ).toLocaleString()}원`}</p>
       <div className="line" />
@@ -28,7 +31,7 @@ function ItemDisplay({ data }) {
         <p className="additional">사용감</p>
         <p className="explain">진정된, 생기있는</p>
       </div>
-      <div className="learnMore">더 알아보기 ></div>
+      <div className="learnMore">장바구니 담기</div>
     </div>
   );
 }
