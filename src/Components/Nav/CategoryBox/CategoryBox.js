@@ -1,11 +1,12 @@
 import React from 'react';
 import './CategoryBox.scss';
+import logoImg from '../../../assets/product/aesop-logo.png';
 
 function CategoryBox({ categoryChange, categoryHandle }) {
   return (
     <div className="categoryBox">
       <nav>
-        <ul>
+        <ul className="mainCategory">
           <div className="flexStart">
             {CATEGORY_LIST.map(data => {
               return (
@@ -28,12 +29,26 @@ function CategoryBox({ categoryChange, categoryHandle }) {
           </div>
         </ul>
       </nav>
-      <div className="categoryMain">
-        <ul>
-          카테고리
+      <div className="categoryList">
+        <ul className="subCategory">
+          <img className="logoImg" alt="logoImage" src={logoImg} />
+          <li className="categoryTitle">카테고리</li>
           {categoryChange[0].categoryList.map((data, index) => {
             return <li key={index}>{data}</li>;
           })}
+        </ul>
+        <ul className="daily">
+          <li className="categoryTitle">데일리 에센셜</li>
+          <li>레저렉션 아로마틱 핸드 밤</li>
+          <li>레저렉션 아로마틱 핸드 워시</li>
+          <li>제라늄 리프 듀엣</li>
+          <li>이그절티드 아이 세럼</li>
+        </ul>
+        <ul className="newArrival">
+          <li className="categoryTitle">신제품</li>
+          <li>사가지 이더시스 오 드 퍼퓸</li>
+          <li>위 비 트리플 씨 페이셜 젤</li>
+          <li>파스리 리프 듀엣 세럼</li>
         </ul>
         <div
           className="categoryBoxImg"
@@ -49,7 +64,7 @@ export default CategoryBox;
 const CATEGORY_LIST = [
   { id: 1, categoryName: '홈' },
   { id: 2, categoryName: '스킨 케어' },
-  { id: 3, categoryName: '바디 &핸드' },
+  { id: 3, categoryName: '바디 & 핸드' },
   { id: 4, categoryName: '헤어' },
   { id: 5, categoryName: '향수' },
   { id: 6, categoryName: '스토어' },

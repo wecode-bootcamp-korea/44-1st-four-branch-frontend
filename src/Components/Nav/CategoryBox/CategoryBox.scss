@@ -12,7 +12,7 @@
     height: 80px;
     background-color: #fffef2;
 
-    ul {
+    .mainCategory {
       display: flex;
       justify-content: space-between;
       margin: 0;
@@ -45,15 +45,47 @@
       gap: 20px;
     }
   }
-  .categoryMain {
+  .categoryList {
     display: flex;
+    position: relative;
+    justify-content: flex-end;
     height: 100%;
-    ul {
-      flex-grow: 1;
-      margin: 0;
-      padding: 0;
-      background-color: #f0efe0;
+    background-color: #f0efe0;
+    gap: 150px;
+
+    .categoryTitle {
+      font-size: 18px;
+      font-weight: 700;
     }
+
+    .logoImg {
+      position: absolute;
+      top: 80px;
+      left: 50px;
+      width: 120px;
+    }
+
+    .subCategory {
+      display: flex;
+      flex-direction: column;
+      padding-top: 100px;
+      gap: 30px;
+    }
+
+    .daily {
+      display: flex;
+      flex-direction: column;
+      padding-top: 100px;
+      gap: 30px;
+    }
+
+    .newArrival {
+      display: flex;
+      flex-direction: column;
+      padding-top: 100px;
+      gap: 30px;
+    }
+
     .categoryBoxImg {
       width: 610px;
       height: 100%;
