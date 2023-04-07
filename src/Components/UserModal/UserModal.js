@@ -9,6 +9,9 @@ function UserModal({ data, userInfoClose, modalChangehandle, backhandle }) {
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
   const [isCheckingBox, setIsCheckingBox] = useState('');
+  const emailCheck = emailValue.includes('@');
+  const passwordCheck = passwordValue.length >= 5;
+  const isChecked = isCheckingBox === true;
 
   function firstNameHandle(e) {
     setFirstName(e.target.value);
@@ -78,11 +81,6 @@ function UserModal({ data, userInfoClose, modalChangehandle, backhandle }) {
       }
     }
   }
-
-  const emailCheck = emailValue.includes('@');
-  const passwordCheck = passwordValue.length >= 5;
-  const isChecked = isCheckingBox === true;
-
   return (
     <div className="userModal">
       <div className="userInfo">

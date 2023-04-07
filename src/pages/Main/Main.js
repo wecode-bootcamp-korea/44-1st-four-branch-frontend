@@ -19,7 +19,6 @@ function Main() {
       <LeftBanner />
       <RightBanner />
       <LeftBanner />
-      {/* <SlideItemList /> */}
       <StoreLocator />
       <Selection />
       <LeftBanner />
