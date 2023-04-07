@@ -1,10 +1,9 @@
 const CATEGORY_LIST = [
   { id: 1, categoryName: '홈' },
   { id: 2, categoryName: '스킨 케어' },
-  { id: 3, categoryName: '바디 &핸드' },
+  { id: 3, categoryName: '바디 & 핸드' },
   { id: 4, categoryName: '헤어' },
   { id: 5, categoryName: '향수' },
-  { id: 6, categoryName: '스토어' },
 ];
 
 const SKINCARE = [

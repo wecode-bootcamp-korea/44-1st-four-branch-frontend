@@ -15,21 +15,18 @@ function Nav() {
   const [categoryChange, setCategoryChange] = useState([]);
   const navigate = useNavigate();
 
+  const OBJ = {
+    '스킨 케어': SKINCARE,
+    '바디 & 핸드': BODYHAND_DATA,
+    헤어: HAIR_DATA,
+    향수: PERFUME,
+  };
+
   function categoryHandle(targetId) {
-    if (targetId === 1) {
+    if (targetId === '홈') {
       navigate('/main');
-      setCategory(false);
-    } else if (targetId === 2) {
-      setCategoryChange(SKINCARE);
-      setCategory(true);
-    } else if (targetId === 3) {
-      setCategoryChange(BODYHAND_DATA);
-      setCategory(true);
-    } else if (targetId === 4) {
-      setCategoryChange(HAIR_DATA);
-      setCategory(true);
-    } else if (targetId === 5) {
-      setCategoryChange(PERFUME);
+    } else {
+      setCategoryChange(OBJ[targetId]);
       setCategory(true);
     }
   }
@@ -54,10 +51,10 @@ function Nav() {
               return (
                 <li
                   className="categoryList"
-                  key={category.id}
-                  id={category.id}
+                  key={category.categoryName}
+                  id={category.categoryName}
                   onClick={() => {
-                    categoryHandle(category.id);
+                    categoryHandle(category.categoryName);
                   }}
                 >
                   {category.categoryName}

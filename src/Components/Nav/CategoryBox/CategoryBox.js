@@ -15,7 +15,7 @@ function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
                   className="category"
                   key={data.id}
                   onClick={() => {
-                    categoryHandle(data.id);
+                    categoryHandle(data.categoryName);
                   }}
                 >
                   {data.categoryName}
