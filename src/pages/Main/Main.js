@@ -1,7 +1,8 @@
 import React from 'react';
+import './Main.scss';
 
 function Main() {
-  return <div />;
+  return <div className="main" />;
 }
 
 export default Main;
