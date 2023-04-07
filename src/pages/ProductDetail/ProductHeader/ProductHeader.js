@@ -12,7 +12,11 @@ function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
   const [wishList, setWishList] = useState(false);
 
   function handleWIshList() {
-    wishList === false ? setWishList(true) : setWishList(false);
+    setWishList(wishList => !wishList);
+  }
+
+  function makeIngredientList(value) {
+    return JSON.parse(value);
   }
 
   useEffect(() => {
@@ -20,7 +24,7 @@ function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
     //   .then(response => response.json())
     //   .then(result => setProductDetailList(result));
 
-    fetch('http://10.58.52.89:3000/products?pid=1', {
+    fetch('http://10.58.52.90:3000/products?pid=1', {
       // method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -51,7 +55,6 @@ function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
           size,
           price,
         }) => {
-          const ingredientList = JSON.parse(ingredients);
           return (
             <div className={`productHeader ${slide}`} key={id}>
               <section className="logoContainer">
@@ -73,7 +76,11 @@ function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
                 <ul className="productDetail">
                   <li className="productIngredient">
                     <h6 className="ingredientTitle">주요 성분</h6>
-                    <p className="ingredientText">{`${ingredientList[1]}, ${ingredientList[2]}, ${ingredientList[3]}`}</p>
+                    <p className="ingredientText">
+                      {makeIngredientList(ingredients)[0]},
+                      {makeIngredientList(ingredients)[1]},
+                      {makeIngredientList(ingredients)[2]}
+                    </p>
                     <FiPlusCircle
                       className="detailViewButton"
                       onClick={isOpenModal}

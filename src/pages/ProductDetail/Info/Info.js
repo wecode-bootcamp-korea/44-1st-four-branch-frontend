@@ -7,8 +7,8 @@ function Info() {
   return (
     <div className="info">
       <ul>
-        {INFO_LIST.map(item => (
-          <InfoItem key={item.id} headline={item.headline} text={item.text} />
+        {INFO_LIST.map(({ id, headline, text }) => (
+          <InfoItem key={id} headline={headline} text={text} />
         ))}
       </ul>
     </div>

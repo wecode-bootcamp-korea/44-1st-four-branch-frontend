@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import './InfoItem.scss';
 import ArrowButton from '../ArrowButton/ArrowButton';
 
-function InfoItem({ key, headline, text }) {
+function InfoItem({ id, headline, text }) {
   const [textView, setTextView] = useState(false);
   const [slide, setSlide] = useState('');
 
   function handleTextView() {
-    setTextView(!textView);
+    setTextView(textView => !textView);
     setSlide('slide');
   }
 
@@ -17,7 +17,7 @@ function InfoItem({ key, headline, text }) {
       <div className="title">
         <h2 className="titleText">{headline}</h2>
         <ArrowButton
-          key={key}
+          key={id}
           handleTextView={handleTextView}
           textView={textView}
         />

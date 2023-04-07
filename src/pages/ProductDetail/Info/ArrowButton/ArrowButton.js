@@ -4,7 +4,7 @@ import './ArrowButton.scss';
 
 function ArrowButton({ handleTextView, textView }) {
   return (
-    <div className="arrowButton" onClick={handleTextView}>
+    <div onClick={handleTextView}>
       {textView ? (
         <FiChevronUp className="closeButton" />
       ) : (

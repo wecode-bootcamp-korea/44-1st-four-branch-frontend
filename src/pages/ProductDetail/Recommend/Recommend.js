@@ -10,7 +10,7 @@ function Recommend() {
     // fetch('/data/productDetailList.json')
     //   .then(response => response.json())
     //   .then(result => setRecommendList(result));
-    fetch('http://10.58.52.89:3000/products', {
+    fetch('http://10.58.52.90:3000/products', {
       // method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
