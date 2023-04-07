@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Footer from './Components/Footer/Footer';
 import Main from './pages/Main/Main';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 
@@ -10,6 +11,7 @@ const Router = () => {
         <Route path="/main" element={<Main />} />
         <Route path="/productDetail" element={<ProductDetail />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
