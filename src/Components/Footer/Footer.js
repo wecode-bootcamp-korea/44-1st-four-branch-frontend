@@ -48,54 +48,41 @@ function Footer() {
         <div className="footerList">
           <h2 className="subTitle">주문 및 지원</h2>
           <ul>
-            <li>자주 묻는 질문 ↘︎</li>
-            <li>배송 ↘︎</li>
-            <li>배송 조회하기 ↘︎</li>
-            <li>주문 내역</li>
-            <li>이용 약관</li>
+            {FOOTER_DATA.order.map(data => {
+              return <li>{data}</li>;
+            })}
           </ul>
         </div>
         <div className="footerList">
           <h2 className="subTitle">서비스</h2>
           <ul>
-            <li>기업체 구매</li>
-            <li>페이셜 어포인트먼트</li>
-            <li>1:1 채팅 상담</li>
-            <li>린스 앤 리턴 캠페인</li>
+            {FOOTER_DATA.service.map(data => {
+              return <li>{data}</li>;
+            })}
           </ul>
         </div>
         <div className="footerList">
           <h2 className="subTitle">위치 기본 설정</h2>
           <ul>
-            <li>
-              배송:
-              <br /> 대한민국
-            </li>
-            <li>
-              언어:
-              <br /> 한국어
-            </li>
+            {FOOTER_DATA.location.map(data => {
+              return <li>{data}</li>;
+            })}
           </ul>
         </div>
         <div className="footerList">
           <h2 className="subTitle">소개</h2>
           <ul>
-            <li>브랜드 스토리</li>
-            <li>이솝 재단</li>
-            <li>채용</li>
-            <li>개인정보처리방침</li>
-            <li>영상정보처리기기 운영/관리 방침</li>
-            <li>정품 인증</li>
-            <li>쿠키 정책</li>
+            {FOOTER_DATA.introduction.map(data => {
+              return <li>{data}</li>;
+            })}
           </ul>
         </div>
         <div className="footerList">
           <h2 className="subTitle">소셜</h2>
           <ul>
-            <li>Instagram ↘︎</li>
-            <li>Twitter ↘︎</li>
-            <li>LinkedIn ↘︎</li>
-            <li>Kakao Plus Friend ↘︎</li>
+            {FOOTER_DATA.social.map(data => {
+              return <li>{data}</li>;
+            })}
           </ul>
         </div>
         <div className="footerList">
@@ -117,3 +104,30 @@ function Footer() {
 }
 
 export default Footer;
+
+const FOOTER_DATA = {
+  order: [
+    '자주 묻는 질문 ↘︎',
+    '배송 ↘︎',
+    '배송 조회하기 ↘︎',
+    '주문 내역',
+    '이용 약관',
+  ],
+  service: [
+    '기업체 구매',
+    '페이셜 어포인트먼트',
+    '1:1 채팅 상담',
+    '린스 앤 리턴 캠페인',
+  ],
+  location: ['배송:', '대한민국', '언어:', '한국어'],
+  introduction: [
+    '브랜드 스토리',
+    '이솝 재단',
+    '채용',
+    '개인정보처리방침',
+    '영상정보처리기기 운영/관리 방침',
+    '정품 인증',
+    '쿠키 정책',
+  ],
+  social: ['Instagram ↘︎', 'Twitter ↘︎', 'LinkedIn ↘︎', 'Kakao Plus Friend ↘︎'],
+};
