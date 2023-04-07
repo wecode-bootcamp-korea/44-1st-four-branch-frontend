@@ -45,46 +45,18 @@ function Footer() {
             브랜드입니다. <Link className="learnMore">더 알아보기</Link>
           </p>
         </div>
-        <div className="footerList">
-          <h2 className="subTitle">주문 및 지원</h2>
-          <ul>
-            {FOOTER_DATA.order.map(data => {
-              return <li>{data}</li>;
-            })}
-          </ul>
-        </div>
-        <div className="footerList">
-          <h2 className="subTitle">서비스</h2>
-          <ul>
-            {FOOTER_DATA.service.map(data => {
-              return <li>{data}</li>;
-            })}
-          </ul>
-        </div>
-        <div className="footerList">
-          <h2 className="subTitle">위치 기본 설정</h2>
-          <ul>
-            {FOOTER_DATA.location.map(data => {
-              return <li>{data}</li>;
-            })}
-          </ul>
-        </div>
-        <div className="footerList">
-          <h2 className="subTitle">소개</h2>
-          <ul>
-            {FOOTER_DATA.introduction.map(data => {
-              return <li>{data}</li>;
-            })}
-          </ul>
-        </div>
-        <div className="footerList">
-          <h2 className="subTitle">소셜</h2>
-          <ul>
-            {FOOTER_DATA.social.map(data => {
-              return <li>{data}</li>;
-            })}
-          </ul>
-        </div>
+        {FOOTER_TITLE.map((title, i) => {
+          return (
+            <div className="footerList" key={i}>
+              <h2 className="subTitle">{title.title}</h2>
+              <ul>
+                {FOOTER_DATA[title.eng].map((data, i) => {
+                  return <li key={i}>{data}</li>;
+                })}
+              </ul>
+            </div>
+          );
+        })}
         <div className="footerList">
           <h2 className="subTitle">주문 및 지원</h2>
           <p className="companyInfo">
@@ -104,6 +76,14 @@ function Footer() {
 }
 
 export default Footer;
+
+const FOOTER_TITLE = [
+  { title: '주문 및 지원', eng: 'order' },
+  { title: '서비스', eng: 'service' },
+  { title: '위치 기본 설정', eng: 'location' },
+  { title: '소개', eng: 'introduction' },
+  { title: '소셜', eng: 'social' },
+];
 
 const FOOTER_DATA = {
   order: [
