@@ -5,11 +5,11 @@ import UserModal from '../UserModal/UserModal';
 function CheckUser({ userInfoClose }) {
   const [modalChange, setModalChange] = useState(LOGIN_DATA);
 
-  function modalChangehandle() {
+  function modalChangeHandle() {
     setModalChange(SIGNUP_DATA);
   }
 
-  function backhandle() {
+  function backHandle() {
     setModalChange(LOGIN_DATA);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -18,8 +18,8 @@ function CheckUser({ userInfoClose }) {
     <UserModal
       data={modalChange}
       userInfoClose={userInfoClose}
-      modalChangehandle={modalChangehandle}
-      backhandle={backhandle}
+      modalChangeHandle={modalChangeHandle}
+      backHandle={backHandle}
     />
   );
 }

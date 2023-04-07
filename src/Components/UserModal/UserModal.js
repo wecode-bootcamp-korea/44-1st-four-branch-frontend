@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import './UserModal.scss';
 
-function UserModal({ data, userInfoClose, modalChangehandle, backhandle }) {
+function UserModal({ data, userInfoClose, modalChangeHandle, backHandle }) {
   const { title, button } = data;
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -192,7 +192,7 @@ function UserModal({ data, userInfoClose, modalChangehandle, backhandle }) {
           <button
             className="signUpBtn"
             onClick={() => {
-              modalChangehandle();
+              modalChangeHandle();
             }}
           >
             회원가입
@@ -202,7 +202,7 @@ function UserModal({ data, userInfoClose, modalChangehandle, backhandle }) {
           <button
             className="signUpBtn"
             onClick={() => {
-              backhandle();
+              backHandle();
             }}
           >
             ← &nbsp; 뒤로가기
