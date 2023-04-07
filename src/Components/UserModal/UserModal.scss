@@ -1,0 +1,149 @@
+.userModal {
+  position: absolute;
+  z-index: 3;
+  top: 50px;
+  left: 50%;
+  width: 600px;
+  transform: translate(-50%);
+  background-color: #fffef2;
+
+  .userInfo {
+    width: 500px;
+    margin: 0 auto;
+
+    .closeBtn {
+      display: inline-block;
+      margin-top: 40px;
+      margin-left: 490px;
+      font-size: 20px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .userTitle {
+      margin: 40px 0 60px 0;
+      font-size: 30px;
+    }
+
+    .subTitle {
+      margin-bottom: 45px;
+      color: #666666;
+      font-size: 15px;
+    }
+
+    .email {
+      margin-bottom: 45px;
+    }
+
+    .password {
+      margin-bottom: 15px;
+    }
+
+    .firstName,
+    .lastName {
+      display: inline-block;
+      width: 47%;
+      height: 37px;
+      margin-bottom: 40px;
+      border: none;
+      border-bottom: 1px solid #cccccc;
+      outline: none;
+      background-color: #fffef2;
+      color: #000000;
+      font-size: 25px;
+      font-weight: 300;
+    }
+
+    .firstName {
+      margin-right: 30px;
+    }
+
+    .email,
+    .password {
+      display: block;
+      width: 100%;
+      height: 37px;
+      border: none;
+      border-bottom: 1px solid #cccccc;
+      outline: none;
+      background-color: #fffef2;
+      color: #000000;
+      font-size: 25px;
+
+      &::placeholder {
+        font-size: 24px;
+        font-weight: 300;
+      }
+    }
+
+    .passwordReset {
+      margin: 0 0 40px 0;
+      color: #666666;
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .submitBtn {
+      width: 100%;
+      height: 60px;
+      border: none;
+      background-color: #333333;
+      color: #ffffff;
+      &:hover {
+        background-color: #000000;
+        cursor: pointer;
+      }
+    }
+
+    .userConfirm {
+      margin-top: 35px;
+      font-size: 23px;
+    }
+
+    .signUpBtn {
+      width: 100%;
+      height: 60px;
+      margin: 20px 0 50px 0;
+      border: 1px solid #cccccc;
+      background-color: #fffef2;
+      color: #666666;
+      &:hover {
+        background-color: #333333;
+        color: #ffffff;
+        cursor: pointer;
+      }
+    }
+
+    .squareBox {
+      width: 100%;
+      height: 98px;
+      margin-bottom: 30px;
+      padding: 10px 10px 0 10px;
+      overflow-y: scroll;
+      border: 1px solid #000000;
+      border-radius: 5px;
+      color: #666666;
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    label {
+      display: inline-block;
+      margin-bottom: 10px;
+      margin-left: 5px;
+      font-size: 15px;
+    }
+
+    .ageConfirm {
+      margin: 60px 0 20px 0;
+    }
+
+    .accountConfirm {
+      margin-bottom: 45px;
+      color: #848481;
+      text-align: center;
+    }
+  }
+}
