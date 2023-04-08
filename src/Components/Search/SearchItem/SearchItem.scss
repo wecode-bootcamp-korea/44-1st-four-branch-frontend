@@ -1,0 +1,22 @@
+@import '../../../styles/mixin';
+
+.searchItem {
+  .searchName {
+    @include pStyle;
+    margin-bottom: 12px;
+    color: #666;
+
+    &:hover {
+      color: #111;
+      font-size: 17px;
+      font-weight: 500;
+    }
+  }
+
+  .clickedItem {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+  }
+}

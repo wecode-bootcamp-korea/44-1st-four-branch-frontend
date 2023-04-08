@@ -8,27 +8,15 @@ import './Search.scss';
 function Search() {
   const [searchList, setSearchList] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState('');
-  const [itemHover, setItemHover] = useState('');
-  const [buttonName, setButtonName] = useState('');
-
-  function imageView() {
-    setItemHover('itemHover');
-    setButtonName('더 알아보기 >');
-  }
-
-  function imageNotView() {
-    setItemHover('');
-    setButtonName('');
-  }
-
-  const itemSearch = e => {
-    e.preventDefault();
-    setSearchKeyword(e.target.value);
-  };
 
   const filteredItem = searchList.filter(item =>
     item.name.toLowerCase().includes(searchKeyword.toLowerCase())
   );
+
+  function itemSearch(e) {
+    e.preventDefault();
+    setSearchKeyword(e.target.value);
+  }
 
   useEffect(() => {
     fetch('/data/searchItemList.json')
@@ -44,13 +32,13 @@ function Search() {
         itemSearch={itemSearch}
         FiArrowRight={FiArrowRight}
       />
-      <SearchList
-        searchList={filteredItem}
-        itemHover={itemHover}
-        imageView={imageView}
-        imageNotView={imageNotView}
-        buttonName={buttonName}
-      />
+      <div className="searchResult">
+        {searchKeyword.length !== 0 ? (
+          <SearchList searchList={filteredItem} />
+        ) : (
+          <p>검색결과가 없습니다.</p>
+        )}
+      </div>
     </div>
   );
 }

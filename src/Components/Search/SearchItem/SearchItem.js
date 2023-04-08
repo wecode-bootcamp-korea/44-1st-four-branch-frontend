@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
+import HoverItemView from '../HoverItemView/HoverItemView';
 import './SearchItem.scss';
 
-function SearchItem({ item, itemHover, buttonName }) {
-  const { name, imageUrl } = item;
+function SearchItem({ item }) {
+  const { name } = item;
+  const [isClicked, setIsClicked] = useState(false);
+
+  function viewItem() {
+    setIsClicked(true);
+  }
+
+  function notViewItem() {
+    setIsClicked(false);
+  }
+
   return (
     <div className="searchItem">
-      <img className={`itemImage ${itemHover}`} alt={name} src={imageUrl} />
-      <div className={`primarySolidButton ${itemHover}`}>{buttonName}</div>
+      <p
+        className="searchName"
+        onMouseOver={viewItem}
+        onMouseLeave={notViewItem}
+      >
+        {name}
+      </p>
+      <div className="clickedItem">
+        {isClicked ? <HoverItemView item={item} /> : null}
+      </div>
     </div>
   );
 }

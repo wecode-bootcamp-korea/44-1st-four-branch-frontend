@@ -2,11 +2,19 @@ import React from 'react';
 import SearchItem from '../SearchItem/SearchItem';
 import './SearchList.scss';
 
-function SearchList({ itemHover, buttonName, item }) {
+function SearchList({ searchList, isClicked, setIsClicked }) {
   return (
     <div className="searchList">
-      <div>{item.name}</div>
-      <SearchItem item={item} itemHover={itemHover} buttonName={buttonName} />
+      {searchList.map(item => (
+        <SearchItem
+          className="searchItem"
+          key={item.id}
+          item={item}
+          searchList={searchList}
+          setIsClicked={setIsClicked}
+          isClicked={isClicked}
+        />
+      ))}
     </div>
   );
 }

@@ -1,5 +1,15 @@
+@import '../../styles/mixin';
+
 .search {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   height: 100vh;
   background-color: #fffef2;
+
+  .searchResult {
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr 1fr;
+    padding: 200px 40px;
+  }
 }

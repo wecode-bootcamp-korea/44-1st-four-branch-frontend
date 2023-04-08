@@ -54,5 +54,61 @@
     "mainCategoryName": "헤어",
     "imageUrl": "https://www.aesop.com/u1nb1km7t5q7/5VzRlh0YujQHNA8YnyfRCP/3f23da2b1c6593652bd63cffe7f930d4/Aesop-Hair-Equalising-Shampoo-500mL-large.png",
     "ingredients": "[\"정제수\", \"석영\", \"로즈힙씨추출물\", \"글리세린\", \"로즈마리잎오일\"]"
+  },
+  {
+    "id": 5,
+    "name": "단백질 샴푸",
+    "price": "57000.00",
+    "description": "컴퓨터 공학적 추출물이 두피를 자극하지 않고 사가지(four-branch) 있게 유분을 제거해주며 프론트와 백의 밸런스를 도와주는 샴푸",
+    "sizeId": 7,
+    "subCategoryId": 7,
+    "size": "500ml",
+    "subCategoryName": "샴푸",
+    "mainCategoryId": 4,
+    "mainCategoryName": "헤어",
+    "imageUrl": "https://www.aesop.com/u1nb1km7t5q7/3ZQiTGH2HncEKFSsyMimU3/60cbd0bcd44322ad6ab74bed7a8b01b2/Aesop-Fragrance-Hwyl-Eau-de-Parfum-50mL-Hybris-Large-684x668px.png",
+    "ingredients": "[\"정제수\", \"석영\", \"로즈힙씨추출물\", \"글리세린\", \"로즈마리잎오일\"]"
+  },
+  {
+    "id": 6,
+    "name": "그냥 샴푸",
+    "price": "57000.00",
+    "description": "컴퓨터 공학적 추출물이 두피를 자극하지 않고 사가지(four-branch) 있게 유분을 제거해주며 프론트와 백의 밸런스를 도와주는 샴푸",
+    "sizeId": 4,
+    "subCategoryId": 7,
+    "size": "500ml",
+    "subCategoryName": "샴푸",
+    "mainCategoryId": 4,
+    "mainCategoryName": "헤어",
+    "imageUrl": "https://www.aesop.com/u1nb1km7t5q7/5VzRlh0YujQHNA8YnyfRCP/3f23da2b1c6593652bd63cffe7f930d4/Aesop-Hair-Equalising-Shampoo-500mL-large.png",
+    "ingredients": "[\"정제수\", \"석영\", \"로즈힙씨추출물\", \"글리세린\", \"로즈마리잎오일\"]"
+  },
+  {
+    "id": 7,
+    "name": "써도 괜찮은 샴푸",
+    "price": "57000.00",
+    "description": "컴퓨터 공학적 추출물이 두피를 자극하지 않고 사가지(four-branch) 있게 유분을 제거해주며 프론트와 백의 밸런스를 도와주는 샴푸",
+    "sizeId": 4,
+    "subCategoryId": 7,
+    "size": "500ml",
+    "subCategoryName": "샴푸",
+    "mainCategoryId": 4,
+    "mainCategoryName": "헤어",
+    "imageUrl": "https://www.aesop.com/u1nb1km7t5q7/5VzRlh0YujQHNA8YnyfRCP/3f23da2b1c6593652bd63cffe7f930d4/Aesop-Hair-Equalising-Shampoo-500mL-large.png",
+    "ingredients": "[\"정제수\", \"석영\", \"로즈힙씨추출물\", \"글리세린\", \"로즈마리잎오일\"]"
+  },
+  {
+    "id": 8,
+    "name": "비싼 샴푸",
+    "price": "57000.00",
+    "description": "컴퓨터 공학적 추출물이 두피를 자극하지 않고 사가지(four-branch) 있게 유분을 제거해주며 프론트와 백의 밸런스를 도와주는 샴푸",
+    "sizeId": 4,
+    "subCategoryId": 7,
+    "size": "500ml",
+    "subCategoryName": "샴푸",
+    "mainCategoryId": 4,
+    "mainCategoryName": "헤어",
+    "imageUrl": "https://www.aesop.com/u1nb1km7t5q7/5VzRlh0YujQHNA8YnyfRCP/3f23da2b1c6593652bd63cffe7f930d4/Aesop-Hair-Equalising-Shampoo-500mL-large.png",
+    "ingredients": "[\"정제수\", \"석영\", \"로즈힙씨추출물\", \"글리세린\", \"로즈마리잎오일\"]"
   }
 ]
