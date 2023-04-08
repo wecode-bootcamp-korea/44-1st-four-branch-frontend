@@ -8,6 +8,7 @@ import RightBanner from './RightBanner/RightBanner';
 import StoreLocator from './StoreLocator/StoreLocator';
 import Selection from './Selection/Selection';
 import './Main.scss';
+import Basket from '../../Components/Basket/Basket';
 
 function Main() {
   return (

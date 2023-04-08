@@ -1,0 +1,22 @@
+.cartList {
+  margin-bottom: 30px;
+  .cartListTitle {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #3b3b3a;
+    color: #bcbbb4;
+    font-size: 15px;
+
+    .name {
+      margin-right: 100px;
+    }
+
+    .closeBtn {
+      font-size: 20px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
