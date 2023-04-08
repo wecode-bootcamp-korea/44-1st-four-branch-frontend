@@ -6,7 +6,7 @@ function SlideItem({ data }) {
     <div className="slideItem">
       <img className="carouselItem" alt="제품이미지" src={data.imageUrl} />
       <h3 className="itemName">{data.name}</h3>
-      <p className="itemIngredient">{data.summary}</p>
+      <p className="itemIngredient">{data.description}</p>
     </div>
   );
 }

@@ -4,41 +4,60 @@ import SlideItem from '../SlideItem/SlideItem';
 import './SlideItemList.scss';
 
 function SlideItemList() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [mainItem, setMainItem] = useState([]);
-  const carousel = useRef();
+  const [itemSlide, setItemSlide] = useState(0);
+  const [scrollSlide, setScrollSlide] = useState(0);
+  const [leftArrow, setLeftArrow] = useState(false);
+  const [rightArrow, setRightArrow] = useState(true);
+  const [mainSlideItem, setMainItem] = useState([]);
+  const itemCarousel = useRef();
+  const scrollCarousel = useRef();
 
   function prevSlide() {
-    setCurrentSlide(currentSlide - 2);
+    if (scrollSlide === 1) {
+      setLeftArrow(false);
+    } else if (scrollSlide < 4) {
+      setRightArrow(true);
+    }
+    setItemSlide(itemSlide - 2);
+    setScrollSlide(scrollSlide - 1);
   }
 
   function nextSlide() {
-    setCurrentSlide(currentSlide + 2);
+    if (scrollSlide === 2) {
+      setRightArrow(false);
+    } else if (scrollSlide === 0) {
+      setLeftArrow(true);
+    }
+    setItemSlide(itemSlide + 2);
+    setScrollSlide(scrollSlide + 1);
   }
 
   useEffect(() => {
-    carousel.current.style.transform = `translateX(-${currentSlide}0%)`;
-  }, [currentSlide]);
+    itemCarousel.current.style.transform = `translateX(-${itemSlide}0%)`;
+    scrollCarousel.current.style.transform = `translateX(${scrollSlide}00%)`;
+  }, [itemSlide, scrollSlide]);
 
-  useEffect(() => {
-    fetch('http://10.58.52.89:3000/products?ismain=1')
-      .then(response => response.json())
-      .then(result => {
-        setMainItem(result);
-      });
-  }, []);
-
-  console.log(mainItem);
+  // useEffect(() => {
+  //   fetch('http://10.58.52.89:3000/products?ismain=1')
+  //     .then(response => response.json())
+  //     .then(result => {
+  //       setMainItem(result);
+  //     });
+  // }, []);
 
   return (
     <div className="slideItemList">
-      <div className="leftarrow" onClick={prevSlide}>
-        <HiOutlineChevronLeft />
-      </div>
-      <div className="rightarrow" onClick={nextSlide}>
-        <HiOutlineChevronRight />
-      </div>
-      <div ref={carousel} className="translate">
+      {leftArrow && (
+        <div className="leftarrow" onClick={prevSlide}>
+          <HiOutlineChevronLeft />
+        </div>
+      )}
+      {rightArrow && (
+        <div className="rightarrow" onClick={nextSlide}>
+          <HiOutlineChevronRight />
+        </div>
+      )}
+      <div ref={itemCarousel} className="translate">
         <div className="itemInfo">
           <div>향수</div>
           <h2 className="categoryTitle">이솝의 퍼스널 향</h2>
@@ -51,9 +70,12 @@ function SlideItemList() {
             <div className="arrow">→</div>
           </div>
         </div>
-        {mainItem.map(data => {
+        {PRODUCT_DATA.map(data => {
           return <SlideItem key={data.id} data={data} />;
         })}
+      </div>
+      <div className="slideScroll">
+        <div ref={scrollCarousel} className="scrollSection" />
       </div>
     </div>
   );
@@ -74,14 +96,14 @@ const PRODUCT_DATA = [
     name: '사가지 페이셜 엑설런트 페이스트',
     description: '우디, 스파이시, 앰버리',
     imageUrl:
-      'https://images.ctfassets.net/u1nb1km7t5q7/3SCXvldc9HEEWCzyg44wPK/993a270f9be982665519dfd794f638ef/Aesop_Fragrance_Eidesis_Eau_de_Parfum_50mL_Web_Large_684x668px.png',
+      'https://www.aesop.com/u1nb1km7t5q7/4fQwfatAQoq2zajw67WrEU/82a34fa52baa55583c71de77690589eb/Aesop_Home_Ptolemy_Aromatique_Candle_Web_Large_1102x962px.png',
   },
   {
     id: 3,
     name: '사가지라이징 샴푸',
     description: '우디, 스파이시, 앰버리',
     imageUrl:
-      'https://images.ctfassets.net/u1nb1km7t5q7/3SCXvldc9HEEWCzyg44wPK/993a270f9be982665519dfd794f638ef/Aesop_Fragrance_Eidesis_Eau_de_Parfum_50mL_Web_Large_684x668px.png',
+      'https://www.aesop.com/u1nb1km7t5q7/1zDIiLTUC0I7jmcASwNH8O/d53f402f876953434d4de3a1c56172de/Aesop_Home_Room_Spray_Olous_100mL_large.png',
   },
   {
     id: 4,

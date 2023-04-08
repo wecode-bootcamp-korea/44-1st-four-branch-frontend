@@ -7,9 +7,7 @@ function CartItem() {
       <div className="itemName">브랜즈 인센스 홀더</div>
       <div className="quantityBox">
         <select className="quantity">
-          <option value={1} selected>
-            1
-          </option>
+          <option value={1}>1</option>
           <option value={2}>2</option>
           <option value={3}>3</option>
           <option value={4}>4</option>
