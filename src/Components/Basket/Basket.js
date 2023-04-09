@@ -2,10 +2,45 @@ import React from 'react';
 import CartList from './CartList/CartList';
 import './Basket.scss';
 
-function Basket({ cartModal, cartClose }) {
+function Basket({ cartModal, cartClose, basket, setBasket }) {
+  function handleQuantity(type, id, quantity) {
+    const found = basket.filter(item => item.id === id)[0];
+    const indexNum = basket.indexOf(found);
+    const cartItem = {
+      id: found.id,
+      name: found.name,
+      price: found.price,
+      quantity: quantity,
+    };
+
+    if (type === 'plus') {
+      setBasket([
+        ...basket.slice(0, indexNum),
+        cartItem,
+        ...basket.slice(indexNum + 1),
+      ]);
+    } else {
+      setBasket([
+        ...basket.slice(0, indexNum),
+        cartItem,
+        ...basket.slice(indexNum + 1),
+      ]);
+    }
+  }
+
+  let totalPrice = 0;
+  basket.forEach(item => {
+    totalPrice = totalPrice + item.price * item.quantity;
+  });
+
   return (
     <div className={`basket ${cartModal}`}>
-      <CartList cartClose={cartClose} />
+      <CartList
+        cartClose={cartClose}
+        basket={basket}
+        handleQuantity={handleQuantity}
+      />
+
       <div className="paymentBox">
         <div className="paymentContent">
           <div className="promotion">
@@ -17,7 +52,9 @@ function Basket({ cartModal, cartClose }) {
           </div>
           <div className="price">
             <div>소계 (세금포함)</div>
-            <div className="totalPrice">₩ 222,000</div>
+            <div className="totalPrice">{`₩ ${Math.floor(
+              totalPrice
+            ).toLocaleString()}`}</div>
           </div>
           <div className="payment">결제하기</div>
         </div>

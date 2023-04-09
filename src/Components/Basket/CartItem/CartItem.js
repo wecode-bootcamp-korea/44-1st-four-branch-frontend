@@ -1,26 +1,33 @@
 import React from 'react';
 import './CartItem.scss';
 
-function CartItem() {
+function CartItem({ basketItem, handleQuantity }) {
   return (
     <li className="cartItem">
-      <div className="itemName">브랜즈 인센스 홀더</div>
+      <div className="itemName">{basketItem.name}</div>
       <div className="quantityBox">
-        <select className="quantity">
-          <option value={1}>1</option>
-          <option value={2}>2</option>
-          <option value={3}>3</option>
-          <option value={4}>4</option>
-          <option value={5}>5</option>
-          <option value={6}>6</option>
-          <option value={7}>7</option>
-          <option value={8}>8</option>
-          <option value={9}>9</option>
-          <option value={10}>10</option>
-        </select>
+        <div
+          className="minus"
+          onClick={() => {
+            handleQuantity('minus', basketItem.id, basketItem.quantity - 1);
+          }}
+        >
+          -
+        </div>
+        <div>{basketItem.quantity}</div>
+        <div
+          className="plus"
+          onClick={() => {
+            handleQuantity('plus', basketItem.id, basketItem.quantity + 1);
+          }}
+        >
+          +
+        </div>
       </div>
       <div className="removeBtn">삭제</div>
-      <div className="itemPrice">₩ 94,000</div>
+      <div className="itemPrice">{`₩ ${Math.floor(
+        basketItem.quantity * basketItem.price
+      ).toLocaleString()}`}</div>
     </li>
   );
 }

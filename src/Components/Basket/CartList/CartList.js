@@ -2,7 +2,7 @@ import React from 'react';
 import CartItem from '../CartItem/CartItem';
 import './CartList.scss';
 
-function CartList({ cartClose }) {
+function CartList({ cartClose, basket, handleQuantity }) {
   return (
     <ul className="cartList">
       <li className="cartListTitle">
@@ -18,8 +18,33 @@ function CartList({ cartClose }) {
           ✕
         </div>
       </li>
-      <CartItem />
-      <CartItem />
+      {basket.length === 0 ? (
+        <div className="isEmptyBasket">
+          장바구니가 비어있습니다. <br />
+          구매하실 상품을 장바구니에 담아주세요.
+        </div>
+      ) : (
+        basket.map(basketItem => {
+          return (
+            <CartItem
+              handleQuantity={handleQuantity}
+              key={basketItem.id}
+              id={basketItem.id}
+              basketItem={basketItem}
+            />
+          );
+        })
+      )}
+      {/* {basket.map(basketItem => {
+        return (
+          <CartItem
+            handleQuantity={handleQuantity}
+            key={basketItem.id}
+            id={basketItem.id}
+            basketItem={basketItem}
+          />
+        );
+      })} */}
     </ul>
   );
 }

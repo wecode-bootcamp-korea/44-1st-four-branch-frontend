@@ -17,25 +17,36 @@
   }
 
   .quantityBox {
-    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90px;
     height: 40px;
-    padding-top: 2px;
+    padding: 11px 10px 11px 10px;
     border: 1px solid #3b3b3a;
+    border-radius: 5px;
     text-align: center;
     &:hover {
       border: 1px solid #f0f0e4;
       cursor: pointer;
     }
-  }
 
-  .quantity {
-    padding: 5px 0;
-    border: none;
-    outline: none;
-    background-color: #252525;
-    color: #f0f0e4;
-    &:hover {
-      cursor: pointer;
+    .minus {
+      padding: 5px;
+      font-size: 20px;
+      font-weight: 700;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .plus {
+      padding: 5px;
+      font-size: 20px;
+      font-weight: 400;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 

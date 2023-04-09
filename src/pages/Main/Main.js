@@ -8,13 +8,12 @@ import RightBanner from './RightBanner/RightBanner';
 import StoreLocator from './StoreLocator/StoreLocator';
 import Selection from './Selection/Selection';
 import './Main.scss';
-import Basket from '../../Components/Basket/Basket';
 
-function Main() {
+function Main({ basket, setBasket }) {
   return (
     <div className="main">
       <BandBanner />
-      <Nav />
+      <Nav basket={basket} setBasket={setBasket} />
       <MainBanner />
       <SlideItemList />
       <LeftBanner />

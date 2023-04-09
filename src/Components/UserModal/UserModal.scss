@@ -2,10 +2,14 @@
   position: absolute;
   z-index: 3;
   top: 50px;
-  left: 50%;
+  left: 35%;
   width: 600px;
-  transform: translate(-50%);
+  transform: scale(0);
   background-color: #fffef2;
+  &.scale {
+    transform: scale(1);
+    transition: transform 0.4s;
+  }
 
   .userInfo {
     width: 500px;

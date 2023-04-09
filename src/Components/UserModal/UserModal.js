@@ -2,7 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import './UserModal.scss';
 
-function UserModal({ data, userInfoClose, modalChangehandle, backhandle }) {
+function UserModal({
+  data,
+  userInfoClose,
+  modalChangehandle,
+  backhandle,
+  scale,
+}) {
   const { title, button } = data;
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -82,7 +88,7 @@ function UserModal({ data, userInfoClose, modalChangehandle, backhandle }) {
     }
   }
   return (
-    <div className="userModal">
+    <div className={`userModal ${scale}`}>
       <div className="userInfo">
         <span className="closeBtn" onClick={userInfoClose}>
           ✕

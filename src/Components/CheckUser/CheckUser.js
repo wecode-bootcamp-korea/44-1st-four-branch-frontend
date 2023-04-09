@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import UserModal from '../UserModal/UserModal';
 
-function CheckUser({ userInfoClose }) {
+function CheckUser({ userInfoClose, scale }) {
   const [modalChange, setModalChange] = useState(LOGIN_DATA);
 
   function modalChangehandle() {
@@ -16,6 +16,7 @@ function CheckUser({ userInfoClose }) {
 
   return (
     <UserModal
+      scale={scale}
       data={modalChange}
       userInfoClose={userInfoClose}
       modalChangehandle={modalChangehandle}

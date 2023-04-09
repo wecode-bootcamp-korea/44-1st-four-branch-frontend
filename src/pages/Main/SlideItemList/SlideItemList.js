@@ -8,7 +8,7 @@ function SlideItemList() {
   const [scrollSlide, setScrollSlide] = useState(0);
   const [leftArrow, setLeftArrow] = useState(false);
   const [rightArrow, setRightArrow] = useState(true);
-  const [mainSlideItem, setMainItem] = useState([]);
+  const [mainSlideItem, setMainSlideItem] = useState([]);
   const itemCarousel = useRef();
   const scrollCarousel = useRef();
 
@@ -37,13 +37,13 @@ function SlideItemList() {
     scrollCarousel.current.style.transform = `translateX(${scrollSlide}00%)`;
   }, [itemSlide, scrollSlide]);
 
-  // useEffect(() => {
-  //   fetch('http://10.58.52.89:3000/products?ismain=1')
-  //     .then(response => response.json())
-  //     .then(result => {
-  //       setMainItem(result);
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch('/data/mock.json')
+      .then(response => response.json())
+      .then(result => {
+        setMainSlideItem(result);
+      });
+  }, []);
 
   return (
     <div className="slideItemList">
@@ -70,8 +70,8 @@ function SlideItemList() {
             <div className="arrow">→</div>
           </div>
         </div>
-        {PRODUCT_DATA.map(data => {
-          return <SlideItem key={data.id} data={data} />;
+        {mainSlideItem.map(item => {
+          return <SlideItem key={item.id} item={item} />;
         })}
       </div>
       <div className="slideScroll">

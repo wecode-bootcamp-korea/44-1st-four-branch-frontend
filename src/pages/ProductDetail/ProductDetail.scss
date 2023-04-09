@@ -1,0 +1,14 @@
+.productDetail {
+  img {
+    width: 200px;
+  }
+
+  .cart {
+    background-color: black;
+    color: aliceblue;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

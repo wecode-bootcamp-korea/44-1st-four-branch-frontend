@@ -36,5 +36,14 @@
         cursor: pointer;
       }
     }
+
+    .cartBtn {
+      display: flex;
+      gap: 7px;
+
+      .cartQuantity {
+        font-weight: 700;
+      }
+    }
   }
 }

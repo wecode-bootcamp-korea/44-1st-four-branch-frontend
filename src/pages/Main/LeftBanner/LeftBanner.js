@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './LeftBanner.scss';
 
 function LeftBanner() {
+  const banner = useRef();
+  useEffect(() => {
+    let observer = new IntersectionObserver(e => {
+      if (e[0].isIntersecting) {
+        e[0].target.style.opacity = 1;
+      } else {
+        e[0].target.style.opacity = 0;
+      }
+    });
+    observer.observe(banner.current);
+  });
+
   return (
-    <article className="leftBanner">
+    <article ref={banner} className="leftBanner">
       <div className="articleImg" />
       <div className="articleContent">
         <div>홈 프래그런스</div>

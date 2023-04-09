@@ -1,5 +1,7 @@
 .cartList {
+  position: relative;
   margin-bottom: 30px;
+
   .cartListTitle {
     display: flex;
     justify-content: space-between;
@@ -18,5 +20,15 @@
         cursor: pointer;
       }
     }
+  }
+  .isEmptyBasket {
+    position: absolute;
+    top: 140px;
+    left: 25%;
+    color: #bcbbb4;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 1.5;
+    text-align: center;
   }
 }
