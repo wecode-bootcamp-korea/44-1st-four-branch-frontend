@@ -1,0 +1,33 @@
+.modalDetailView {
+  .modalDetailContents {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100vh;
+    background-color: #fffef2;
+
+    .iconHandlePage {
+      position: relative;
+      margin: 20px;
+
+      .closeButton {
+        position: absolute;
+        right: 0;
+      }
+    }
+
+    .ingredients {
+      width: 50%;
+      height: 100vh;
+      margin: 80px;
+      transform: translate(0%, 30%);
+    }
+
+    &.slide {
+      left: 0;
+      transition: left 0.5s;
+    }
+  }
+}
