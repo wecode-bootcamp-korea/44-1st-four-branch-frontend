@@ -3,28 +3,28 @@ import HoverItemView from '../HoverItemView/HoverItemView';
 import './SearchItem.scss';
 
 function SearchItem({ item }) {
-  const { name } = item;
+  const { name, id } = item;
   const [isHover, setIsHover] = useState(false);
 
-  function viewItem() {
+  const showProduct = () => {
     setIsHover(true);
-  }
+  };
 
-  function notViewItem() {
+  const hideProduct = () => {
     setIsHover(false);
-  }
+  };
 
   return (
-    <div className="searchItem">
-      <p
-        className="searchName"
-        onMouseOver={viewItem}
-        onMouseLeave={notViewItem}
-      >
+    <div
+      className="searchItem"
+      onMouseEnter={showProduct}
+      onMouseLeave={hideProduct}
+    >
+      <div className="searchName" id={id}>
+        <div className="hoverItem">
+          {isHover && <HoverItemView item={item} showProduct={showProduct} />}
+        </div>
         {name}
-      </p>
-      <div className="hoverItem">
-        {isHover ? <HoverItemView item={item} /> : null}
       </div>
     </div>
   );

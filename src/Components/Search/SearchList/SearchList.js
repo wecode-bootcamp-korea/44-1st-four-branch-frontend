@@ -2,20 +2,22 @@ import React from 'react';
 import SearchItem from '../SearchItem/SearchItem';
 import './SearchList.scss';
 
-function SearchList({ searchList }) {
+function SearchList({ filteredItem }) {
   return (
     <div className="searchList">
-      {searchList.length > 0 ? (
-        searchList.map(item => (
-          <SearchItem
-            className="searchItem"
-            key={item.id}
-            item={item}
-            searchList={searchList}
-          />
-        ))
+      {filteredItem.length > 0 ? (
+        filteredItem.map(item => {
+          return (
+            <SearchItem
+              className="searchItem"
+              key={item.id}
+              item={item}
+              filteredItem={filteredItem}
+            />
+          );
+        })
       ) : (
-        <p>검색결과가 없습니다.</p>
+        <p className="noResult">검색결과가 없습니다.</p>
       )}
     </div>
   );
