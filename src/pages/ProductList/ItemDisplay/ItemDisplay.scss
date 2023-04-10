@@ -1,0 +1,75 @@
+.itemDisplay {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  &:hover {
+    transition: background-color 1s;
+    background-color: #efede2;
+  }
+
+  &:hover .learnMore {
+    transition: opacity 0.5s;
+    opacity: 1;
+  }
+
+  .heart {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    font-size: 18px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .itemImage {
+    width: 330px;
+    margin-top: auto;
+  }
+
+  .itemName {
+    margin: 20px;
+    font-size: 15px;
+  }
+
+  .itemPrice {
+    font-size: 15px;
+  }
+
+  .line {
+    width: 90%;
+    margin: 30px 0;
+    border: 1px solid #000000;
+  }
+
+  .specifics {
+    display: flex;
+    gap: 30px;
+    width: 90%;
+    border-bottom: 1px solid #d3d1c7;
+
+    .additional {
+      padding: 20px 0;
+      font-size: 15px;
+    }
+
+    .explain {
+      padding: 20px 0;
+      color: #797977;
+      font-size: 15px;
+    }
+  }
+
+  .learnMore {
+    width: 100%;
+    height: 60px;
+    margin-top: 30px;
+    padding-top: 20px;
+    opacity: 0;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 15px;
+    text-align: center;
+  }
+}

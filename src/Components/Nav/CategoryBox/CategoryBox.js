@@ -1,14 +1,21 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import logoImg from '../../../assets/main/aesop-logo.png';
 import { CATEGORY_LIST } from '../NavData';
 import './CategoryBox.scss';
 
 function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
+  const navigate = useNavigate();
+
+  function goToProductList(targetId) {
+    navigate(`/productlist/${targetId}`);
+  }
+
   return (
     <div className="categoryBox">
       <nav>
-        <ul className="mainCategory">
-          <li className="flexStart">
+        <div className="mainCategory">
+          <ul className="flexStart">
             {CATEGORY_LIST.map(data => {
               return (
                 <div
@@ -30,15 +37,25 @@ function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
             >
               닫기 ✕
             </li>
-          </li>
-        </ul>
+          </ul>
+        </div>
       </nav>
       <div className="categoryList">
         <ul className="subCategory">
           <img className="logoImg" alt="logoImage" src={logoImg} />
           <li className="categoryTitle">카테고리</li>
-          {categoryChange[0].categoryList.map((data, index) => {
-            return <li key={index}>{data}</li>;
+          {categoryChange[0].categoryList.map(data => {
+            return (
+              <li
+                key={data.id}
+                id={data.id}
+                onClick={() => {
+                  goToProductList(data.id);
+                }}
+              >
+                {data.name}
+              </li>
+            );
           })}
         </ul>
         <ul className="daily">

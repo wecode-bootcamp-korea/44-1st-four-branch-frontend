@@ -9,11 +9,9 @@ import StoreLocator from './StoreLocator/StoreLocator';
 import Selection from './Selection/Selection';
 import './Main.scss';
 
-function Main({ basket, setBasket }) {
+function Main() {
   return (
     <div className="main">
-      <BandBanner />
-      <Nav basket={basket} setBasket={setBasket} />
       <MainBanner />
       <SlideItemList />
       <LeftBanner />

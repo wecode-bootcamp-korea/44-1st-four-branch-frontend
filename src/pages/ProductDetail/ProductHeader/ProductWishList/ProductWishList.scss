@@ -1,0 +1,22 @@
+@import '../../../../styles/mixin';
+
+.productWishList {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 60px;
+
+  .wishListText {
+    @include pStyle;
+    margin-left: 4px;
+    color: #333;
+  }
+
+  .wishListOn {
+    @include icon16;
+  }
+
+  .wishListOff {
+    @include icon16;
+  }
+}

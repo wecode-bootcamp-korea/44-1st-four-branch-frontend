@@ -1,0 +1,108 @@
+@import '../../../styles/mixin';
+
+.recommend {
+  position: relative;
+  margin-bottom: 240px;
+  padding-top: 120px;
+
+  .arrowPrevBtn {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    width: 80px;
+    height: 80px;
+    background-color: #333;
+    cursor: pointer;
+
+    .arrowLeft {
+      @include icon24;
+      transform: translate(100%, 100%);
+    }
+  }
+
+  .arrowNextBtn {
+    position: absolute;
+    z-index: 6;
+    top: 50%;
+    right: 0px;
+    width: 80px;
+    height: 80px;
+    transition: left 0.5s;
+    background-color: #333;
+    cursor: pointer;
+
+    .arrowRight {
+      @include icon24;
+      transform: translate(100%, 100%);
+    }
+  }
+
+  .product {
+    margin-top: 120px;
+
+    .productList {
+      display: flex;
+      overflow-x: scroll;
+      list-style: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      li {
+        width: 450px;
+        height: 520px;
+        text-align: center;
+      }
+
+      .title {
+        @include h3Style;
+        width: 450px;
+      }
+
+      img {
+        width: 450px;
+        height: 340px;
+        object-fit: contain;
+      }
+
+      .itemLink {
+        @include aStyle;
+      }
+
+      .itemName {
+        @include h6Style;
+      }
+
+      .itemDescription {
+        @include pStyle;
+      }
+    }
+  }
+
+  .indicator {
+    position: absolute;
+    right: 80px;
+    bottom: 0;
+    left: 80px;
+    height: 2px;
+    background-color: #ccc;
+
+    .indicatorBar {
+      width: 30%;
+      border-bottom: 2px solid #333;
+
+      &.rightScroll {
+        overflow-x: hidden;
+        transform: translate(233%, 0);
+        transition: transform 1s;
+      }
+
+      &.leftScroll {
+        overflow-x: hidden;
+        transform: translate(-233%, 0);
+        transition: transform 1s;
+      }
+    }
+  }
+}
