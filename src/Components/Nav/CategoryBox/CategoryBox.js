@@ -8,10 +8,10 @@ function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
     <div className="categoryBox">
       <nav>
         <ul className="mainCategory">
-          <div className="flexStart">
+          <li className="flexStart">
             {CATEGORY_LIST.map(data => {
               return (
-                <li
+                <div
                   className="category"
                   key={data.id}
                   onClick={() => {
@@ -19,7 +19,7 @@ function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
                   }}
                 >
                   {data.categoryName}
-                </li>
+                </div>
               );
             })}
             <li
@@ -30,7 +30,7 @@ function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
             >
               닫기 ✕
             </li>
-          </div>
+          </li>
           <li className="flexEnd">
             <div className="loginBtn">로그인</div>
             <div className="wishList">위시리스트</div>
