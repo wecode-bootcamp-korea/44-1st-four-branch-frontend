@@ -1,0 +1,43 @@
+.loginSuccess {
+  position: absolute;
+  z-index: 3;
+  top: 50px;
+  left: 50%;
+  width: 600px;
+  transform: translate(-50%);
+  background-color: #fffef2;
+
+  .contents {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 50px;
+
+    .closeBtn {
+      font-size: 20px;
+      text-align: right;
+    }
+
+    .greeting {
+      margin-top: 20px;
+      font-size: 33px;
+      font-weight: 400;
+    }
+
+    .accountInfo {
+      width: 500px;
+      height: 58px;
+      margin-top: 20px;
+      padding-top: 20px;
+      background-color: #333333;
+      color: #f6f5e8;
+      font-size: 14px;
+      font-weight: 300;
+      text-align: center;
+      &:hover {
+        background-color: #000000;
+        cursor: pointer;
+      }
+    }
+  }
+}
