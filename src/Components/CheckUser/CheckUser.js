@@ -3,32 +3,26 @@ import { useState } from 'react';
 import UserModal from '../UserModal/UserModal';
 
 function CheckUser({ userInfoClose, scale }) {
-  const [modalChange, setModalChange] = useState(LOGIN_DATA);
+  const [modalMode, setModalMode] = useState('로그인');
 
-  function modalChangehandle() {
-    setModalChange(SIGNUP_DATA);
+  function modalChangeHandle() {
+    setModalMode('회원가입');
   }
 
-  function backhandle() {
-    setModalChange(LOGIN_DATA);
+  function goToLogin() {
+    setModalMode('로그인');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   return (
     <UserModal
       scale={scale}
-      data={modalChange}
       userInfoClose={userInfoClose}
-      modalChangehandle={modalChangehandle}
-      backhandle={backhandle}
+      modalChangeHandle={modalChangeHandle}
+      goToLogin={goToLogin}
+      modalMode={modalMode}
     />
   );
 }
 
 export default CheckUser;
-
-const LOGIN_DATA = { title: '로그인', button: '로그인' };
-const SIGNUP_DATA = {
-  title: '회원가입',
-  button: '회원가입',
-};
