@@ -31,11 +31,11 @@ function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
               닫기 ✕
             </li>
           </div>
-          <div className="flexEnd">
-            <li className="loginBtn">로그인</li>
-            <li className="wishList">위시리스트</li>
-            <li className="cart">카트</li>
-          </div>
+          <li className="flexEnd">
+            <div className="loginBtn">로그인</div>
+            <div className="wishList">위시리스트</div>
+            <div className="cart">카트</div>
+          </li>
         </ul>
       </nav>
       <div className="categoryList">

@@ -15,7 +15,7 @@ function Nav() {
   const [categoryChange, setCategoryChange] = useState([]);
   const navigate = useNavigate();
 
-  const OBJ = {
+  const MAIN_CATEGORY = {
     '스킨 케어': SKINCARE,
     '바디 & 핸드': BODYHAND_DATA,
     헤어: HAIR_DATA,
@@ -26,7 +26,7 @@ function Nav() {
     if (targetId === '홈') {
       navigate('/main');
     } else {
-      setCategoryChange(OBJ[targetId]);
+      setCategoryChange(MAIN_CATEGORY[targetId]);
       setCategory(true);
     }
   }
