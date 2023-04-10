@@ -4,14 +4,14 @@ import './SearchItem.scss';
 
 function SearchItem({ item }) {
   const { name } = item;
-  const [isClicked, setIsClicked] = useState(false);
+  const [isHover, setIsHover] = useState(false);
 
   function viewItem() {
-    setIsClicked(true);
+    setIsHover(true);
   }
 
   function notViewItem() {
-    setIsClicked(false);
+    setIsHover(false);
   }
 
   return (
@@ -23,8 +23,8 @@ function SearchItem({ item }) {
       >
         {name}
       </p>
-      <div className="clickedItem">
-        {isClicked ? <HoverItemView item={item} /> : null}
+      <div className="hoverItem">
+        {isHover ? <HoverItemView item={item} /> : null}
       </div>
     </div>
   );
