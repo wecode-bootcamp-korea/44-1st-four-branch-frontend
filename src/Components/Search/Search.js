@@ -19,6 +19,15 @@ function Search() {
   }
 
   useEffect(() => {
+    // fetch('http://10.58.52.90:3000/products', {
+    //   // method: 'GET',
+    //   headers: {
+    //     'Content-Type': 'application/json;charset=utf-8',
+    //   },
+    // })
+    //   .then(response => response.json())
+    //   .then(result => setSearchList(result));
+
     fetch('/data/searchItemList.json')
       .then(response => response.json())
       .then(result => setSearchList(result));
