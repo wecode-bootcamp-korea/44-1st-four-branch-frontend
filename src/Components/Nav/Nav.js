@@ -1,9 +1,17 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import CategoryForm from './CategoryForm/CategoryForm';
 import CartBlackWindow from '../../pages/Main/CartBlackWindow/CartBlackWindow';
 import UserBlackWindow from '../../pages/Main/UserBlackWindow/UserBlackWindow';
 import Basket from '../Basket/Basket';
 import CheckUser from '../CheckUser/CheckUser';
+import {
+  CATEGORY_LIST,
+  SKINCARE,
+  BODYHAND_DATA,
+  HAIR_DATA,
+  PERFUME,
+} from './NavData';
 import './Nav.scss';
 
 function Nav({ basket, setBasket }) {
@@ -11,6 +19,32 @@ function Nav({ basket, setBasket }) {
   const [scale, setScale] = useState('');
   const [cartModal, setCartModal] = useState('');
   const [cart, setCart] = useState(false);
+  const [category, setCategory] = useState(false);
+  const [categoryChange, setCategoryChange] = useState([]);
+  const navigate = useNavigate();
+  const MAIN_CATEGORY = {
+    '스킨 케어': SKINCARE,
+    '바디 & 핸드': BODYHAND_DATA,
+    헤어: HAIR_DATA,
+    향수: PERFUME,
+  };
+
+  function categoryHandle(targetId) {
+    if (targetId === '홈') {
+      navigate('/main');
+      setCategory(false);
+      window.document.body.style.overflow = 'scroll';
+    } else {
+      window.document.body.style.overflow = 'hidden';
+      setCategoryChange(MAIN_CATEGORY[targetId]);
+      setCategory(true);
+    }
+  }
+
+  function categoryBoxClose() {
+    setCategory(false);
+    window.document.body.style.overflow = 'scroll';
+  }
 
   function userInfoOpen() {
     setUserInfo(userInfo => !userInfo);
@@ -38,6 +72,13 @@ function Nav({ basket, setBasket }) {
     <>
       {userInfo && <CheckUser userInfoClose={userInfoClose} scale={scale} />}
       {userInfo && <UserBlackWindow userInfoClose={userInfoClose} />}
+      {category && (
+        <CategoryForm
+          categoryChange={categoryChange}
+          categoryHandle={categoryHandle}
+          categoryBoxClose={categoryBoxClose}
+        />
+      )}
       <Basket
         cartModal={cartModal}
         cartClose={cartClose}
@@ -48,8 +89,19 @@ function Nav({ basket, setBasket }) {
       <nav className="nav">
         <ul className="navigation">
           <div className="flexStart">
-            {CATEGORY_LIST.map((category, index) => {
-              return <li key={index}>{category}</li>;
+            {CATEGORY_LIST.map(category => {
+              return (
+                <li
+                  className="categoryList"
+                  key={category.categoryName}
+                  id={category.categoryName}
+                  onClick={() => {
+                    categoryHandle(category.categoryName);
+                  }}
+                >
+                  {category.categoryName}
+                </li>
+              );
             })}
           </div>
           <div className="flexEnd">
@@ -71,14 +123,3 @@ function Nav({ basket, setBasket }) {
 }
 
 export default Nav;
-
-const CATEGORY_LIST = [
-  '홈',
-  '스킨 케어',
-  '바디 & 핸드',
-  '헤어',
-  '향수',
-  '스토어',
-];
-
-// const SKINCARE = ['홈', '스킨 케어', '바디 & 핸드', '헤어', '향수', '스토어'];

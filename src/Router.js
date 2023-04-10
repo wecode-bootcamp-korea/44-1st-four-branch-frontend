@@ -21,7 +21,6 @@ const Router = () => {
         />
         <Route path="/productlist" element={<ProductList />} />
       </Routes>
-      <Footer />
     </BrowserRouter>
   );
 };

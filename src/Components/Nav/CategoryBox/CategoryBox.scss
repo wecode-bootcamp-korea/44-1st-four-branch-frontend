@@ -1,0 +1,104 @@
+.categoryBox {
+  position: absolute;
+  z-index: 2;
+  height: 100vh;
+  background-color: #ffffff;
+  inset: 0;
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 80px;
+    background-color: #fffef2;
+
+    .mainCategory {
+      display: flex;
+      justify-content: space-between;
+      margin: 0;
+      padding: 0 40px;
+      font-size: 14px;
+      font-weight: 300;
+      list-style: none;
+    }
+
+    li {
+      color: #000000;
+      &.skinCare {
+        padding: 30px 5px;
+        border-bottom: 2px solid #000000;
+      }
+    }
+
+    .flexStart {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+
+      .icon {
+        font-size: 18px;
+      }
+    }
+
+    .category {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .closeBtn {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .categoryList {
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+    height: 100%;
+    background-color: #f0efe0;
+    gap: 150px;
+
+    .categoryTitle {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .logoImg {
+      position: absolute;
+      top: 80px;
+      left: 50px;
+      width: 120px;
+    }
+
+    .subCategory {
+      display: flex;
+      flex-direction: column;
+      padding-top: 100px;
+      gap: 30px;
+    }
+
+    .daily {
+      display: flex;
+      flex-direction: column;
+      padding-top: 100px;
+      gap: 30px;
+    }
+
+    .newArrival {
+      display: flex;
+      flex-direction: column;
+      padding-top: 100px;
+      gap: 30px;
+    }
+
+    .categoryBoxImg {
+      width: 610px;
+      height: 100%;
+      background-image: url('https://www.aesop.com/u1nb1km7t5q7/6Va39pw5RZBeMeQ9fdy2Zi/cdc6a081e7c8a3c361226cc5f86bb2cb/Aesop_Homepage_Navigation_Category_Skin_Desktop_1700x2400px.jpg');
+      background-size: cover;
+    }
+  }
+}
