@@ -3,6 +3,10 @@ import CartList from './CartList/CartList';
 import './Basket.scss';
 
 function Basket({ cartModal, cartClose, basket, setBasket }) {
+  function removeItem(targetId) {
+    setBasket(basket.filter(item => item.id !== targetId));
+  }
+
   function handleQuantity(type, id, quantity) {
     const found = basket.filter(item => item.id === id)[0];
     const indexNum = basket.indexOf(found);
@@ -20,11 +24,15 @@ function Basket({ cartModal, cartClose, basket, setBasket }) {
         ...basket.slice(indexNum + 1),
       ]);
     } else {
-      setBasket([
-        ...basket.slice(0, indexNum),
-        cartItem,
-        ...basket.slice(indexNum + 1),
-      ]);
+      if (quantity === 0) {
+        return;
+      } else {
+        setBasket([
+          ...basket.slice(0, indexNum),
+          cartItem,
+          ...basket.slice(indexNum + 1),
+        ]);
+      }
     }
   }
 
@@ -39,6 +47,7 @@ function Basket({ cartModal, cartClose, basket, setBasket }) {
         cartClose={cartClose}
         basket={basket}
         handleQuantity={handleQuantity}
+        removeItem={removeItem}
       />
 
       <div className="paymentBox">

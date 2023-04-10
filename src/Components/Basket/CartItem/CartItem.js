@@ -1,7 +1,7 @@
 import React from 'react';
 import './CartItem.scss';
 
-function CartItem({ basketItem, handleQuantity }) {
+function CartItem({ basketItem, handleQuantity, removeItem }) {
   return (
     <li className="cartItem">
       <div className="itemName">{basketItem.name}</div>
@@ -24,7 +24,14 @@ function CartItem({ basketItem, handleQuantity }) {
           +
         </div>
       </div>
-      <div className="removeBtn">삭제</div>
+      <div
+        className="removeBtn"
+        onClick={() => {
+          removeItem(basketItem.id);
+        }}
+      >
+        삭제
+      </div>
       <div className="itemPrice">{`₩ ${Math.floor(
         basketItem.quantity * basketItem.price
       ).toLocaleString()}`}</div>

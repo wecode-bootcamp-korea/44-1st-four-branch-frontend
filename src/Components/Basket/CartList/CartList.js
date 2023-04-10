@@ -2,7 +2,7 @@ import React from 'react';
 import CartItem from '../CartItem/CartItem';
 import './CartList.scss';
 
-function CartList({ cartClose, basket, handleQuantity }) {
+function CartList({ cartClose, basket, handleQuantity, removeItem }) {
   return (
     <ul className="cartList">
       <li className="cartListTitle">
@@ -31,6 +31,7 @@ function CartList({ cartClose, basket, handleQuantity }) {
               key={basketItem.id}
               id={basketItem.id}
               basketItem={basketItem}
+              removeItem={removeItem}
             />
           );
         })
