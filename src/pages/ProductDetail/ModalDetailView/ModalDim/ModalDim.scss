@@ -1,0 +1,13 @@
+.modalDim {
+  position: fixed;
+  z-index: 4;
+  top: 0;
+  width: 100%;
+  height: 0;
+  background-color: rgba(000, 000, 000, 50%);
+
+  &.slide {
+    height: 100vh;
+    transition: height 0;
+  }
+}
