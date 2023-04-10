@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { FiPlusCircle } from 'react-icons/fi';
 import Logo from '../../../assets/ProductDetail/aesop-logo.png';
 import ProductWishList from './ProductWishList/ProductWishList';
@@ -9,7 +10,11 @@ import './ProductHeader.scss';
 
 function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
   const [productDetailList, setProductDetailList] = useState([]);
+  const [product, setProduct] = useState({});
   const [wishList, setWishList] = useState(false);
+
+  const params = useParams();
+  const productId = params.id;
 
   function handleWIshList() {
     setWishList(wishList => !wishList);
@@ -24,15 +29,36 @@ function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
     //   .then(response => response.json())
     //   .then(result => setProductDetailList(result));
 
-    fetch('http://10.58.52.90:3000/products?pid=1', {
+    // fetch('http://10.58.52.90:3000/products?pid=1', {
+    //   // method: 'GET',
+    //   headers: {
+    //     'Content-Type': 'application/json;charset=utf-8',
+    //   },
+    // })
+    //   .then(response => response.json())
+    //   .then(result => setProductDetailList(result));
+
+    fetch('http://10.58.52.90:3000/products/pid=${productId}', {
       // method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
     })
       .then(response => response.json())
-      .then(result => setProductDetailList(result));
-  }, []);
+      .then(result => setProduct(result));
+  }, [productId]);
+
+  const {
+    ingredients,
+    id,
+    imageUrl,
+    name,
+    mainCategoryName,
+    subCategoryName,
+    description,
+    size,
+    price,
+  } = product;
 
   return (
     <div>
@@ -43,67 +69,68 @@ function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
           isCloseModal={isCloseModal}
         />
       )}
-      {productDetailList.map(
-        ({
-          ingredients,
-          id,
-          imageUrl,
-          name,
-          mainCategoryName,
-          subCategoryName,
-          description,
-          size,
-          price,
-        }) => {
-          return (
-            <div className={`productHeader ${slide}`} key={id}>
-              <section className="logoContainer">
-                <img className="logo" src={Logo} alt="logo" />
-              </section>
-              <section className="productImageContainer">
-                <img className="productImage" src={imageUrl} alt={name} />
-              </section>
-              <section className="productDetailContainer">
-                <div className="productTitleContainer">
-                  <div className="productCategoryLink">
-                    {mainCategoryName}
-                    <div className="divideDot" />
-                    {subCategoryName}
+      {product.id &&
+        product.map(
+          ({
+            ingredients,
+            id,
+            imageUrl,
+            name,
+            mainCategoryName,
+            subCategoryName,
+            description,
+            size,
+            price,
+          }) => {
+            return (
+              <div className={`productHeader ${slide}`} key={id}>
+                <section className="logoContainer">
+                  <img className="logo" src={Logo} alt="logo" />
+                </section>
+                <section className="productImageContainer">
+                  <img className="productImage" src={imageUrl} alt={name} />
+                </section>
+                <section className="productDetailContainer">
+                  <div className="productTitleContainer">
+                    <div className="productCategoryLink">
+                      {mainCategoryName}
+                      <div className="divideDot" />
+                      {subCategoryName}
+                    </div>
+                    <h2 className="productName">{name}</h2>
+                    <p className="productDescription">{description}</p>
                   </div>
-                  <h2 className="productName">{name}</h2>
-                  <p className="productDescription">{description}</p>
-                </div>
-                <ul className="productDetail">
-                  <li className="productIngredient">
-                    <h6 className="ingredientTitle">주요 성분</h6>
-                    <p className="ingredientText">
-                      {makeIngredientList(ingredients)[0]},
-                      {makeIngredientList(ingredients)[1]},
-                      {makeIngredientList(ingredients)[2]}
-                    </p>
-                    <FiPlusCircle
-                      className="detailViewButton"
-                      onClick={isOpenModal}
-                    />
-                  </li>
-                  <li className="productSize">
-                    <h6 className="sizeTitle">사이즈</h6>
-                    <p className="sizeText">{size}</p>
-                  </li>
-                </ul>
-                <button className="primarySolidButton">{`카트에 추가하기 - ₩${Math.floor(
-                  price
-                ).toLocaleString()}`}</button>
-                <ProductWishList
-                  wishList={wishList}
-                  handleWishList={handleWIshList}
-                />
-                <ProductRelated />
-              </section>
-            </div>
-          );
-        }
-      )}
+                  <ul className="productDetail">
+                    <li className="productIngredient">
+                      <h6 className="ingredientTitle">주요 성분</h6>
+                      <p className="ingredientText">
+                        {makeIngredientList(ingredients)[0]},
+                        {makeIngredientList(ingredients)[1]},
+                        {makeIngredientList(ingredients)[2]}
+                      </p>
+                      <FiPlusCircle
+                        className="detailViewButton"
+                        onClick={isOpenModal}
+                      />
+                    </li>
+                    <li className="productSize">
+                      <h6 className="sizeTitle">사이즈</h6>
+                      <p className="sizeText">{size}</p>
+                    </li>
+                  </ul>
+                  <button className="primarySolidButton">{`카트에 추가하기 - ₩${Math.floor(
+                    price
+                  ).toLocaleString()}`}</button>
+                  <ProductWishList
+                    wishList={wishList}
+                    handleWishList={handleWIshList}
+                  />
+                  <ProductRelated />
+                </section>
+              </div>
+            );
+          }
+        )}
     </div>
   );
 }
