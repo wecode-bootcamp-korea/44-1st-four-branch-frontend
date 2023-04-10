@@ -1,10 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './HoverItemView.scss';
 
 function HoverItemView({ item, showProduct }) {
   const { name, imageUrl } = item;
 
-  function moveItemPage() {}
+  const navigate = useNavigate();
+  function moveItemPage() {
+    navigate(`/productDetail/${item.id}`);
+  }
 
   return (
     <div
@@ -12,11 +16,10 @@ function HoverItemView({ item, showProduct }) {
       onMouseEnter={() => {
         showProduct();
       }}
+      onClick={moveItemPage}
     >
       <img className="hoverItemImage" alt={name} src={imageUrl} />
-      <button className="primarySolidButton" onClick={moveItemPage}>
-        더 알아보기
-      </button>
+      <button className="primarySolidButton">더 알아보기</button>
     </div>
   );
 }
