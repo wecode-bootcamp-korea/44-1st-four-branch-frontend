@@ -33,7 +33,6 @@ function Nav({ basket, setBasket }) {
     향수: PERFUME,
   };
   const token = localStorage.getItem('TOKEN');
-  console.log(token);
 
   function categoryHandle(targetId) {
     if (targetId === '홈') {

@@ -33,7 +33,7 @@ function CartItem({ basketItem, handleQuantity, removeItem }) {
         삭제
       </div>
       <div className="itemPrice">{`₩ ${Math.floor(
-        basketItem.quantity * basketItem.price
+        basketItem.totalPriceByP
       ).toLocaleString()}`}</div>
     </li>
   );

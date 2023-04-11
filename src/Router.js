@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from './Components/Nav/Nav';
 import BandBanner from './pages/Main/BandBanner/BandBanner';
@@ -9,6 +9,22 @@ import Order from './pages/Order/Order';
 
 const Router = () => {
   const [basket, setBasket] = useState([]);
+  // const token = localStorage.getItem('TOKEN');
+
+  // useEffect(() => {
+  //   fetch('http://10.58.52.90:3000/carts', {
+  //     headers: {
+  //       'Content-Type': 'application/json;charset=utf-8',
+  //       Authorization: token,
+  //     },
+  //   })
+  //     .then(response => response.json())
+  //     .then(result => {
+  //       setBasket([...basket, ...result]);
+  //     });
+  // }, []);
+
+  // console.log(basket);
 
   return (
     <BrowserRouter>

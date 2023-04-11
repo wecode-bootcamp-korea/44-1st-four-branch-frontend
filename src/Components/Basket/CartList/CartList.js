@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CartItem from '../CartItem/CartItem';
 import './CartList.scss';
 
 function CartList({ cartClose, basket, handleQuantity, removeItem }) {
+  // const [cartList, setCartList] = useState([]);
+  // const token = localStorage.getItem('TOKEN');
+  // useEffect(() => {
+  //   fetch('http://10.58.52.90:3000/carts', {
+  //     headers: {
+  //       'Content-Type': 'application/json;charset=utf-8',
+  //       Authorization: token,
+  //     },
+  //   })
+  //     .then(response => response.json())
+  //     .then(result => {
+  //       setCartList(result);
+  //     });
+  // }, []);
   return (
     <ul className="cartList">
       <li className="cartListTitle">
@@ -36,16 +50,6 @@ function CartList({ cartClose, basket, handleQuantity, removeItem }) {
           );
         })
       )}
-      {/* {basket.map(basketItem => {
-        return (
-          <CartItem
-            handleQuantity={handleQuantity}
-            key={basketItem.id}
-            id={basketItem.id}
-            basketItem={basketItem}
-          />
-        );
-      })} */}
     </ul>
   );
 }

@@ -38,7 +38,7 @@ function Basket({ cartModal, cartClose, basket, setBasket, orderMove }) {
 
   let totalPrice = 0;
   basket.forEach(item => {
-    totalPrice = totalPrice + item.price * item.quantity;
+    totalPrice = totalPrice + item.totalPriceByP;
   });
 
   return (
@@ -46,6 +46,7 @@ function Basket({ cartModal, cartClose, basket, setBasket, orderMove }) {
       <CartList
         cartClose={cartClose}
         basket={basket}
+        setBasket={setBasket}
         handleQuantity={handleQuantity}
         removeItem={removeItem}
       />
