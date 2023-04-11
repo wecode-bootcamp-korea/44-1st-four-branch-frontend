@@ -13,17 +13,26 @@ function OrderConfirm() {
   //       'Content-Type': 'application/json;charset=utf-8',
   //     },
   //   })
-  //     .then(response => response.json())
-  //     .then(result => setOrderInfo(result));
-  // }, []);
 
-  //   orderNumber,
-  // orderDate,
-  // address,
-  // productName,
-  // size,
-  // price,
-  // totalPrice
+      fetch('http://10.58.52.90:3000/products?pid=1', {
+      // method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
+      .then(response => response.json())
+      .then(result => setOrderInfo(result));
+  }, []);
+
+  const {
+    orderNumber,
+    orderDate,
+    address,
+    productName,
+    size,
+    price,
+    totalPrice,
+  } = orderInfo;
 
   return (
     <div className="orderConfirm">
@@ -31,14 +40,14 @@ function OrderConfirm() {
         <img className="logo" src={Logo} alt="로고" />
       </section>
       <section className="contents">
-        <h2 className="comment">감사합니다. 장다희 님</h2>
+        <h2 className="comment">장다희 님 감사합니다.</h2>
         <p>
           감사합니다. 장다희님. 주문이 완료되었습니다. 추가 문의 사항이 있으시면
           연락 주시기 바랍니다.
         </p>
         <form>
           <div className="orderNum">
-            <h6>주문 번호 확인 22330162</h6>
+            <h6>주문 번호 확인 {orderNumber}</h6>
             <p>2023-04-27</p>
           </div>
           <div className="detailInfo">
