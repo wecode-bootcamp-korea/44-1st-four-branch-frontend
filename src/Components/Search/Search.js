@@ -36,6 +36,7 @@ function Search() {
   return (
     <div className="search">
       <SearchInput
+        className="searchInput"
         Logo={Logo}
         searchKeyword={searchKeyword}
         itemSearch={itemSearch}

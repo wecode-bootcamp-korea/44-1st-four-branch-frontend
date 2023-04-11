@@ -3,12 +3,16 @@
 .search {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  height: 100vh;
   background-color: #fffef2;
+
+  .searchInput {
+    overflow-y: hidden;
+  }
 
   .searchResult {
     display: grid;
     position: relative;
     grid-template-columns: 1fr 1fr;
+    overflow-y: scroll;
   }
 }
