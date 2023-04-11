@@ -1,32 +1,10 @@
 [
   {
-    "id": 1,
-    "orderNumber": "657318e4-062e-4b15-9272-8e32b5a9c90c",
-    "orderDate": "2023-04-09T07:40:12.000Z",
-    "address": "{\"detail\": \"인터라켄OST\", \"country\": \"스위스\", \"postcode\": \"89070\"}",
-    "productName": "사가지라이징 샴푸",
-    "size": "500ml",
-    "price": "57000.00",
-    "totalPrice": "9000.00"
-  },
-  {
-    "id": 2,
-    "orderNumber": "657318e4-062e-4b15-9272-8e32b5a9c90c",
-    "orderDate": "2023-04-09T07:40:12.000Z",
-    "address": "{\"detail\": \"인터라켄OST\", \"country\": \"스위스\", \"postcode\": \"89070\"}",
-    "productName": "사가지라이징 샴푸",
-    "size": "500ml",
-    "price": "57000.00",
-    "totalPrice": "9000.00"
-  },
-  {
-    "id": 3,
-    "orderNumber": "657318e4-062e-4b15-9272-8e32b5a9c90c",
-    "orderDate": "2023-04-09T07:40:12.000Z",
-    "address": "{\"detail\": \"인터라켄OST\", \"country\": \"스위스\", \"postcode\": \"89070\"}",
-    "productName": "사가지라이징 샴푸",
-    "size": "500ml",
-    "price": "57000.00",
-    "totalPrice": "9000.00"
+    "orderNumber": "07a05c7b-e58e-4094-96f3-c4e3352729e6",
+    "orderDate": "2023-04-11T09:19:31.000Z",
+    "address": "{\"detail\": \"서울\", \"country\": \"한국\", \"postcode\": \"12345\"}",
+    "orderItems": "[{\"size\": \"500ml\", \"price\": 57000.00, \"quantity\": 2, \"productName\": \"사가지라이징 샴푸\"}, {\"size\": \"500ml\", \"price\": 57000.00, \"quantity\": 2, \"productName\": \"사가지라이징 샴푸\"}, {\"size\": \"10ml\", \"price\": 120000.00, \"quantity\": 1, \"productName\": \"위코드시 개발자 퍼퓸\"}]",
+    "orderStatus": "결제 대기",
+    "totalPrice": "30000.00"
   }
 ]
