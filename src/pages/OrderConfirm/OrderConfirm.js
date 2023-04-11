@@ -5,21 +5,15 @@ import './OrderConfirm.scss';
 function OrderConfirm() {
   const [orderInfo, setOrderInfo] = useState([]);
 
-  // useEffect(() => {
+  useEffect(() => {
+    //   fetch('http://10.58.52.90:3000/products?pid=1', {
+    //     // method: 'GET',
+    //     headers: {
+    //       'Content-Type': 'application/json;charset=utf-8',
+    //     },
+    //   })
 
-  //   fetch('http://10.58.52.90:3000/products?pid=1', {
-  //     // method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json;charset=utf-8',
-  //     },
-  //   })
-
-      fetch('http://10.58.52.90:3000/products?pid=1', {
-      // method: 'GET',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-    })
+    fetch('../../../public/data/orderInfo.json')
       .then(response => response.json())
       .then(result => setOrderInfo(result));
   }, []);
