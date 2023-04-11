@@ -5,6 +5,7 @@ import BandBanner from './pages/Main/BandBanner/BandBanner';
 import Main from './pages/Main/Main';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import ProductList from './pages/ProductList/ProductList';
+import Order from './pages/Order/Order';
 
 const Router = () => {
   const [basket, setBasket] = useState([]);
@@ -20,6 +21,7 @@ const Router = () => {
           element={<ProductDetail basket={basket} setBasket={setBasket} />}
         />
         <Route path="/productlist/:id" element={<ProductList />} />
+        <Route path="/order" element={<Order />} />
       </Routes>
     </BrowserRouter>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 import CartList from './CartList/CartList';
 import './Basket.scss';
 
-function Basket({ cartModal, cartClose, basket, setBasket }) {
+function Basket({ cartModal, cartClose, basket, setBasket, orderMove }) {
   function removeItem(targetId) {
     setBasket(basket.filter(item => item.id !== targetId));
   }
@@ -65,7 +65,14 @@ function Basket({ cartModal, cartClose, basket, setBasket }) {
               totalPrice
             ).toLocaleString()}`}</div>
           </div>
-          <div className="payment">결제하기</div>
+          <div
+            className="payment"
+            onClick={() => {
+              orderMove();
+            }}
+          >
+            결제하기
+          </div>
         </div>
       </div>
     </div>

@@ -1,0 +1,56 @@
+.orderItem {
+  display: flex;
+  flex-basis: 40%;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  background-color: #ebeade;
+
+  .orderItemContents {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 40px;
+    color: #333333;
+
+    .subtotal,
+    .deliveryCharge,
+    .tax,
+    .total,
+    .allItem {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .total {
+      .totalPrice {
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+
+    .allItem {
+      padding: 20px 0;
+      border-top: 1px solid #cccccc;
+      border-bottom: 1px solid #cccccc;
+
+      .seeMore {
+        font-size: 20px;
+      }
+    }
+
+    .gift {
+      display: flex;
+      align-items: center;
+
+      .giftImg {
+        width: 50px;
+        margin-right: 20px;
+      }
+      .change {
+        flex-grow: 1;
+        text-align: right;
+      }
+    }
+  }
+}

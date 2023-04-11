@@ -5,6 +5,7 @@ import CartBlackWindow from '../../pages/Main/CartBlackWindow/CartBlackWindow';
 import UserBlackWindow from '../../pages/Main/UserBlackWindow/UserBlackWindow';
 import Basket from '../Basket/Basket';
 import CheckUser from '../CheckUser/CheckUser';
+import LoginSuccess from '../LoginSuccess/LoginSuccess';
 import {
   CATEGORY_LIST,
   SKINCARE,
@@ -16,6 +17,7 @@ import './Nav.scss';
 
 function Nav({ basket, setBasket }) {
   const [userInfo, setUserInfo] = useState(false);
+  const [userNameCheck, setUserNameCheck] = useState(false);
   const [scale, setScale] = useState('');
   const [cartModal, setCartModal] = useState('');
   const [cart, setCart] = useState(false);
@@ -58,6 +60,10 @@ function Nav({ basket, setBasket }) {
     setScale('');
   }
 
+  function loginSuccessClose() {
+    setUserNameCheck(false);
+  }
+
   function cartOpen() {
     setCartModal('slide');
     setCart(cart => !cart);
@@ -68,9 +74,28 @@ function Nav({ basket, setBasket }) {
     setCart(cart => !cart);
   }
 
+  function orderMove() {
+    navigate('./order');
+    setCartModal('');
+    setCart(cart => !cart);
+  }
+
   return (
     <>
-      {userInfo && <CheckUser userInfoClose={userInfoClose} scale={scale} />}
+      {userNameCheck && (
+        <LoginSuccess
+          userNameCheck={userNameCheck}
+          loginSuccessClose={loginSuccessClose}
+        />
+      )}
+      {userInfo && (
+        <CheckUser
+          userInfoClose={userInfoClose}
+          scale={scale}
+          userNameCheck={userNameCheck}
+          setUserNameCheck={setUserNameCheck}
+        />
+      )}
       {userInfo && <UserBlackWindow userInfoClose={userInfoClose} />}
       {category && (
         <CategoryForm
@@ -84,6 +109,7 @@ function Nav({ basket, setBasket }) {
         cartClose={cartClose}
         basket={basket}
         setBasket={setBasket}
+        orderMove={orderMove}
       />
       {cart && <CartBlackWindow cartClose={cartClose} />}
       <nav className="nav">
@@ -106,7 +132,7 @@ function Nav({ basket, setBasket }) {
           </div>
           <div className="flexEnd">
             <li className="loginButton" onClick={userInfoOpen}>
-              로그인
+              {userNameCheck === false ? '로그인' : `${userNameCheck} 님`}
             </li>
             <li>위시리스트</li>
             <li className="cartBtn" onClick={cartOpen}>

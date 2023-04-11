@@ -7,7 +7,14 @@ import ModalDetailView from '../ModalDetailView/ModalDetailView';
 import './ProductHeader.scss';
 import { useParams } from 'react-router-dom';
 
-function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
+function ProductHeader({
+  isOpenModal,
+  modalView,
+  slide,
+  isCloseModal,
+  basket,
+  setBasket,
+}) {
   const [productDetailList, setProductDetailList] = useState([]);
   const [wishList, setWishList] = useState(false);
   const params = useParams();
@@ -30,6 +37,51 @@ function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
       .then(response => response.json())
       .then(result => setProductDetailList(result));
   }, [id]);
+
+  function addDuplicate(id, quantity) {
+    const found = basket.filter(item => item.id === id)[0];
+    const indexNum = basket.indexOf(found);
+    const cartItem = {
+      id: productDetailList[0].id,
+      name: productDetailList[0].name,
+      price: productDetailList[0].price,
+      quantity: quantity,
+    };
+    setBasket([
+      ...basket.slice(0, indexNum),
+      cartItem,
+      ...basket.slice(indexNum + 1),
+    ]);
+  }
+
+  function shoppingBasket() {
+    fetch('http://10.58.52.90:3000/carts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        productId: productDetailList[0].id,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+      });
+    const cartItem = {
+      productId: productDetailList[0].id,
+      name: productDetailList[0].name,
+      price: productDetailList[0].price,
+      quantity: 1,
+    };
+    const found = basket.find(item => item.id === cartItem.id);
+
+    if (found) {
+      addDuplicate(cartItem.id, found.quantity + 1);
+    } else {
+      setBasket([...basket, cartItem]);
+    }
+  }
 
   return (
     <div>
@@ -88,7 +140,12 @@ function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
                     <p className="sizeText">{size}</p>
                   </li>
                 </ul>
-                <button className="primarySolidButton">{`카트에 추가하기 - ₩${Math.floor(
+                <button
+                  onClick={() => {
+                    shoppingBasket();
+                  }}
+                  className="primarySolidButton"
+                >{`카트에 추가하기 - ₩ ${Math.floor(
                   price
                 ).toLocaleString()}`}</button>
                 <ProductWishList

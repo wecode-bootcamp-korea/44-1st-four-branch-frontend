@@ -3,6 +3,8 @@ import { useState } from 'react';
 import './UserModal.scss';
 
 function UserModal({
+  setUserNameCheck,
+  userNameCheck,
   modalMode,
   userInfoClose,
   modalChangeHandle,
@@ -19,6 +21,7 @@ function UserModal({
   const emailCheck = userInfo.email.includes('@');
   const passwordCheck = userInfo.password.length >= 5;
   const isChecked = isCheckingBox === true;
+  const validation = emailCheck && passwordCheck && isChecked;
 
   function handleUserInfo(e) {
     const { name, value } = e.target;
@@ -32,10 +35,10 @@ function UserModal({
   function isPossible(e) {
     e.preventDefault();
     if (modalMode === '로그인') {
-      if (!(emailCheck && passwordCheck && isChecked)) {
+      if (!emailCheck && passwordCheck) {
         alert('로그인 실패');
-      } else if (emailCheck && passwordCheck && isChecked) {
-        fetch('http://10.58.52.78:3000/users/signin', {
+      } else if (emailCheck && passwordCheck) {
+        fetch('http://10.58.52.90:3000/users/signin', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
@@ -46,33 +49,52 @@ function UserModal({
           }),
         })
           .then(response => {
-            response.json();
+            if (response.ok === true) {
+              return response.json();
+            } else {
+              throw new Error('에러 발생!');
+            }
           })
+          .catch(error => console.log(error))
           .then(result => {
-            console.log(result);
+            if (result.token) {
+              localStorage.setItem('TOKEN', result.token);
+              setUserNameCheck(result.userLastName);
+              userInfoClose();
+              console.log(result.token);
+            }
           });
       }
     } else if (modalMode === '회원가입') {
-      if (!(emailCheck && passwordCheck && isChecked)) {
+      if (!validation) {
         alert('회원가입 실패');
-      } else if (emailCheck && passwordCheck && isChecked) {
-        fetch('http://10.58.52.78:3000/users/signup', {
+      } else if (validation) {
+        fetch('http://10.58.52.90:3000/users/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
           },
           body: JSON.stringify({
             firstName: userInfo.firstName,
-            LastName: userInfo.lastName,
+            lastName: userInfo.lastName,
             email: userInfo.email,
             password: userInfo.password,
           }),
         })
           .then(response => {
-            response.json();
+            return response.json();
           })
           .then(result => {
-            console.log(result);
+            if (result.message === 'CREATED USER') {
+              alert('회원가입이 완료되었습니다.');
+              goToLogin();
+              setUserInfo({
+                firstName: '',
+                lastName: '',
+                email: '',
+                password: '',
+              });
+            }
           });
       }
     }

@@ -8,8 +8,6 @@ function ItemDisplay({ data }) {
   const [heartChange, setHeartChange] = useState(false);
   const navigate = useNavigate();
 
-  console.log(data);
-
   function goToProductDetail(targetId) {
     navigate(`/productdetail/${targetId}`);
   }

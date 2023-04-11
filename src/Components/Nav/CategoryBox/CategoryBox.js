@@ -11,8 +11,6 @@ function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
     navigate(`/productlist/${targetId}`);
   }
 
-  console.log(categoryChange[0].categoryList);
-
   return (
     <div className="categoryBox">
       <nav>

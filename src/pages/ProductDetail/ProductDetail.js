@@ -6,7 +6,7 @@ import Recommend from './Recommend/Recommend';
 import Info from './Info/Info';
 import './ProductDetail.scss';
 
-function ProductDetail() {
+function ProductDetail({ basket, setBasket }) {
   const [modalView, setModalView] = useState('');
 
   function isOpenModal() {
@@ -26,6 +26,8 @@ function ProductDetail() {
         isOpenModal={isOpenModal}
         isCloseModal={isCloseModal}
         modalView={modalView}
+        basket={basket}
+        setBasket={setBasket}
       />
       <Benefits />
       <HowToUse />

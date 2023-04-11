@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import UserModal from '../UserModal/UserModal';
 
-function CheckUser({ userInfoClose, scale }) {
+function CheckUser({ userInfoClose, scale, userNameCheck, setUserNameCheck }) {
   const [modalMode, setModalMode] = useState('로그인');
 
   function modalChangeHandle() {
@@ -21,6 +21,8 @@ function CheckUser({ userInfoClose, scale }) {
       modalChangeHandle={modalChangeHandle}
       goToLogin={goToLogin}
       modalMode={modalMode}
+      userNameCheck={userNameCheck}
+      setUserNameCheck={setUserNameCheck}
     />
   );
 }
