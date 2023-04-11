@@ -22,12 +22,7 @@ function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
   }
 
   useEffect(() => {
-    // fetch('/data/productDetailList.json')
-    //   .then(response => response.json())
-    //   .then(result => setProductDetailList(result));
-
     fetch(`http://10.58.52.90:3000/products?pid=${id}`, {
-      // method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },

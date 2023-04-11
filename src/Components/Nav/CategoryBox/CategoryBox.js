@@ -11,6 +11,8 @@ function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
     navigate(`/productlist/${targetId}`);
   }
 
+  console.log(categoryChange[0].categoryList);
+
   return (
     <div className="categoryBox">
       <nav>
@@ -51,6 +53,7 @@ function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
                 id={data.id}
                 onClick={() => {
                   goToProductList(data.id);
+                  categoryBoxClose();
                 }}
               >
                 {data.name}

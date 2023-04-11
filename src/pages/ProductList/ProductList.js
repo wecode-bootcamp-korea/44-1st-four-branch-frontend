@@ -10,7 +10,7 @@ function ProductList() {
   const { id } = params;
 
   useEffect(() => {
-    fetch(`http://10.58.52.90:3000/products?subid=${id}`)
+    fetch(`http://10.58.52.90:3000/products?${id}`)
       .then(response => response.json())
       .then(result => {
         setProductData(result);
