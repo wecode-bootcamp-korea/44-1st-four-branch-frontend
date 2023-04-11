@@ -1,0 +1,69 @@
+@import '../../../styles/mixin';
+
+.howToUse {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+
+  .quotation {
+    width: 50%;
+    height: 100vh;
+    padding: auto 80px;
+    background-color: #dbcfc2;
+
+    .contents {
+      margin: auto 80px;
+      transform: translate(0%, 50%);
+      color: #333;
+      font-family: 'Cormorant', serif;
+      font-size: 54px;
+      line-height: 150%;
+
+      .quotationFrom {
+        padding-top: 40px;
+        color: #333;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .useDetail {
+    width: 50%;
+    height: 100vh;
+    padding: auto 80px;
+    background-color: #f2efea;
+
+    .contents {
+      width: 600px;
+      margin: auto;
+      transform: translate(0%, 60%);
+
+      .contentsTable {
+        margin-top: 32px;
+        padding-left: 0;
+        border-top: 2px solid #333333;
+        list-style: none;
+      }
+
+      .contentsTableList {
+        padding-top: 32px;
+        padding-bottom: 32px;
+        border-bottom: 1px solid #cccccc;
+      }
+
+      .contentsTitle {
+        @include h6Style;
+      }
+
+      .contentsSubTitle {
+        @include h2Style;
+      }
+
+      .contentsText {
+        @include pStyle;
+      }
+    }
+  }
+}

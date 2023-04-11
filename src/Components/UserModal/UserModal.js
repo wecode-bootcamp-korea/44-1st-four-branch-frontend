@@ -19,6 +19,7 @@ function UserModal({
   const emailCheck = userInfo.email.includes('@');
   const passwordCheck = userInfo.password.length >= 5;
   const isChecked = isCheckingBox === true;
+  const validation = emailCheck && passwordCheck && isChecked;
 
   function handleUserInfo(e) {
     const { name, value } = e.target;
@@ -32,9 +33,9 @@ function UserModal({
   function isPossible(e) {
     e.preventDefault();
     if (modalMode === '로그인') {
-      if (!(emailCheck && passwordCheck && isChecked)) {
+      if (!validation) {
         alert('로그인 실패');
-      } else if (emailCheck && passwordCheck && isChecked) {
+      } else if (validation) {
         fetch('http://10.58.52.78:3000/users/signin', {
           method: 'POST',
           headers: {
@@ -53,9 +54,9 @@ function UserModal({
           });
       }
     } else if (modalMode === '회원가입') {
-      if (!(emailCheck && passwordCheck && isChecked)) {
+      if (!validation) {
         alert('회원가입 실패');
-      } else if (emailCheck && passwordCheck && isChecked) {
+      } else if (validation) {
         fetch('http://10.58.52.78:3000/users/signup', {
           method: 'POST',
           headers: {
