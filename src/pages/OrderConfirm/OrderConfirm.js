@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Logo from '../../assets/fourbsopLogo.png';
 import './OrderConfirm.scss';
 
 function OrderConfirm() {
+  const [orderInfo, setOrderInfo] = useState([]);
+
+  // useEffect(() => {
+
+  //   fetch('http://10.58.52.90:3000/products?pid=1', {
+  //     // method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json;charset=utf-8',
+  //     },
+  //   })
+  //     .then(response => response.json())
+  //     .then(result => setOrderInfo(result));
+  // }, []);
+
   return (
     <div className="orderConfirm">
       <section className="logoContainer">
@@ -28,11 +42,8 @@ function OrderConfirm() {
               <p>대한민국</p>
             </section>
             <section>
-              <h6 className="title">결제 세부 정보</h6>
-              <p>장 다희</p>
-              <p>서울 강남구..</p>
-              <p>우편번호</p>
-              <p>대한민국</p>
+              <h6 className="title">주문 상태</h6>
+              <p>배송 완료</p>
             </section>
             <section>
               <h6 className="title">지불 방법</h6>
@@ -45,16 +56,6 @@ function OrderConfirm() {
               <span>75ml</span>
               <span>W33,000 x 1</span>
               <h6>W33,000</h6>
-            </li>
-            <li>
-              <p>배송 방법 - 무료 배송</p>
-              <h6>W33,000</h6>
-            </li>
-            <li>
-              <p>세금</p>
-              <span />
-              <span>세금</span>
-              <h6>W3,000</h6>
             </li>
             <li className="totalPrice">
               <p>합계</p>
