@@ -4,6 +4,7 @@ import Nav from './Components/Nav/Nav';
 import Footer from './Components/Footer/Footer';
 import Main from './pages/Main/Main';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
+import OrderConfirm from './pages/OrderConfirm/OrderConfirm';
 
 const Router = () => {
   return (
@@ -12,8 +13,9 @@ const Router = () => {
       <Routes>
         <Route path="/main" element={<Main />} />
         <Route path="/productDetail/:id" element={<ProductDetail />} />
+        <Route path="/orderConfirm" element={<OrderConfirm />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 };
