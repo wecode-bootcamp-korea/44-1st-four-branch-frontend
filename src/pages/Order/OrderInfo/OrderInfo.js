@@ -1,9 +1,9 @@
 import React from 'react';
 import './OrderInfo.scss';
 
-function OrderInfo({ orderModal, setOrderModal, movePayment }) {
+function OrderInfo({ orderModal, setOrderModal, movePayment, enterBox }) {
   return (
-    <div className="orderInfo">
+    <div className="orderInfo" ref={enterBox}>
       <nav className="orderNav">
         <ul className="orderProcess">
           {ORDER_PROCESS.map((process, i) => {
