@@ -18,6 +18,8 @@ import './Nav.scss';
 function Nav({ basket, setBasket }) {
   const [userInfo, setUserInfo] = useState(false);
   const [userNameCheck, setUserNameCheck] = useState(false);
+  const [loginStatus, setLoginStatus] = useState('');
+  const [logOut, setLogOut] = useState('');
   const [scale, setScale] = useState('');
   const [cartModal, setCartModal] = useState('');
   const [cart, setCart] = useState(false);
@@ -30,6 +32,8 @@ function Nav({ basket, setBasket }) {
     헤어: HAIR_DATA,
     향수: PERFUME,
   };
+  const token = localStorage.getItem('TOKEN');
+  console.log(token);
 
   function categoryHandle(targetId) {
     if (targetId === '홈') {
@@ -49,6 +53,7 @@ function Nav({ basket, setBasket }) {
   }
 
   function userInfoOpen() {
+    window.document.body.style.overflow = 'hidden';
     setUserInfo(userInfo => !userInfo);
     setTimeout(() => {
       setScale('scale');
@@ -56,12 +61,18 @@ function Nav({ basket, setBasket }) {
   }
 
   function userInfoClose() {
+    window.document.body.style.overflow = 'scroll';
     setUserInfo(userInfo => !userInfo);
     setScale('');
   }
 
   function loginSuccessClose() {
     setUserNameCheck(false);
+  }
+
+  function handleLogOut() {
+    localStorage.removeItem('TOKEN');
+    setLogOut('');
   }
 
   function cartOpen() {
@@ -94,6 +105,8 @@ function Nav({ basket, setBasket }) {
           scale={scale}
           userNameCheck={userNameCheck}
           setUserNameCheck={setUserNameCheck}
+          setLoginStatus={setLoginStatus}
+          setLogOut={setLogOut}
         />
       )}
       {userInfo && <UserBlackWindow userInfoClose={userInfoClose} />}
@@ -131,9 +144,16 @@ function Nav({ basket, setBasket }) {
             })}
           </div>
           <div className="flexEnd">
-            <li className="loginButton" onClick={userInfoOpen}>
-              {userNameCheck === false ? '로그인' : `${userNameCheck} 님`}
-            </li>
+            {/* <li className="loginButton" onClick={userInfoOpen}>
+              {token ? `${loginStatus} 님` : '로그인'}
+            </li> */}
+            {token ? (
+              <li>{`${loginStatus}님`}</li>
+            ) : (
+              <li className="loginButton" onClick={userInfoOpen}>
+                로그인
+              </li>
+            )}
             <li>위시리스트</li>
             <li className="cartBtn" onClick={cartOpen}>
               <div>카트</div>
@@ -141,6 +161,11 @@ function Nav({ basket, setBasket }) {
                 <div className="cartQuantity">{basket.length}</div>
               )}
             </li>
+            {token && (
+              <li className="logoutBtn" onClick={handleLogOut}>
+                {logOut}
+              </li>
+            )}
           </div>
         </ul>
       </nav>

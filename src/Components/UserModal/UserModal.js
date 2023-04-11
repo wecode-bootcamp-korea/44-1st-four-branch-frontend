@@ -10,6 +10,8 @@ function UserModal({
   modalChangeHandle,
   goToLogin,
   scale,
+  setLoginStatus,
+  setLogOut,
 }) {
   const [userInfo, setUserInfo] = useState({
     firstName: '',
@@ -36,7 +38,7 @@ function UserModal({
     e.preventDefault();
     if (modalMode === '로그인') {
       if (!emailCheck && passwordCheck) {
-        alert('로그인 실패');
+        alert('아이디나 비밀번호 확인해주세요.');
       } else if (emailCheck && passwordCheck) {
         fetch('http://10.58.52.90:3000/users/signin', {
           method: 'POST',
@@ -60,8 +62,12 @@ function UserModal({
             if (result.token) {
               localStorage.setItem('TOKEN', result.token);
               setUserNameCheck(result.userLastName);
+              setLoginStatus(result.userLastName);
+              setLogOut('로그아웃');
               userInfoClose();
               console.log(result.token);
+            } else {
+              alert('로그인 실패');
             }
           });
       }

@@ -4,6 +4,8 @@
   top: 50px;
   left: 35%;
   width: 600px;
+  height: 630px;
+  overflow-y: scroll;
   transform: scale(0);
   background-color: #fffef2;
   &.scale {
@@ -61,7 +63,7 @@
     }
 
     .firstName {
-      margin-left: 30px;
+      margin-right: 30px;
     }
 
     .email,
