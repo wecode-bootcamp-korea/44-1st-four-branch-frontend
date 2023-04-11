@@ -3,6 +3,9 @@
   height: 100vh;
   overflow-y: scroll;
   background-color: #f6f5e8;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   .orderNav {
     display: flex;
@@ -53,14 +56,19 @@
     margin-top: 250px;
 
     .sendTo {
+      margin-bottom: 60px;
       font-size: 30px;
     }
 
-    .nameInput {
+    .enterDeliveryInfo {
       display: flex;
+      flex-direction: column;
+      gap: 50px;
+      margin-bottom: 100px;
     }
 
-    .firstName {
+    input {
+      width: 100%;
       border: none;
       border-bottom: 1px solid #cfcec3;
       outline: none;
@@ -68,13 +76,47 @@
       font-size: 25px;
     }
 
-    .lastName {
-      width: 50%;
+    .moveBtn {
+      width: 240px;
+      height: 60px;
+      margin-top: 20px;
       border: none;
-      border-bottom: 1px solid #cfcec3;
-      outline: none;
-      background-color: #f6f5e8;
-      font-size: 25px;
+      background-color: #333333;
+      color: #dbdad1;
+    }
+  }
+  .shippingAddress {
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px;
+    color: #666666;
+    font-size: 23px;
+    gap: 20px;
+
+    .deliveryTitle {
+      margin-bottom: 40px;
+      color: #333333;
+      font-size: 30px;
+    }
+  }
+
+  .termsOfPayment {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 150px;
+    margin-bottom: 200px;
+    .paymentTitle {
+      margin-bottom: 30px;
+      font-size: 30px;
+    }
+    .pageMove {
+      width: 240px;
+      height: 60px;
+      margin-top: 20px;
+      border: none;
+      background-color: #333333;
+      color: #cfcec3;
     }
   }
 }
