@@ -17,6 +17,14 @@ function OrderConfirm() {
   //     .then(result => setOrderInfo(result));
   // }, []);
 
+  //   orderNumber,
+  // orderDate,
+  // address,
+  // productName,
+  // size,
+  // price,
+  // totalPrice
+
   return (
     <div className="orderConfirm">
       <section className="logoContainer">
