@@ -6,27 +6,22 @@ function OrderConfirm() {
   const [orderInfo, setOrderInfo] = useState([]);
 
   useEffect(() => {
-    //   fetch('http://10.58.52.90:3000/products?pid=1', {
-    //     // method: 'GET',
-    //     headers: {
-    //       'Content-Type': 'application/json;charset=utf-8',
-    //     },
-    //   })
-
-    fetch('../../../public/data/orderInfo.json')
+    // fetch('/data/orderInfo.json')
+    fetch('http://10.58.52.107:3000/orders', {
+      // method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
       .then(response => response.json())
       .then(result => setOrderInfo(result));
   }, []);
 
-  const {
-    orderNumber,
-    orderDate,
-    address,
-    productName,
-    size,
-    price,
-    totalPrice,
-  } = orderInfo;
+  const { orderNumber, orderDate, totalPrice } = orderInfo[0];
+
+  function handleAddress(value) {
+    return JSON.parse(value);
+  }
 
   return (
     <div className="orderConfirm">
@@ -41,16 +36,16 @@ function OrderConfirm() {
         </p>
         <form>
           <div className="orderNum">
-            <h6>주문 번호 확인 {orderNumber}</h6>
-            <p>2023-04-27</p>
+            <h6>{`주문 번호 확인 ${orderNumber}`}</h6>
+            <p>{orderDate}</p>
           </div>
           <div className="detailInfo">
             <section>
               <h6 className="title">배송 정보</h6>
               <p>장 다희</p>
-              <p>서울 강남구..</p>
-              <p>우편번호</p>
-              <p>대한민국</p>
+              <p>{handleAddress(orderInfo[0].address.detail)}</p>
+              <p>{handleAddress(orderInfo[0].address.postcode)}</p>
+              <p>{handleAddress(orderInfo[0].address.country)}</p>
             </section>
             <section>
               <h6 className="title">주문 상태</h6>
@@ -62,15 +57,19 @@ function OrderConfirm() {
             </section>
           </div>
           <ul className="bills">
-            <li>
-              <p>레버런스 밤</p>
-              <span>75ml</span>
-              <span>W33,000 x 1</span>
-              <h6>W33,000</h6>
-            </li>
+            {orderInfo.map(({ id, productName, size, price }) => (
+              <li key={id}>
+                <p>{productName}</p>
+                <span>{size}</span>
+                <span />
+                <h6>{`₩${Math.floor(price).toLocaleString()}`}</h6>
+              </li>
+            ))}
             <li className="totalPrice">
               <p>합계</p>
-              <h3 className="totalNum">W33,000</h3>
+              <h3 className="totalNum">{`₩${Math.floor(
+                totalPrice
+              ).toLocaleString()}`}</h3>
             </li>
           </ul>
         </form>
