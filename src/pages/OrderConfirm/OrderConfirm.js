@@ -7,16 +7,23 @@ function OrderConfirm() {
 
   let userAddressObject = {};
   const userAddressString = orderInfo?.userAddress;
-  if (userAddressString && userAddressString !== undefined) {
+  if (userAddressString) {
     userAddressObject = JSON.parse(userAddressString);
   }
 
-  let totalAmount = [];
   let orderItemsArray = [];
+  let totalAmount = [];
   const orderItemsString = orderInfo?.orderItems;
-  if (orderItemsString && orderItemsString !== undefined) {
+
+  if (orderItemsString) {
     [...orderItemsArray] = JSON.parse(orderItemsString);
   }
+
+  totalAmount = orderItemsArray.reduce(
+    (accumulator, currentValue) =>
+      accumulator + currentValue.price * currentValue.quantity,
+    0
+  );
 
   // const token = localStorage.getItem('token');
   const token =
@@ -88,14 +95,7 @@ function OrderConfirm() {
               <li className="totalPrice">
                 <span>합계</span>
                 <span className="totalNum">
-                  {`₩ ${Math.floor(
-                    (totalAmount = orderItemsArray.reduce(
-                      (accumulator, currentValue) =>
-                        accumulator +
-                        currentValue.price * currentValue.quantity,
-                      0
-                    ))
-                  ).toLocaleString()}`}
+                  {`₩ ${Math.floor(totalAmount).toLocaleString()}`}
                 </span>
               </li>
             </ul>
