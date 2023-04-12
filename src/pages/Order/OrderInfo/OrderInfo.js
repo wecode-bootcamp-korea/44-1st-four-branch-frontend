@@ -1,7 +1,84 @@
 import React from 'react';
+import { useState } from 'react';
 import './OrderInfo.scss';
 
-function OrderInfo({ orderModal, setOrderModal, movePayment, enterBox }) {
+function OrderInfo({
+  orderModal,
+  setOrderModal,
+  movePayment,
+  enterBox,
+  totalPrice,
+}) {
+  const [userInfo, setUserInfo] = useState({
+    firstName: '',
+    lastName: '',
+    nation: '',
+    postCode: '',
+    address: '',
+  });
+  const [orderNumber, setOrderNumber] = useState();
+  console.log(userInfo);
+  const token = localStorage.getItem('TOKEN');
+
+  function handleUserInfo(e) {
+    const { name, value } = e.target;
+    setUserInfo({ ...userInfo, [name]: value });
+  }
+
+  function submitUserInfo() {
+    fetch(`http://10.58.52.90:3000/users/address`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: token,
+      },
+      body: JSON.stringify({
+        country: userInfo.nation,
+        postcode: userInfo.postCode,
+        detail: userInfo.address,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+      });
+  }
+
+  function submitTotalPrice() {
+    fetch(`http://10.58.52.90:3000/orders`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: token,
+      },
+      body: JSON.stringify({
+        totalPrice,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+        setOrderNumber(result);
+      });
+  }
+
+  function pointPayment() {
+    fetch(`http://10.58.52.90:3000/orders/pointpay`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: token,
+      },
+      body: JSON.stringify({
+        orderNumber,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+      });
+  }
+
   return (
     <div className="orderInfo" ref={enterBox}>
       <nav className="orderNav">
@@ -29,32 +106,44 @@ function OrderInfo({ orderModal, setOrderModal, movePayment, enterBox }) {
                 name="firstName"
                 type="text"
                 placeholder="성"
+                value={userInfo.firstName}
+                onChange={handleUserInfo}
               />
               <input
                 className="lastName"
                 name="lastName"
                 type="text"
                 placeholder="이름"
+                value={userInfo.lastName}
+                onChange={handleUserInfo}
               />
               <input
-                className="phoneNumber"
-                name="phoneNumber"
+                className="nation"
+                name="nation"
                 placeholder="국가"
+                value={userInfo.nation}
+                onChange={handleUserInfo}
               />
               <input
                 className="postCode"
                 name="postCode"
                 placeholder="우편번호"
+                value={userInfo.postCode}
+                onChange={handleUserInfo}
               />
               <input
-                className="betterAddress"
-                name="betterAddress"
+                className="address"
+                name="address"
                 placeholder="주소"
+                value={userInfo.address}
+                onChange={handleUserInfo}
               />
               <button
                 className="moveBtn"
                 onClick={() => {
                   movePayment();
+                  submitUserInfo();
+                  submitTotalPrice();
                 }}
               >
                 배송 정보로 이동
@@ -86,7 +175,14 @@ function OrderInfo({ orderModal, setOrderModal, movePayment, enterBox }) {
                 <input name="payment" id="card" type="radio" />
                 <label htmlFor="cart">카드 결제</label>
               </div>
-              <button className="pageMove">다음 페이지</button>
+              <button
+                className="pageMove"
+                onClick={() => {
+                  pointPayment();
+                }}
+              >
+                다음 페이지
+              </button>
             </div>
           </>
         )}

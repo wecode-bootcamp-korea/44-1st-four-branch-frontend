@@ -2,44 +2,102 @@ import React from 'react';
 import CartList from './CartList/CartList';
 import './Basket.scss';
 
-function Basket({ cartModal, cartClose, basket, setBasket, orderMove }) {
+function Basket({
+  cartModal,
+  cartClose,
+  basket,
+  setBasket,
+  orderMove,
+  handleTotalPrice,
+}) {
+  const token = localStorage.getItem('TOKEN');
+
   function removeItem(targetId) {
-    setBasket(basket.filter(item => item.id !== targetId));
+    fetch(`http://10.58.52.90:3000/carts?cartid=${targetId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: token,
+      },
+    })
+      .then(response => response.json())
+      .then(result => {
+        setBasket([...result]);
+      });
+    // setBasket(basket.filter(item => item.id !== targetId));
   }
 
   function handleQuantity(type, id, quantity) {
-    const found = basket.filter(item => item.id === id)[0];
-    const indexNum = basket.indexOf(found);
-    const cartItem = {
-      id: found.id,
-      name: found.name,
-      price: found.price,
-      quantity: quantity,
-    };
-
     if (type === 'plus') {
-      setBasket([
-        ...basket.slice(0, indexNum),
-        cartItem,
-        ...basket.slice(indexNum + 1),
-      ]);
+      fetch('http://10.58.52.90:3000/carts', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+          Authorization: token,
+        },
+        body: JSON.stringify({
+          cartId: id,
+          quantity: quantity,
+        }),
+      })
+        .then(response => response.json())
+        .then(result => {
+          setBasket([...result]);
+        });
     } else {
       if (quantity === 0) {
         return;
       } else {
-        setBasket([
-          ...basket.slice(0, indexNum),
-          cartItem,
-          ...basket.slice(indexNum + 1),
-        ]);
       }
+      fetch('http://10.58.52.90:3000/carts', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+          Authorization: token,
+        },
+        body: JSON.stringify({
+          cartId: id,
+          quantity: quantity,
+        }),
+      })
+        .then(response => response.json())
+        .then(result => {
+          setBasket([...result]);
+        });
     }
+    // const found = basket.filter(item => item.id === id)[0];
+    // const indexNum = basket.indexOf(found);
+    // const cartItem = {
+    //   id: found.id,
+    //   name: found.name,
+    //   price: found.price,
+    //   quantity: quantity,
+    // };
+
+    // if (type === 'plus') {
+    //   setBasket([
+    //     ...basket.slice(0, indexNum),
+    //     cartItem,
+    //     ...basket.slice(indexNum + 1),
+    //   ]);
+    // } else {
+    //   if (quantity === 0) {
+    //     return;
+    //   } else {
+    //     setBasket([
+    //       ...basket.slice(0, indexNum),
+    //       cartItem,
+    //       ...basket.slice(indexNum + 1),
+    //     ]);
+    //   }
+    // }
   }
 
-  let totalPrice = 0;
+  let totalPrice = [];
   basket.forEach(item => {
-    totalPrice = totalPrice + item.totalPriceByP;
+    totalPrice = [...totalPrice, Number(item.totalPriceByP)];
   });
+  const sumTotalPrice = totalPrice.reduce((arr, curr) => arr + curr, 0);
 
   return (
     <div className={`basket ${cartModal}`}>
@@ -63,12 +121,13 @@ function Basket({ cartModal, cartClose, basket, setBasket, orderMove }) {
           <div className="price">
             <div>소계 (세금포함)</div>
             <div className="totalPrice">{`₩ ${Math.floor(
-              totalPrice
+              sumTotalPrice
             ).toLocaleString()}`}</div>
           </div>
           <div
             className="payment"
             onClick={() => {
+              handleTotalPrice(sumTotalPrice);
               orderMove();
             }}
           >

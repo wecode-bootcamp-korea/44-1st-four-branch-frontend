@@ -52,6 +52,7 @@ function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
                 onClick={() => {
                   goToProductList(data.id);
                   categoryBoxClose();
+                  console.log(data.id);
                 }}
               >
                 {data.name}

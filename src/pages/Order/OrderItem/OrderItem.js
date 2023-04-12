@@ -1,13 +1,13 @@
 import React from 'react';
 import './OrderItem.scss';
 
-function OrderItem() {
+function OrderItem({ totalPrice }) {
   return (
     <div className="orderItem">
       <div className="orderItemContents">
         <div className="subtotal">
           <div>소계 (세금 포함)</div>
-          <div>₩ 99,000</div>
+          <div>{`₩ ${totalPrice}`}</div>
         </div>
         <div className="deliveryCharge">
           <div>배송</div>
@@ -19,7 +19,7 @@ function OrderItem() {
         </div>
         <div className="total">
           <div>합계</div>
-          <div className="totalPrice">₩ 99,000</div>
+          <div className="totalPrice">{`₩ ${totalPrice.toLocaleString()}`}</div>
         </div>
         <div className="allItem">
           <div>모든 제품 보기 (2)</div>

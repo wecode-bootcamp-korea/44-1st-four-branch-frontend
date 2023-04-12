@@ -5,7 +5,7 @@ import './Order.scss';
 import { useState } from 'react';
 import { useRef } from 'react';
 
-function Order() {
+function Order({ totalPrice }) {
   const enterBox = useRef();
   const [orderModal, setOrderModal] = useState('배송');
 
@@ -24,8 +24,9 @@ function Order() {
         setOrderModal={setOrderModal}
         movePayment={movePayment}
         enterBox={enterBox}
+        totalPrice={totalPrice}
       />
-      <OrderItem />
+      <OrderItem totalPrice={totalPrice} />
     </div>
   );
 }

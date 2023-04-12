@@ -9,27 +9,20 @@ import Order from './pages/Order/Order';
 
 const Router = () => {
   const [basket, setBasket] = useState([]);
-  // const token = localStorage.getItem('TOKEN');
+  const [totalPrice, setTotalPrice] = useState(0);
 
-  // useEffect(() => {
-  //   fetch('http://10.58.52.90:3000/carts', {
-  //     headers: {
-  //       'Content-Type': 'application/json;charset=utf-8',
-  //       Authorization: token,
-  //     },
-  //   })
-  //     .then(response => response.json())
-  //     .then(result => {
-  //       setBasket([...basket, ...result]);
-  //     });
-  // }, []);
-
-  // console.log(basket);
+  function handleTotalPrice(price) {
+    setTotalPrice(price);
+  }
 
   return (
     <BrowserRouter>
       <BandBanner />
-      <Nav basket={basket} setBasket={setBasket} />
+      <Nav
+        basket={basket}
+        setBasket={setBasket}
+        handleTotalPrice={handleTotalPrice}
+      />
       <Routes>
         <Route path="/main" element={<Main />} />
         <Route
@@ -37,7 +30,7 @@ const Router = () => {
           element={<ProductDetail basket={basket} setBasket={setBasket} />}
         />
         <Route path="/productlist/:id" element={<ProductList />} />
-        <Route path="/order" element={<Order />} />
+        <Route path="/order" element={<Order totalPrice={totalPrice} />} />
       </Routes>
     </BrowserRouter>
   );

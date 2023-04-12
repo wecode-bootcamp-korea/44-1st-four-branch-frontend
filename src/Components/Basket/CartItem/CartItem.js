@@ -9,7 +9,7 @@ function CartItem({ basketItem, handleQuantity, removeItem }) {
         <div
           className="minus"
           onClick={() => {
-            handleQuantity('minus', basketItem.id, basketItem.quantity - 1);
+            handleQuantity('minus', basketItem.cartId, basketItem.quantity - 1);
           }}
         >
           -
@@ -18,7 +18,7 @@ function CartItem({ basketItem, handleQuantity, removeItem }) {
         <div
           className="plus"
           onClick={() => {
-            handleQuantity('plus', basketItem.id, basketItem.quantity + 1);
+            handleQuantity('plus', basketItem.cartId, basketItem.quantity + 1);
           }}
         >
           +
@@ -27,7 +27,7 @@ function CartItem({ basketItem, handleQuantity, removeItem }) {
       <div
         className="removeBtn"
         onClick={() => {
-          removeItem(basketItem.id);
+          removeItem(basketItem.cartId);
         }}
       >
         삭제

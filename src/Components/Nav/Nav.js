@@ -15,7 +15,7 @@ import {
 } from './NavData';
 import './Nav.scss';
 
-function Nav({ basket, setBasket }) {
+function Nav({ basket, setBasket, handleTotalPrice }) {
   const [userInfo, setUserInfo] = useState(false);
   const [userNameCheck, setUserNameCheck] = useState(false);
   const [loginStatus, setLoginStatus] = useState('');
@@ -122,6 +122,7 @@ function Nav({ basket, setBasket }) {
         basket={basket}
         setBasket={setBasket}
         orderMove={orderMove}
+        handleTotalPrice={handleTotalPrice}
       />
       {cart && <CartBlackWindow cartClose={cartClose} />}
       <nav className="nav">
