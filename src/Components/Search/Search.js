@@ -43,9 +43,7 @@ function Search() {
         FiArrowRight={FiArrowRight}
       />
       <div className="searchResult">
-        {searchKeyword.length !== 0 && (
-          <SearchList filteredItem={filteredItem} />
-        )}
+        {searchKeyword.length && <SearchList filteredItem={filteredItem} />}
       </div>
     </div>
   );

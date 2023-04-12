@@ -5,7 +5,7 @@ import './SearchList.scss';
 function SearchList({ filteredItem }) {
   return (
     <div className="searchList">
-      {filteredItem.length > 0 ? (
+      {!filteredItem.length ? (
         filteredItem.map(item => {
           return (
             <SearchItem

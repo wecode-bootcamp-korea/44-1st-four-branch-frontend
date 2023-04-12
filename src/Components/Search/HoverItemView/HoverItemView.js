@@ -13,9 +13,7 @@ function HoverItemView({ item, showProduct }) {
   return (
     <div
       className="hoverItemView"
-      onMouseEnter={() => {
-        showProduct();
-      }}
+      onMouseEnter={showProduct}
       onClick={moveItemPage}
     >
       <img className="hoverItemImage" alt={name} src={imageUrl} />

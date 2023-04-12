@@ -4,9 +4,6 @@ import ItemDisplay from './ItemDisplay/ItemDisplay';
 import './ProductList.scss';
 
 function ProductList() {
-<<<<<<< HEAD
-  return <div className="productList" />;
-=======
   const [productData, setProductData] = useState([]);
 
   useEffect(() => {
@@ -50,7 +47,6 @@ function ProductList() {
       </section>
     </div>
   );
->>>>>>> main
 }
 
 export default ProductList;
