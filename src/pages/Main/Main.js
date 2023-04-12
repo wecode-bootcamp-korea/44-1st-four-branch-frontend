@@ -1,8 +1,13 @@
 import React from 'react';
-import './Main.scss';
+
+import Search from '../../Components/Search/Search';
 
 function Main() {
-  return <div className="main" />;
+  return (
+    <div>
+      <Search />
+    </div>
+  );
 }
 
 export default Main;

@@ -13,7 +13,6 @@ const Router = () => {
         <Route path="/main" element={<Main />} />
         <Route path="/productDetail/:id" element={<ProductDetail />} />
       </Routes>
-      <Footer />
     </BrowserRouter>
   );
 };
