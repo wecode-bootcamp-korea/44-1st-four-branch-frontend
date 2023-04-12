@@ -4,7 +4,7 @@ import SlideItemList from './SlideItemList/SlideItemList';
 import LeftBanner from './LeftBanner/LeftBanner';
 import RightBanner from './RightBanner/RightBanner';
 import StoreLocator from './StoreLocator/StoreLocator';
-import Selection from './Selection/Selection';
+import Footer from '../../Components/Footer/Footer';
 import './Main.scss';
 
 function Main() {
@@ -12,12 +12,11 @@ function Main() {
     <div className="main">
       <MainBanner />
       <SlideItemList />
-      <LeftBanner />
       <RightBanner />
       <LeftBanner />
+      <SlideItemList />
       <StoreLocator />
-      <Selection />
-      <LeftBanner />
+      <Footer />
     </div>
   );
 }

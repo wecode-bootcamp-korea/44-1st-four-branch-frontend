@@ -7,13 +7,14 @@ function SlideItem({ item }) {
 
   function productDetailMove() {
     navigate(`/productDetail/${item.id}`);
+    window.scrollTo(0, 0);
   }
 
   return (
     <div className="slideItem" onClick={productDetailMove}>
       <img className="carouselItem" alt="제품이미지" src={item.imageUrl} />
       <h3 className="itemName">{item.name}</h3>
-      <p className="itemIngredient">{item.description}</p>
+      <p className="itemIngredient">{item.summary}</p>
     </div>
   );
 }

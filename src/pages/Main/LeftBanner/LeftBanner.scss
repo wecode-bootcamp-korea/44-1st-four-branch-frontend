@@ -1,14 +1,15 @@
 .leftBanner {
   display: flex;
   padding-top: 150px;
-  transition: opacity 2s;
+  transition: opacity 2.5s;
   opacity: 0;
   gap: 150px;
 
   .articleImg {
     width: 59%;
     height: 625px;
-    background-image: url('https://www.aesop.com/u1nb1km7t5q7/zXTw8PFTGSDXO5IpheIGC/3661373231cab92c0b9a9bd437a79ca6/Aesop_Incense_2023_Web_Homepage_Secondary_Mid_Desktop_2560x1440px.jpg');
+    background-image: url('https://images.unsplash.com/photo-1562317335-0e9573a5d330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80');
+    background-position: center;
     background-size: cover;
   }
 

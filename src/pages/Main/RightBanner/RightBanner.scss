@@ -1,14 +1,17 @@
 .rightBanner {
   display: flex;
-  gap: 150px;
   padding-top: 150px;
+  transition: opacity 2.5s;
+  opacity: 0;
+  gap: 150px;
 
   .contentImg {
     flex-grow: 1;
     width: 55%;
     height: 625px;
-    background-image: url('https://www.aesop.com/u1nb1km7t5q7/4DjNYHRs11DRMhaZA3Pj8i/398da9629e29a1d19834ffb8fbba4c3e/Aesop_Always_On_Homepage_Secondary_Personal_Fragrance_Mid_Desktop_2560x1440px.jpg');
-    background-size: cover;
+    .gifImage {
+      width: 100%;
+    }
   }
 
   .articleContent {

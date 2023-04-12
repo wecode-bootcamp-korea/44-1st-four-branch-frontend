@@ -6,6 +6,18 @@ function StoreLocator() {
   const [carousel, setCarousel] = useState(0);
   const storeCarousel = useRef();
   const scrollCarousel = useRef();
+  const storeLocator = useRef();
+
+  useEffect(() => {
+    let observer = new IntersectionObserver(e => {
+      if (e[0].isIntersecting) {
+        e[0].target.style.opacity = 1;
+      } else {
+        e[0].target.style.opacity = 0;
+      }
+    });
+    observer.observe(storeLocator.current);
+  });
 
   function prevStoreSlide() {
     setCarousel(prev => prev + 1);
@@ -53,7 +65,7 @@ function StoreLocator() {
           <div className="arrow">→</div>
         </div>
       </div>
-      <div className="storeCarousel">
+      <div className="storeCarousel" ref={storeLocator}>
         <div className="leftArrow" onClick={prevStoreSlide}>
           <HiOutlineChevronLeft />
         </div>
@@ -64,22 +76,22 @@ function StoreLocator() {
           <img
             className="storeImage"
             alt="스토어 이미지"
-            src="https://www.aesop.com/u1nb1km7t5q7/69ZsQrxOqIfGv57UKdoZq8/90a8ed3fd1a5b9235942a1b8f3fefc26/Aesop_KR_Store_Hannam_III_Hero_Bleed_Desktop_2880x1620px.jpg"
+            src="  https://images.unsplash.com/photo-1564355793479-47b17de0e154?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
           />
           <img
             className="storeImage"
             alt="스토어 이미지"
-            src="https://www.aesop.com/u1nb1km7t5q7/6IMiE1PUDTKpx0PnpEMjjI/6335b5b7d6f5f20d3c11ed59ee15ddc7/Aesop_Parnas_II_Hero_Bleed_Desktop_2880x1620px.jpg"
+            src="https://images.unsplash.com/photo-1612870962366-d644a1eabf3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y29zbWV0aWMlMjBzdG9yZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
           />
           <img
             className="storeImage"
             alt="스토어 이미지"
-            src="https://www.aesop.com/u1nb1km7t5q7/3iH5rovaCgvnsof8sZm26G/af454de4805a21bf78ea6730a19b9553/Aesop_Seongsu_Hero_Bleed_Desktop_2880x1620px.jpg"
+            src="https://media.istockphoto.com/id/606019324/ko/%EC%82%AC%EC%A7%84/%EC%8A%A4%EB%AA%B0-%ED%83%80%EC%9A%B4%EC%9D%98-%EB%B2%A0%EC%9D%B4%EC%BB%A4%EB%A6%AC-%EB%B0%8F-%EC%8B%9D%EB%A3%8C%ED%92%88-%EC%99%B8%EA%B4%80.jpg?s=612x612&w=0&k=20&c=XY5DQIWmgXHJhFjumhdOw9CHlYZVKCygLD2F5ru8C60="
           />
           <img
             className="storeImage"
             alt="스토어 이미지"
-            src="https://www.aesop.com/u1nb1km7t5q7/69ZsQrxOqIfGv57UKdoZq8/90a8ed3fd1a5b9235942a1b8f3fefc26/Aesop_KR_Store_Hannam_III_Hero_Bleed_Desktop_2880x1620px.jpg"
+            src="https://media.istockphoto.com/id/1329046817/ko/%EC%82%AC%EC%A7%84/%ED%95%98%EC%9D%B4%EA%B2%8C%EC%9D%B4%ED%8A%B8%EC%9D%98-%EC%8A%A4%EC%9B%A8%EC%9D%B8%EC%9D%98-%EC%B0%A8%EC%84%A0-%EA%B1%B0%EB%A6%AC-%EC%A0%84%EB%A7%9D.jpg?s=612x612&w=0&k=20&c=usMHZZKXqsZmDIGuKM_7yAaEBH-vwc80rnNeS0kApec="
           />
         </div>
         <div className="slideScroll">

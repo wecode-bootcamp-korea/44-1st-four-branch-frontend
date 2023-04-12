@@ -10,6 +10,7 @@ function ItemDisplay({ data }) {
 
   function goToProductDetail(targetId) {
     navigate(`/productdetail/${targetId}`);
+    window.scrollTo(0, 0);
   }
 
   function wishListHandle() {

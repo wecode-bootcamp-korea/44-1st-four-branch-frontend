@@ -1,6 +1,7 @@
 .storeLocator {
   display: flex;
   padding-top: 150px;
+  padding-bottom: 100px;
   gap: 150px;
 
   .storeCarousel {
@@ -8,6 +9,9 @@
     flex-grow: 1;
     width: 55%;
     overflow: hidden;
+    transition: opacity 2.5s;
+    opacity: 0;
+
     white-space: nowrap;
 
     &:hover .leftArrow {
@@ -23,8 +27,8 @@
     .leftArrow {
       position: absolute;
       z-index: 2;
-      top: 170px;
-      right: 677px;
+      top: 250px;
+      left: 0;
       width: 80px;
       height: 80px;
       padding: 25px 0 0 25px;
@@ -40,7 +44,7 @@
     .rightArrow {
       position: absolute;
       z-index: 2;
-      top: 170px;
+      top: 250px;
       right: 0;
       width: 80px;
       height: 80px;
@@ -61,6 +65,7 @@
 
     .storeImage {
       width: 100%;
+      height: 600px;
     }
 
     .slideScroll {

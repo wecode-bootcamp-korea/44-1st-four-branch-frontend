@@ -12,11 +12,11 @@ const SKINCARE = [
       { id: 'mainid=2', name: '모두보기' },
       { id: 'subid=1', name: '클렌저' },
       { id: 'subid=2', name: '각질제거' },
-      { id: 'subid=3', name: '트리트먼트 & 마스크' },
+      { id: 'subid=3', name: '트리트먼트' },
       { id: 'subid=4', name: '토너' },
     ],
     categoryImage:
-      'https://www.aesop.com/u1nb1km7t5q7/6Va39pw5RZBeMeQ9fdy2Zi/cdc6a081e7c8a3c361226cc5f86bb2cb/Aesop_Homepage_Navigation_Category_Skin_Desktop_1700x2400px.jpg',
+      'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
   },
 ];
 
@@ -28,7 +28,7 @@ const BODYHAND_DATA = [
       { id: 'subid=6', name: '바디' },
     ],
     categoryImage:
-      'https://www.aesop.com/u1nb1km7t5q7/11tFhBHEqkvZwHOiZMqGXo/0e2830ab4f36be98df48da3c57da1d5d/Aesop_Homepage_Navigation_Category_Body_Hand_Desktop_1700x2400px.jpg',
+      'https://images.unsplash.com/photo-1573461160327-b450ce3d8e7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80',
   },
 ];
 
@@ -41,7 +41,7 @@ const HAIR_DATA = [
       { id: 'subid=9', name: '트리트먼트' },
     ],
     categoryImage:
-      'https://www.aesop.com/u1nb1km7t5q7/1fi7x3gxHOba7MFtIctntt/9e47c7b14c67f3ed28df74c416090251/Aesop_Homepage_Navigation_Category_Hair_Desktop_1700x2400px.jpg',
+      'https://plus.unsplash.com/premium_photo-1664007755604-e44b2cae5a69?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8JUVCJUI5JTk3fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
   },
 ];
 
@@ -55,7 +55,7 @@ const PERFUME = [
       { id: 'subid=13', name: '오퓰런트' },
     ],
     categoryImage:
-      'https://www.aesop.com/u1nb1km7t5q7/6hAuVvwJ8jj5GYOVhsCAqB/82bcf2e821b13258afad2c64406f8e29/Aesop_Homepage_Navigation_Category_Fragrance_Desktop_1700x2400px.jpg',
+      'https://images.unsplash.com/photo-1622618991746-fe6004db3a47?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHBlcmZ1bWV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
   },
 ];
 

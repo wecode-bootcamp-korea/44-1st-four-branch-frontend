@@ -18,8 +18,8 @@
       justify-content: space-between;
       margin: 0;
       padding: 0 40px;
-      font-size: 14px;
-      font-weight: 300;
+      font-size: 15px;
+      font-weight: 400;
       list-style: none;
     }
 
@@ -66,10 +66,16 @@
       font-weight: 700;
     }
 
+    .smallCategory {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
     .logoImg {
       position: absolute;
-      top: 80px;
-      left: 50px;
+      top: 140px;
+      left: 140px;
       width: 120px;
     }
 
@@ -97,6 +103,7 @@
     .categoryBoxImg {
       width: 610px;
       height: 100%;
+      margin-left: 100px;
       background-image: url('https://www.aesop.com/u1nb1km7t5q7/6Va39pw5RZBeMeQ9fdy2Zi/cdc6a081e7c8a3c361226cc5f86bb2cb/Aesop_Homepage_Navigation_Category_Skin_Desktop_1700x2400px.jpg');
       background-size: cover;
     }

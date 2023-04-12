@@ -1,14 +1,18 @@
 .slideItem {
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   align-items: center;
+  margin-bottom: 50px;
+  gap: 20px;
   &:hover {
     cursor: pointer;
   }
 
   .carouselItem {
-    width: 410px;
-    height: 400px;
+    object-fit: contain;
+    height: 380px;
+    margin-bottom: 20px;
   }
 
   .itemName {

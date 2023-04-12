@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import logoImg from '../../assets/main/aesop-logo.png';
+import logoImg from '../../assets/main/fourbsopLogo.png';
 import ItemDisplay from './ItemDisplay/ItemDisplay';
 import './ProductList.scss';
 
 function ProductList() {
   const [productData, setProductData] = useState([]);
+  const [isOpenFilter, setIsOpenFilter] = useState(false);
   const params = useParams();
   const { id } = params;
 
@@ -16,6 +17,22 @@ function ProductList() {
         setProductData(result);
       });
   }, [id]);
+
+  function handleFilter() {
+    setIsOpenFilter(prev => !prev);
+  }
+
+  function filterDesc() {
+    fetch(`http://10.58.52.90:3000/products?${id}&orderby=price&sorting=DESC`)
+      .then(response => response.json())
+      .then(result => setProductData(result));
+  }
+
+  function filterAsc() {
+    fetch(`http://10.58.52.90:3000/products?${id}&orderby=price&sorting=ASC`)
+      .then(response => response.json())
+      .then(result => setProductData(result));
+  }
 
   return (
     <div className="productList">
@@ -31,9 +48,19 @@ function ProductList() {
             );
           })}
         </ul>
-        <div className="filter">
-          <p className="text">필터</p>
+        <div className="filter" onClick={handleFilter}>
+          <p className="text">정렬</p>
           <p className="underArrow">⌵</p>
+          {isOpenFilter && (
+            <ul className="filterOpen">
+              <li className="priceAsc" onClick={filterDesc}>
+                높은가격순
+              </li>
+              <li className="desc" onClick={filterAsc}>
+                낮은가격순
+              </li>
+            </ul>
+          )}
         </div>
       </nav>
       <section>

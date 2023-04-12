@@ -36,13 +36,47 @@
     .filter {
       display: flex;
       position: absolute;
+      z-index: 3;
       right: 100px;
       align-items: center;
-      gap: 25px;
       justify-content: center;
       width: 110px;
       height: 60px;
       border: 1px solid #cac9bf;
+      cursor: pointer;
+      gap: 25px;
+
+      .filterOpen {
+        position: absolute;
+        top: 58px;
+        border: 1px solid #cccccc;
+      }
+      li {
+        width: 108px;
+        height: 60px;
+
+        background-color: #ebeade;
+        color: #666666;
+        line-height: 60px;
+        text-align: center;
+      }
+      .priceAsc {
+        font-size: 14px;
+        &:hover {
+          background-color: #333333;
+          color: #fffef2;
+          font-size: 16px;
+        }
+      }
+      .desc {
+        font-size: 14px;
+        &:hover {
+          transition: all 0.4s;
+          background-color: #333333;
+          color: #fffef2;
+          font-size: 16px;
+        }
+      }
     }
 
     .text {

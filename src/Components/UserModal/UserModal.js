@@ -20,6 +20,7 @@ function UserModal({
     password: '',
   });
   const [isCheckingBox, setIsCheckingBox] = useState('');
+  const [passwordView, setPasswordView] = useState(true);
   const emailCheck = userInfo.email.includes('@');
   const passwordCheck = userInfo.password.length >= 5;
   const isChecked = isCheckingBox === true;
@@ -32,6 +33,10 @@ function UserModal({
 
   function checkBoxHandle(e) {
     setIsCheckingBox(e.target.checked);
+  }
+
+  function showPassword() {
+    setPasswordView(prev => !prev);
   }
 
   function isPossible(e) {
@@ -115,7 +120,7 @@ function UserModal({
           </span>
           <div className="userTitle">{modalMode}</div>
 
-          <form onSubmit={isPossible}>
+          <form onSubmit={isPossible} className="loginForm">
             <input
               name="email"
               className="email"
@@ -127,11 +132,14 @@ function UserModal({
             <input
               name="password"
               className="password"
-              type="password"
+              type={passwordView ? 'password' : 'text'}
               placeholder="비밀번호"
               value={userInfo.password}
               onChange={handleUserInfo}
             />
+            <div className="viewPassword" onClick={showPassword}>
+              보기
+            </div>
             <div className="passwordReset">비밀번호 재설정하기</div>
             <button className="submitBtn">{modalMode}</button>
           </form>
@@ -161,7 +169,7 @@ function UserModal({
               수 있습니다.
             </div>
           )}
-          <form onSubmit={isPossible}>
+          <form onSubmit={isPossible} className="signInForm">
             {modalMode === '회원가입' && (
               <>
                 <input

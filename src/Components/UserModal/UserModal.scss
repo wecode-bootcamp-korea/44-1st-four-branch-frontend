@@ -33,6 +33,30 @@
       font-size: 30px;
     }
 
+    .loginForm {
+      position: relative;
+      .viewPassword {
+        position: absolute;
+        top: 90px;
+        right: 10px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .signInForm {
+      position: relative;
+      .viewPassword {
+        position: absolute;
+        top: 170px;
+        right: 10px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
     .subTitle {
       margin-bottom: 45px;
       color: #666666;

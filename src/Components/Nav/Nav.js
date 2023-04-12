@@ -6,6 +6,7 @@ import UserBlackWindow from '../../pages/Main/UserBlackWindow/UserBlackWindow';
 import Basket from '../Basket/Basket';
 import CheckUser from '../CheckUser/CheckUser';
 import LoginSuccess from '../LoginSuccess/LoginSuccess';
+import { AiOutlineSearch } from 'react-icons/ai';
 import {
   CATEGORY_LIST,
   SKINCARE,
@@ -142,11 +143,12 @@ function Nav({ basket, setBasket, handleTotalPrice }) {
                 </li>
               );
             })}
+            <li className="search">
+              <div>검색</div>
+              <AiOutlineSearch />
+            </li>
           </div>
           <div className="flexEnd">
-            {/* <li className="loginButton" onClick={userInfoOpen}>
-              {token ? `${loginStatus} 님` : '로그인'}
-            </li> */}
             {token ? (
               <li>{`${loginStatus}님`}</li>
             ) : (

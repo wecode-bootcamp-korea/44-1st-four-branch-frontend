@@ -22,9 +22,10 @@
     .productImage {
       position: absolute;
       top: 0;
+      max-width: 500px;
       height: 540px;
-      object-fit: contain;
       transform: translate(-20%, -50%);
+      object-fit: contain;
     }
   }
 

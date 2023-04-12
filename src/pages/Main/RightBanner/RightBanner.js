@@ -1,23 +1,37 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import gif from '../../../assets/main/ezgif.com-gif-maker.gif';
 import './RightBanner.scss';
 
 function RightBanner() {
+  const banner = useRef();
+
+  useEffect(() => {
+    let observer = new IntersectionObserver(e => {
+      if (e[0].isIntersecting) {
+        e[0].target.style.opacity = 1;
+      } else {
+        e[0].target.style.opacity = 0;
+      }
+    });
+    observer.observe(banner.current);
+  });
   return (
-    <article className="rightBanner">
+    <article ref={banner} className="rightBanner">
       <div className="articleContent">
-        <div>홈 프래그런스</div>
-        <h2 className="mainTitle">아로마틱 인센스 소개</h2>
+        <div>프래그런스</div>
+        <h2 className="mainTitle">진실된 아름다움, 4bsop 소개</h2>
         <p className="content">
-          사유하는 마음을 위한 아로마 3종 - 무라사키, 카게로우, 사라시나
-          아로마틱 인센스와 단아한 형태가 돋보이는 브론즈 인센스 홀더를
-          만나보세요.
+          피부 본연의 가치를 최우선으로 생각하는 사람들에게 진실되고 젤제된
+          아름다움을 선사하고자 합니다.
         </p>
         <div className="squareBox">
           <div className="text">컬렉션 보기</div>
           <div className="arrow">→</div>
         </div>
       </div>
-      <div className="contentImg" />
+      <div className="contentImg">
+        <img className="gifImage" src={gif} alt="숲속" />
+      </div>
     </article>
   );
 }

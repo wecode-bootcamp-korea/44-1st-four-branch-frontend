@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiPlusCircle } from 'react-icons/fi';
-import logoImg from '../../../assets/main/aesop-logo.png';
+import logoImg from '../../../assets/main/fourbsopLogo.png';
 import ProductWishList from './ProductWishList/ProductWishList';
 import ModalDetailView from '../ModalDetailView/ModalDetailView';
 import { useParams } from 'react-router-dom';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import logoImg from '../../../assets/main/aesop-logo.png';
+import logoImg from '../../../assets/main/fourbsopLogo.png';
 import { CATEGORY_LIST } from '../NavData';
 import './CategoryBox.scss';
 
@@ -47,6 +47,7 @@ function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
           {categoryChange[0].categoryList.map(data => {
             return (
               <li
+                className="smallCategory"
                 key={data.id}
                 id={data.id}
                 onClick={() => {
@@ -59,13 +60,6 @@ function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
               </li>
             );
           })}
-        </ul>
-        <ul className="daily">
-          <li className="categoryTitle">데일리 에센셜</li>
-          <li>레저렉션 아로마틱 핸드 밤</li>
-          <li>레저렉션 아로마틱 핸드 워시</li>
-          <li>제라늄 리프 듀엣</li>
-          <li>이그절티드 아이 세럼</li>
         </ul>
         <ul className="newArrival">
           <li className="categoryTitle">신제품</li>
