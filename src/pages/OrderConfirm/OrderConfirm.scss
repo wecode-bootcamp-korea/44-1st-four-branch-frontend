@@ -12,11 +12,11 @@
 
     .logo {
       width: 120px;
-      margin-right: 120px;
     }
 
     .contents {
       width: 1000px;
+      margin: 0 auto;
 
       .comment {
         @include h2Style;
@@ -30,11 +30,14 @@
       width: 100%;
       height: 60px;
       margin-top: 60px;
-
       margin-bottom: 30px;
       padding: 20px;
       border: 1px solid #333333;
       color: #333;
+
+      .num {
+        font-weight: 700;
+      }
     }
 
     .detailInfo {
@@ -42,10 +45,10 @@
       grid-template-columns: 1fr 1fr 1fr;
       margin-bottom: 40px;
       padding-right: 40px;
+      padding-left: 20px;
 
       .title {
-        @include h6Style;
-
+        margin-bottom: 6px;
         color: #333;
       }
     }
@@ -66,12 +69,23 @@
         }
       }
 
-      .totalPrice {
-        border-top: 1px solid #333;
+      .productName {
+        padding-left: 20px;
+        color: #333;
+      }
 
-        .totalNum {
-          @include h3Style;
-        }
+      .productPrice {
+        padding-right: 20px;
+      }
+
+      .totalPrice {
+        padding-left: 20px;
+        border-top: 1px solid #333;
+      }
+
+      .totalNum {
+        @include h3Style;
+        padding-right: 20px;
       }
     }
   }

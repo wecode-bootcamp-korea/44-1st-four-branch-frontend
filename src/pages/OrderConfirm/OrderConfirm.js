@@ -4,21 +4,17 @@ import './OrderConfirm.scss';
 
 function OrderConfirm() {
   const [orderInfo, setOrderInfo] = useState([]);
-  let totalAmount;
+  let totalAmount = [];
 
   function makeOrderInfo(value) {
     return JSON.parse(value);
   }
 
-  // function makeOrderInfo(value) {
-  //   return value.replaceAll('\\\\', '');
-  // }
   // const token = localStorage.getItem('token');
   const token =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJpYXQiOjE2ODEyMDQ1NjMsImV4cCI6MTY4MTYzNjU2M30._cA8Gy_gfkTmjqLsoEcLqOPHCvYo5YK5j50oH4Vn5K0';
 
   useEffect(() => {
-    // fetch('/data/orderInfo.json')
     fetch('http://10.58.52.79:3000/orders', {
       method: 'GET',
       headers: {
@@ -39,57 +35,43 @@ function OrderConfirm() {
               <img className="logo" src={Logo} alt="로고" />
             </section>
             <section className="contents">
-              <h2 className="comment">장다희 님 감사합니다.</h2>
+              <h2 className="comment">{`${info.userFirstName} ${info.userLastName} 님 감사합니다.`}</h2>
               <p>
-                감사합니다. 장다희님. 주문이 완료되었습니다. 추가 문의 사항이
-                있으시면 연락 주시기 바랍니다.
+                {`감사합니다. ${info.userFirstName} ${info.userLastName} 님. 주문이 완료되었습니다. 추가 문의 사항이
+                있으시면 연락 주시기 바랍니다.`}
               </p>
 
               <form>
                 <div className="orderNum">
-                  <h6>{`주문 번호 확인 ${info.orderNumber}`}</h6>
+                  <div>
+                    <span>주문 번호 </span>
+                    <span className="num">{info.orderNumber}</span>
+                  </div>
                   <p>{info.orderDate}</p>
                 </div>
                 <div className="detailInfo">
-                  <section>
+                  <div>
                     <h6 className="title">배송 정보</h6>
-                    <p>장 다희</p>
-                    {/* <p>{info.userAddress.detail}</p>
-                    <p>{info.userAddress.postcode}</p>
-                    <p>{info.userAddress.country}</p> */}
+                    <p>{`${info.userFirstName} ${info.userLastName}`}</p>
                     <p>{makeOrderInfo(info.userAddress).country}</p>
                     <p>{makeOrderInfo(info.userAddress).postcode}</p>
                     <p>{makeOrderInfo(info.userAddress).detail}</p>
-                  </section>
-                  <section>
+                  </div>
+                  <div>
                     <h6 className="title">주문 상태</h6>
                     <p>{info.orderStatus}</p>
-                  </section>
-                  <section>
+                  </div>
+                  <div>
                     <h6 className="title">지불 방법</h6>
                     <p>포인트</p>
-                  </section>
+                  </div>
                 </div>
                 <ul className="bills">
-                  {/* {info.orderItems.map((item, index) => (
-                    <li key={index}>
-                      <p>{item.productName}</p>
-                      <span>{item.size}</span>
-                      <span />
-                      <div>
-                        <span>{`₩ ${Math.floor(
-                          item.price
-                        ).toLocaleString()}`}</span>
-                        <span>{` x ${item.quantity}`}</span>
-                      </div>
-                    </li>
-                  ))} */}
                   {makeOrderInfo(info.orderItems).map((item, index) => (
                     <li key={index}>
-                      <p>{item.productName}</p>
+                      <p className="productName">{item.productName}</p>
                       <span>{item.size}</span>
-                      <span />
-                      <div>
+                      <div className="productPrice">
                         <span>{`₩ ${Math.floor(
                           item.price
                         ).toLocaleString()}`}</span>
