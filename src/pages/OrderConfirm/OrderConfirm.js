@@ -30,12 +30,13 @@ function OrderConfirm() {
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJpYXQiOjE2ODEyMDQ1NjMsImV4cCI6MTY4MTYzNjU2M30._cA8Gy_gfkTmjqLsoEcLqOPHCvYo5YK5j50oH4Vn5K0';
 
   useEffect(() => {
-    fetch('http://10.58.52.79:3000/orders', {
+    fetch('http://10.58.52.76:3000/orders', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         Authorization: token,
       },
+      body: JSON.stringify(),
     })
       .then(response => response.json())
       .then(result => setOrderInfo(result[0]));
@@ -77,6 +78,10 @@ function OrderConfirm() {
               <div>
                 <h6 className="title">지불 방법</h6>
                 <p>포인트</p>
+              </div>
+              <div>
+                <p className="title">결제 후 My포인트</p>
+                <p>{`₩ ${Math.floor(orderInfo.point).toLocaleString()}`}</p>
               </div>
             </div>
             <ul className="bills">
