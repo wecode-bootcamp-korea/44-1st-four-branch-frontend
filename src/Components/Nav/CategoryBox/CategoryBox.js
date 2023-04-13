@@ -4,7 +4,12 @@ import logoImg from '../../../assets/main/fourbsopLogo.png';
 import { CATEGORY_LIST } from '../NavData';
 import './CategoryBox.scss';
 
-function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
+function CategoryBox({
+  categoryChange,
+  categoryHandle,
+  categoryBoxClose,
+  handleCategoryName,
+}) {
   const navigate = useNavigate();
 
   function goToProductList(targetId) {
@@ -53,7 +58,7 @@ function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
                 onClick={() => {
                   goToProductList(data.id);
                   categoryBoxClose();
-                  console.log(data.id);
+                  handleCategoryName(data.name);
                 }}
               >
                 {data.name}

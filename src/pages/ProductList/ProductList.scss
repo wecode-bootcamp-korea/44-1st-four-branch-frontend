@@ -3,12 +3,13 @@
 
   .logoImage {
     width: 120px;
-    margin-top: 50px;
+    margin-top: 80px;
+    margin-bottom: 50px;
     margin-left: 40px;
   }
 
   .categoryTitle {
-    margin: 50px 0 25px 0;
+    margin: 25px 0 25px 0;
     padding-left: 40px;
     font-size: 25px;
   }
@@ -36,7 +37,7 @@
     .filter {
       display: flex;
       position: absolute;
-      z-index: 3;
+      z-index: 1;
       right: 100px;
       align-items: center;
       justify-content: center;
@@ -63,6 +64,7 @@
       .priceAsc {
         font-size: 14px;
         &:hover {
+          transition: all 0.4s;
           background-color: #333333;
           color: #fffef2;
           font-size: 16px;

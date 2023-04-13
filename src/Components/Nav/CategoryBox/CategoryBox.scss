@@ -74,8 +74,8 @@
 
     .logoImg {
       position: absolute;
-      top: 140px;
-      left: 140px;
+      top: 100px;
+      left: 100px;
       width: 120px;
     }
 
@@ -101,6 +101,7 @@
     }
 
     .categoryBoxImg {
+      z-index: 3;
       width: 610px;
       height: 100%;
       margin-left: 100px;

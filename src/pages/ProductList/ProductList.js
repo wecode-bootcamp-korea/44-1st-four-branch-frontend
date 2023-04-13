@@ -4,7 +4,7 @@ import logoImg from '../../assets/main/fourbsopLogo.png';
 import ItemDisplay from './ItemDisplay/ItemDisplay';
 import './ProductList.scss';
 
-function ProductList() {
+function ProductList({ categoryName }) {
   const [productData, setProductData] = useState([]);
   const [isOpenFilter, setIsOpenFilter] = useState(false);
   const params = useParams();
@@ -37,17 +37,8 @@ function ProductList() {
   return (
     <div className="productList">
       <img className="logoImage" src={logoImg} alt="로고 이미지" />
-      <h2 className="categoryTitle">클렌저</h2>
       <nav className="categoryBar">
-        <ul className="categoryList">
-          {CATEGORY_LIST.map((category, index) => {
-            return (
-              <li key={index} className="category">
-                {category}
-              </li>
-            );
-          })}
-        </ul>
+        <h2 className="categoryTitle">{categoryName}</h2>
         <div className="filter" onClick={handleFilter}>
           <p className="text">정렬</p>
           <p className="underArrow">⌵</p>
@@ -65,10 +56,10 @@ function ProductList() {
       </nav>
       <section>
         <div className="itemListInfo">
-          <h3 className="title">처음의 시작</h3>
+          <h3 className="title">최소한의 루틴</h3>
           <p className="itemIntroduce">
-            각질, 불필요한 유분 그리고 기타 잔여물을 말끔히 씻어내어 피부를
-            깨끗하게 하는 것은 인텔리전트 스킨케어의 기초입니다.
+            있는 그대로 충분하다, 무언가를 더하기보다 있는 그대로의 모습을
+            들여다보고 그 본여의 가치를 살리려는 노력
           </p>
         </div>
         {productData.map(data => {
@@ -80,12 +71,3 @@ function ProductList() {
 }
 
 export default ProductList;
-
-const CATEGORY_LIST = [
-  '모두 보기',
-  '|',
-  '클렌저',
-  '토너',
-  '각질',
-  '트리트먼트 & 마스트',
-];

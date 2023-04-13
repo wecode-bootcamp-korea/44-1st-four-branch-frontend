@@ -16,7 +16,7 @@ import {
 } from './NavData';
 import './Nav.scss';
 
-function Nav({ basket, setBasket, handleTotalPrice }) {
+function Nav({ basket, setBasket, handleTotalPrice, handleCategoryName }) {
   const [userInfo, setUserInfo] = useState(false);
   const [userNameCheck, setUserNameCheck] = useState(false);
   const [loginStatus, setLoginStatus] = useState('');
@@ -39,8 +39,10 @@ function Nav({ basket, setBasket, handleTotalPrice }) {
     if (targetId === '홈') {
       navigate('/main');
       setCategory(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       window.document.body.style.overflow = 'scroll';
     } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       window.document.body.style.overflow = 'hidden';
       setCategoryChange(MAIN_CATEGORY[targetId]);
       setCategory(true);
@@ -115,6 +117,7 @@ function Nav({ basket, setBasket, handleTotalPrice }) {
           categoryChange={categoryChange}
           categoryHandle={categoryHandle}
           categoryBoxClose={categoryBoxClose}
+          handleCategoryName={handleCategoryName}
         />
       )}
       <Basket

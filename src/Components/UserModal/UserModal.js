@@ -4,7 +4,6 @@ import './UserModal.scss';
 
 function UserModal({
   setUserNameCheck,
-  userNameCheck,
   modalMode,
   userInfoClose,
   modalChangeHandle,
@@ -21,6 +20,7 @@ function UserModal({
   });
   const [isCheckingBox, setIsCheckingBox] = useState('');
   const [passwordView, setPasswordView] = useState(true);
+  const [loginFailed, setLoginFailed] = useState(false);
   const emailCheck = userInfo.email.includes('@');
   const passwordCheck = userInfo.password.length >= 5;
   const isChecked = isCheckingBox === true;
@@ -29,6 +29,7 @@ function UserModal({
   function handleUserInfo(e) {
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
+    setLoginFailed(false);
   }
 
   function checkBoxHandle(e) {
@@ -45,7 +46,7 @@ function UserModal({
       if (!emailCheck && passwordCheck) {
         alert('아이디나 비밀번호 확인해주세요.');
       } else if (emailCheck && passwordCheck) {
-        fetch('http://10.58.52.90:3000/users/signin', {
+        fetch('http://10.58.52.76:3000/users/signin', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
@@ -59,10 +60,9 @@ function UserModal({
             if (response.ok === true) {
               return response.json();
             } else {
-              throw new Error('에러 발생!');
+              setLoginFailed(true);
             }
           })
-          .catch(error => console.log(error))
           .then(result => {
             if (result.token) {
               localStorage.setItem('TOKEN', result.token);
@@ -70,7 +70,6 @@ function UserModal({
               setLoginStatus(result.userLastName);
               setLogOut('로그아웃');
               userInfoClose();
-              console.log(result.token);
             } else {
               alert('로그인 실패');
             }
@@ -118,6 +117,11 @@ function UserModal({
           <span className="closeBtn" onClick={userInfoClose}>
             ✕
           </span>
+          {loginFailed && (
+            <div className="loginFailed">
+              아이디 또는 비밀번호를 다시 확인해주세요.
+            </div>
+          )}
           <div className="userTitle">{modalMode}</div>
 
           <form onSubmit={isPossible} className="loginForm">

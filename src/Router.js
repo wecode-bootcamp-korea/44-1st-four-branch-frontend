@@ -10,9 +10,14 @@ import Order from './pages/Order/Order';
 const Router = () => {
   const [basket, setBasket] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [categoryName, setCategoryName] = useState('');
 
   function handleTotalPrice(price) {
     setTotalPrice(price);
+  }
+
+  function handleCategoryName(name) {
+    setCategoryName(name);
   }
 
   return (
@@ -22,6 +27,7 @@ const Router = () => {
         basket={basket}
         setBasket={setBasket}
         handleTotalPrice={handleTotalPrice}
+        handleCategoryName={handleCategoryName}
       />
       <Routes>
         <Route path="/main" element={<Main />} />
@@ -29,7 +35,10 @@ const Router = () => {
           path="/productdetail/:id"
           element={<ProductDetail basket={basket} setBasket={setBasket} />}
         />
-        <Route path="/productlist/:id" element={<ProductList />} />
+        <Route
+          path="/productlist/:id"
+          element={<ProductList categoryName={categoryName} />}
+        />
         <Route path="/order" element={<Order totalPrice={totalPrice} />} />
       </Routes>
     </BrowserRouter>
