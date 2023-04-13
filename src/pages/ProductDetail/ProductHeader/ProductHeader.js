@@ -55,8 +55,6 @@ function ProductHeader({
       .then(result => {
         setBasket(result);
       });
-
-    console.log(basket);
   }
 
   return (
@@ -123,83 +121,6 @@ function ProductHeader({
       </div>
     </div>
   );
-
-  // return (
-  //   <div>
-  //     {isOpenModal && (
-  //       <ModalDetailView
-  //         modalView={modalView}
-  //         productDetailList={productDetailList}
-  //         isCloseModal={isCloseModal}
-  //       />
-  //     )}
-  //     {/* {productDetailList.map(
-  //       ({
-  //         ingredients,
-  //         id,
-  //         imageUrl,
-  //         name,
-  //         mainCategoryName,
-  //         subCategoryName,
-  //         description,
-  //         size,
-  //         price,
-  //       }) => {
-  //         return (
-  //           <div className={`productHeader ${slide}`} key={id}>
-  //             <section className="logoContainer">
-  //               <img className="logo" src={logoImg} alt="logo" />
-  //             </section>
-  //             <section className="productImageContainer">
-  //               <img className="productImage" src={imageUrl} alt={name} />
-  //             </section>
-  //             <section className="productDetailContainer">
-  //               <div className="productTitleContainer">
-  //                 <div className="productCategoryLink">
-  //                   {mainCategoryName}
-  //                   <div className="divideDot" />
-  //                   {subCategoryName}
-  //                 </div>
-  //                 <h2 className="productName">{name}</h2>
-  //                 <p className="productDescription">{description}</p>
-  //               </div>
-  //               <ul className="productDetail">
-  //                 <li className="productIngredient">
-  //                   <h6 className="ingredientTitle">주요 성분</h6>
-  //                   <p className="ingredientText">
-  //                     {makeIngredientList(ingredients)[0]},
-  //                     {makeIngredientList(ingredients)[1]},
-  //                     {makeIngredientList(ingredients)[2]}
-  //                   </p>
-  //                   <FiPlusCircle
-  //                     className="detailViewButton"
-  //                     onClick={isOpenModal}
-  //                   />
-  //                 </li>
-  //                 <li className="productSize">
-  //                   <h6 className="sizeTitle">사이즈</h6>
-  //                   <p className="sizeText">{size}</p>
-  //                 </li>
-  //               </ul>
-  //               <button
-  //                 onClick={() => {
-  //                   shoppingBasket();
-  //                 }}
-  //                 className="primarySolidButton"
-  //               >{`카트에 추가하기 - ₩ ${Math.floor(
-  //                 price
-  //               ).toLocaleString()}`}</button>
-  //               <ProductWishList
-  //                 wishList={wishList}
-  //                 handleWishList={handleWIshList}
-  //               />
-  //             </section>
-  //           </div>
-  //         );
-  //       }
-  //     )} */}
-  //   </div>
-  // );
 }
 
 export default ProductHeader;

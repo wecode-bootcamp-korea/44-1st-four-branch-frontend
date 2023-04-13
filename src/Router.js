@@ -6,6 +6,7 @@ import Main from './pages/Main/Main';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import ProductList from './pages/ProductList/ProductList';
 import Order from './pages/Order/Order';
+import OrderConfirm from './pages/OrderConfirm/OrderConfirm';
 
 const Router = () => {
   const [basket, setBasket] = useState([]);

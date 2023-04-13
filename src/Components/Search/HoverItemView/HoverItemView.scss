@@ -1,0 +1,31 @@
+@import '../../../styles/mixin';
+
+.hoverItemView {
+  position: absolute;
+  right: 0;
+  width: 50%;
+  height: 100vh;
+  background-color: #f6f5e9;
+
+  .hoverItemImage {
+    position: absolute;
+    top: 20%;
+    right: 50%;
+    height: 400px;
+    transform: translate(50%, 0);
+  }
+
+  .hoverItemName {
+    position: absolute;
+    right: 50%;
+    bottom: 120px;
+    transform: translate(50%, 0);
+  }
+
+  .primarySolidButton {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    @include primarySolidButton;
+  }
+}
