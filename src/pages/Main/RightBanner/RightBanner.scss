@@ -1,0 +1,54 @@
+.rightBanner {
+  display: flex;
+  padding-top: 150px;
+  transition: opacity 2.5s;
+  opacity: 0;
+  gap: 150px;
+
+  .contentImg {
+    flex-grow: 1;
+    width: 55%;
+    height: 625px;
+    .gifImage {
+      width: 100%;
+    }
+  }
+
+  .articleContent {
+    width: 555px;
+    height: 510px;
+    margin-left: 80px;
+
+    .mainTitle {
+      margin-top: 30px;
+      margin-bottom: 40px;
+      color: rgb(51, 51, 51);
+      font-size: 30px;
+    }
+
+    .content {
+      margin-bottom: 30px;
+      color: #545454;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .squareBox {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 300px;
+      height: 60px;
+      padding: 0 23px;
+      border: 1px solid rgba(51, 51, 51, 0.2);
+    }
+
+    .text {
+      font-size: 14px;
+    }
+    .arrow {
+      font-size: 25px;
+    }
+  }
+}

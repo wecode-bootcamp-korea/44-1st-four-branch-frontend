@@ -3,12 +3,13 @@
 
   .logoImage {
     width: 120px;
-    margin-top: 50px;
+    margin-top: 80px;
+    margin-bottom: 50px;
     margin-left: 40px;
   }
 
   .categoryTitle {
-    margin: 50px 0 25px 0;
+    margin: 25px 0 25px 0;
     padding-left: 40px;
     font-size: 25px;
   }
@@ -36,13 +37,48 @@
     .filter {
       display: flex;
       position: absolute;
+      z-index: 1;
       right: 100px;
       align-items: center;
-      gap: 25px;
       justify-content: center;
       width: 110px;
       height: 60px;
       border: 1px solid #cac9bf;
+      cursor: pointer;
+      gap: 25px;
+
+      .filterOpen {
+        position: absolute;
+        top: 58px;
+        border: 1px solid #cccccc;
+      }
+      li {
+        width: 108px;
+        height: 60px;
+
+        background-color: #ebeade;
+        color: #666666;
+        line-height: 60px;
+        text-align: center;
+      }
+      .priceAsc {
+        font-size: 14px;
+        &:hover {
+          transition: all 0.4s;
+          background-color: #333333;
+          color: #fffef2;
+          font-size: 16px;
+        }
+      }
+      .desc {
+        font-size: 14px;
+        &:hover {
+          transition: all 0.4s;
+          background-color: #333333;
+          color: #fffef2;
+          font-size: 16px;
+        }
+      }
     }
 
     .text {
@@ -57,7 +93,7 @@
   section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 790px 790px 790px;
+    grid-template-rows: 790px 790px;
     background-color: #f6f5e8;
   }
   .itemListInfo {
@@ -71,6 +107,24 @@
 
     .itemIntroduce {
       line-height: 2;
+    }
+  }
+  .pagenation {
+    padding-top: 40px;
+    padding-bottom: 50px;
+    background-color: #f6f5e8;
+    font-size: 30px;
+    text-align: center;
+    button {
+      margin: 0 10px;
+      border: none;
+      background-color: #f6f5e8;
+      color: #333333;
+      font-size: 20px;
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
     }
   }
 }

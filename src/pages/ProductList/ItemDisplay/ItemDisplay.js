@@ -1,17 +1,29 @@
 import React, { useState } from 'react';
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import './ItemDisplay.scss';
 
 function ItemDisplay({ data }) {
   const [heartChange, setHeartChange] = useState(false);
+  const navigate = useNavigate();
+
+  function goToProductDetail(targetId) {
+    navigate(`/productdetail/${targetId}`);
+    window.scrollTo(0, 0);
+  }
 
   function wishListHandle() {
     setHeartChange(heartChange => !heartChange);
   }
 
   return (
-    <div className="itemDisplay">
+    <div
+      className="itemDisplay"
+      onClick={() => {
+        goToProductDetail(data.id);
+      }}
+    >
       {heartChange ? (
         <FaHeart className="heart" onClick={wishListHandle} />
       ) : (
@@ -31,7 +43,7 @@ function ItemDisplay({ data }) {
         <p className="additional">사용감</p>
         <p className="explain">진정된, 생기있는</p>
       </div>
-      <div className="learnMore">장바구니 담기</div>
+      <div className="learnMore">더 알아보기</div>
     </div>
   );
 }

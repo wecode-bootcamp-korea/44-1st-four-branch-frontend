@@ -22,8 +22,10 @@
     .productImage {
       position: absolute;
       top: 0;
+      max-width: 500px;
       height: 540px;
       transform: translate(-20%, -50%);
+      object-fit: contain;
     }
   }
 
@@ -97,6 +99,9 @@
 
     .primarySolidButton {
       @include primarySolidButton;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

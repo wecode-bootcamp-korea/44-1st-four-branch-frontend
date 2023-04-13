@@ -1,14 +1,26 @@
 import React from 'react';
-import './CategoryBox.scss';
-import logoImg from '../../../assets/product/aesop-logo.png';
+import { useNavigate } from 'react-router-dom';
+import logoImg from '../../../assets/main/fourbsopLogo.png';
 import { CATEGORY_LIST } from '../NavData';
+import './CategoryBox.scss';
 
-function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
+function CategoryBox({
+  categoryChange,
+  categoryHandle,
+  categoryBoxClose,
+  handleCategoryName,
+}) {
+  const navigate = useNavigate();
+
+  function goToProductList(targetId) {
+    navigate(`/productlist/${targetId}?offset=0&limit=5`);
+  }
+
   return (
     <div className="categoryBox">
       <nav>
-        <ul className="mainCategory">
-          <li className="flexStart">
+        <div className="mainCategory">
+          <ul className="flexStart">
             {CATEGORY_LIST.map(data => {
               return (
                 <div
@@ -30,28 +42,29 @@ function CategoryBox({ categoryChange, categoryHandle, categoryBoxClose }) {
             >
               닫기 ✕
             </li>
-          </li>
-          <li className="flexEnd">
-            <div className="loginBtn">로그인</div>
-            <div className="wishList">위시리스트</div>
-            <div className="cart">카트</div>
-          </li>
-        </ul>
+          </ul>
+        </div>
       </nav>
       <div className="categoryList">
         <ul className="subCategory">
           <img className="logoImg" alt="logoImage" src={logoImg} />
           <li className="categoryTitle">카테고리</li>
-          {categoryChange[0].categoryList.map((data, index) => {
-            return <li key={index}>{data}</li>;
+          {categoryChange[0].categoryList.map(data => {
+            return (
+              <li
+                className="smallCategory"
+                key={data.id}
+                id={data.id}
+                onClick={() => {
+                  goToProductList(data.id);
+                  categoryBoxClose();
+                  handleCategoryName(data.name);
+                }}
+              >
+                {data.name}
+              </li>
+            );
           })}
-        </ul>
-        <ul className="daily">
-          <li className="categoryTitle">데일리 에센셜</li>
-          <li>레저렉션 아로마틱 핸드 밤</li>
-          <li>레저렉션 아로마틱 핸드 워시</li>
-          <li>제라늄 리프 듀엣</li>
-          <li>이그절티드 아이 세럼</li>
         </ul>
         <ul className="newArrival">
           <li className="categoryTitle">신제품</li>

@@ -25,6 +25,15 @@
     align-items: center;
     gap: 25px;
 
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
     .categoryList {
       &:hover {
         cursor: pointer;
@@ -38,6 +47,23 @@
     gap: 25px;
 
     .loginButton {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .cartBtn {
+      display: flex;
+      gap: 7px;
+      &:hover {
+        cursor: pointer;
+      }
+
+      .cartQuantity {
+        font-weight: 700;
+      }
+    }
+    .logoutBtn {
       &:hover {
         cursor: pointer;
       }

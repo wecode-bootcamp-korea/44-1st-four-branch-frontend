@@ -3,11 +3,14 @@ import { useState } from 'react';
 import './UserModal.scss';
 
 function UserModal({
+  setUserNameCheck,
   modalMode,
   userInfoClose,
   modalChangeHandle,
   goToLogin,
   scale,
+  setLoginStatus,
+  setLogOut,
 }) {
   const [userInfo, setUserInfo] = useState({
     firstName: '',
@@ -16,6 +19,8 @@ function UserModal({
     password: '',
   });
   const [isCheckingBox, setIsCheckingBox] = useState('');
+  const [passwordView, setPasswordView] = useState(true);
+  const [loginFailed, setLoginFailed] = useState(false);
   const emailCheck = userInfo.email.includes('@');
   const passwordCheck = userInfo.password.length >= 5;
   const isChecked = isCheckingBox === true;
@@ -24,19 +29,22 @@ function UserModal({
   function handleUserInfo(e) {
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
+    setLoginFailed(false);
   }
 
   function checkBoxHandle(e) {
     setIsCheckingBox(e.target.checked);
   }
 
+  function showPassword() {
+    setPasswordView(prev => !prev);
+  }
+
   function isPossible(e) {
     e.preventDefault();
     if (modalMode === '로그인') {
-      if (!validation) {
-        alert('로그인 실패');
-      } else if (validation) {
-        fetch('http://10.58.52.78:3000/users/signin', {
+      if (emailCheck && passwordCheck) {
+        fetch('http://10.58.52.90:3000/users/signin', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
@@ -47,17 +55,29 @@ function UserModal({
           }),
         })
           .then(response => {
-            response.json();
+            if (response.ok === true) {
+              return response.json();
+            } else {
+              setLoginFailed(true);
+            }
           })
           .then(result => {
-            console.log(result);
+            if (result.token) {
+              localStorage.setItem('TOKEN', result.token);
+              setUserNameCheck(result.userLastName);
+              setLoginStatus(result.userLastName);
+              setLogOut('로그아웃');
+              userInfoClose();
+            } else {
+              alert('로그인 실패');
+            }
           });
       }
     } else if (modalMode === '회원가입') {
       if (!validation) {
         alert('회원가입 실패');
-      } else if (validation) {
-        fetch('http://10.58.52.78:3000/users/signup', {
+      } else {
+        fetch('http://10.58.52.90:3000/users/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
@@ -70,10 +90,19 @@ function UserModal({
           }),
         })
           .then(response => {
-            response.json();
+            return response.json();
           })
           .then(result => {
-            console.log(result);
+            if (result.message === 'CREATED USER') {
+              alert('회원가입이 완료되었습니다.');
+              goToLogin();
+              setUserInfo({
+                firstName: '',
+                lastName: '',
+                email: '',
+                password: '',
+              });
+            }
           });
       }
     }
@@ -86,9 +115,14 @@ function UserModal({
           <span className="closeBtn" onClick={userInfoClose}>
             ✕
           </span>
+          {loginFailed && (
+            <div className="loginFailed">
+              아이디 또는 비밀번호를 다시 확인해주세요.
+            </div>
+          )}
           <div className="userTitle">{modalMode}</div>
 
-          <form onSubmit={isPossible}>
+          <form onSubmit={isPossible} className="loginForm">
             <input
               name="email"
               className="email"
@@ -100,11 +134,14 @@ function UserModal({
             <input
               name="password"
               className="password"
-              type="password"
+              type={passwordView ? 'password' : 'text'}
               placeholder="비밀번호"
               value={userInfo.password}
               onChange={handleUserInfo}
             />
+            <div className="viewPassword" onClick={showPassword}>
+              보기
+            </div>
             <div className="passwordReset">비밀번호 재설정하기</div>
             <button className="submitBtn">{modalMode}</button>
           </form>
@@ -134,7 +171,7 @@ function UserModal({
               수 있습니다.
             </div>
           )}
-          <form onSubmit={isPossible}>
+          <form onSubmit={isPossible} className="signInForm">
             {modalMode === '회원가입' && (
               <>
                 <input

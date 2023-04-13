@@ -1,0 +1,28 @@
+.slideItem {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: center;
+  margin-bottom: 50px;
+  gap: 20px;
+  &:hover {
+    cursor: pointer;
+  }
+
+  .carouselItem {
+    object-fit: contain;
+    height: 380px;
+    margin-bottom: 20px;
+  }
+
+  .itemName {
+    margin-bottom: 20px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .itemIngredient {
+    font-size: 14px;
+    font-weight: 400;
+  }
+}

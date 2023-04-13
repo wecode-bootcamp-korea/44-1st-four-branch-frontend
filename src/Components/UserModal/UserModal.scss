@@ -2,10 +2,16 @@
   position: absolute;
   z-index: 3;
   top: 50px;
-  left: 50%;
+  left: 35%;
   width: 600px;
-  transform: translate(-50%);
+  height: 630px;
+  overflow-y: scroll;
+  transform: scale(0);
   background-color: #fffef2;
+  &.scale {
+    transform: scale(1);
+    transition: transform 0.4s;
+  }
 
   .userInfo {
     width: 500px;
@@ -22,9 +28,37 @@
       }
     }
 
+    .loginFailed {
+      color: red;
+    }
+
     .userTitle {
       margin: 40px 0 60px 0;
       font-size: 30px;
+    }
+
+    .loginForm {
+      position: relative;
+      .viewPassword {
+        position: absolute;
+        top: 90px;
+        right: 10px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .signInForm {
+      position: relative;
+      .viewPassword {
+        position: absolute;
+        top: 170px;
+        right: 10px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
 
     .subTitle {

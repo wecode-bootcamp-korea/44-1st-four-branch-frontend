@@ -6,6 +6,9 @@
   width: 600px;
   transform: translate(-50%);
   background-color: #fffef2;
+  -webkit-box-shadow: 10px 10px 28px -4px rgba(0, 0, 0, 0.58);
+  -moz-box-shadow: 10px 10px 28px -4px rgba(0, 0, 0, 0.58);
+  box-shadow: 10px 10px 28px -4px rgba(0, 0, 0, 0.58);
 
   .contents {
     display: flex;
@@ -16,6 +19,9 @@
     .closeBtn {
       font-size: 20px;
       text-align: right;
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     .greeting {

@@ -1,0 +1,63 @@
+.guideModal {
+  position: absolute;
+  z-index: 2;
+  left: -950px;
+  width: 100vh;
+  height: 100vh;
+  overflow-y: scroll;
+  transition: transform 0.5s;
+  background-color: #f1f0e8;
+  &.slide {
+    transform: translate(950px);
+    transition: transform 0.5s;
+  }
+
+  .close {
+    padding-top: 40px;
+    padding-right: 40px;
+    font-size: 20px;
+    text-align: right;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .contentBox {
+    width: 80%;
+    padding-top: 150px;
+    padding-bottom: 50px;
+    padding-left: 180px;
+    font-size: 15px;
+
+    .freeDelivery {
+      margin-bottom: 35px;
+    }
+
+    .deliveryInfo {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      padding-top: 35px;
+      border-top: 1px solid #cecec7;
+
+      .delivery {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    .service {
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 1px solid #cecec7;
+
+      .subTitle {
+        margin-bottom: 25px;
+      }
+
+      .serviceContent {
+        color: #757574;
+      }
+    }
+  }
+}
