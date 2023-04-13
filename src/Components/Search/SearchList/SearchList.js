@@ -2,18 +2,14 @@ import React from 'react';
 import SearchItem from '../SearchItem/SearchItem';
 import './SearchList.scss';
 
-function SearchList({ filteredItem }) {
+function SearchList({ searchList }) {
   return (
     <div className="searchList">
-      {!filteredItem.length ? (
-        filteredItem.map(item => {
+      {searchList.length ? (
+        searchList.map(item => {
+          console.log(item);
           return (
-            <SearchItem
-              className="searchItem"
-              key={item.id}
-              item={item}
-              filteredItem={filteredItem}
-            />
+            <SearchItem className="searchItem" key={item.id} item={item} />
           );
         })
       ) : (

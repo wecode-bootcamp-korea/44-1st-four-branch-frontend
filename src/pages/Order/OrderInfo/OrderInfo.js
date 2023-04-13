@@ -1,13 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './OrderInfo.scss';
 
 function OrderInfo({
   orderModal,
-  setOrderModal,
   movePayment,
   enterBox,
   totalPrice,
+  receiveInfo,
+  setOrderConfirm,
 }) {
   const [userInfo, setUserInfo] = useState({
     firstName: '',
@@ -16,8 +18,9 @@ function OrderInfo({
     postCode: '',
     address: '',
   });
-  const [orderNumber, setOrderNumber] = useState();
-  console.log(userInfo);
+  // const [orderNumber, setOrderNumber] = useState();
+  const [receiveDelivery, setReceiveDelivery] = useState({});
+  const navigate = useNavigate();
   const token = localStorage.getItem('TOKEN');
 
   function handleUserInfo(e) {
@@ -44,6 +47,8 @@ function OrderInfo({
       });
   }
 
+  console.log(receiveDelivery);
+
   function submitTotalPrice() {
     fetch(`http://10.58.52.90:3000/orders`, {
       method: 'POST',
@@ -57,8 +62,7 @@ function OrderInfo({
     })
       .then(response => response.json())
       .then(result => {
-        console.log(result);
-        setOrderNumber(result);
+        setReceiveDelivery(result);
       });
   }
 
@@ -70,13 +74,17 @@ function OrderInfo({
         Authorization: token,
       },
       body: JSON.stringify({
-        orderNumber,
+        orderNumber: receiveDelivery.orderNumber,
       }),
     })
       .then(response => response.json())
       .then(result => {
-        console.log(result);
+        setOrderConfirm(result);
       });
+  }
+
+  function orderCompletedMove() {
+    navigate('/ordercomplete');
   }
 
   return (
@@ -94,8 +102,10 @@ function OrderInfo({
             <div className="userName">주문자 성함</div>
             <div className="edit">편집</div>
           </div>
-          <div className="name">김영운 님</div>
-          <div className="emailId">justreet@naver.com</div>
+          <div className="name">
+            {`${receiveInfo.userFirstName}${receiveInfo.userLastName}`}님
+          </div>
+          <div className="emailId">{receiveInfo.email}</div>
         </div>
         {orderModal === '배송' && (
           <div className="deliveryInfo">
@@ -146,7 +156,7 @@ function OrderInfo({
                   submitTotalPrice();
                 }}
               >
-                배송 정보로 이동
+                결제수단 선택
               </button>
             </div>
           </div>
@@ -155,9 +165,11 @@ function OrderInfo({
           <>
             <div className="shippingAddress">
               <div className="deliveryTitle"> 배송 정보 </div>
-              <div className="userName"> 김영운 </div>
-              <div className="userAddress"> 서울 강남구 테헤란로 427, 1층 </div>
-              <div className="userPostCode"> 06159 </div>
+              <div className="userName">
+                {`${receiveDelivery.userFirstName}${receiveDelivery.userLastName}`}
+              </div>
+              <div className="userAddress">{receiveDelivery.addressDetail}</div>
+              <div className="userPostCode"> {receiveDelivery.postcode} </div>
               <div className="free"> 무료 배송 ₩0</div>
             </div>
             <div className="termsOfPayment">
@@ -179,9 +191,10 @@ function OrderInfo({
                 className="pageMove"
                 onClick={() => {
                   pointPayment();
+                  orderCompletedMove();
                 }}
               >
-                다음 페이지
+                결제하기
               </button>
             </div>
           </>

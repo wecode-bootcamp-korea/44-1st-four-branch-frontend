@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './HoverItemView.scss';
 
 function HoverItemView({ item, showProduct }) {
-  const { name, imageUrl } = item;
+  const { name, url } = item;
 
   const navigate = useNavigate();
   function moveItemPage() {
@@ -16,7 +16,7 @@ function HoverItemView({ item, showProduct }) {
       onMouseEnter={showProduct}
       onClick={moveItemPage}
     >
-      <img className="hoverItemImage" alt={name} src={imageUrl} />
+      <img className="hoverItemImage" alt="제품이미지" src={url} />
       <button className="primarySolidButton">더 알아보기</button>
     </div>
   );

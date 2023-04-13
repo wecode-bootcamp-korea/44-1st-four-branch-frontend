@@ -27,5 +27,8 @@
     right: 0;
     bottom: 0;
     @include primarySolidButton;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

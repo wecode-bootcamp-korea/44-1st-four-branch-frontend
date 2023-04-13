@@ -16,7 +16,13 @@ import {
 } from './NavData';
 import './Nav.scss';
 
-function Nav({ basket, setBasket, handleTotalPrice, handleCategoryName }) {
+function Nav({
+  basket,
+  setBasket,
+  handleTotalPrice,
+  handleCategoryName,
+  ReceivingInfo,
+}) {
   const [userInfo, setUserInfo] = useState(false);
   const [userNameCheck, setUserNameCheck] = useState(false);
   const [loginStatus, setLoginStatus] = useState('');
@@ -37,7 +43,7 @@ function Nav({ basket, setBasket, handleTotalPrice, handleCategoryName }) {
 
   function categoryHandle(targetId) {
     if (targetId === '홈') {
-      navigate('/main');
+      navigate('/');
       setCategory(false);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       window.document.body.style.overflow = 'scroll';
@@ -93,6 +99,10 @@ function Nav({ basket, setBasket, handleTotalPrice, handleCategoryName }) {
     setCart(cart => !cart);
   }
 
+  function searchPageMove() {
+    navigate('/search');
+  }
+
   return (
     <>
       {userNameCheck && (
@@ -127,6 +137,7 @@ function Nav({ basket, setBasket, handleTotalPrice, handleCategoryName }) {
         setBasket={setBasket}
         orderMove={orderMove}
         handleTotalPrice={handleTotalPrice}
+        ReceivingInfo={ReceivingInfo}
       />
       {cart && <CartBlackWindow cartClose={cartClose} />}
       <nav className="nav">
@@ -146,7 +157,7 @@ function Nav({ basket, setBasket, handleTotalPrice, handleCategoryName }) {
                 </li>
               );
             })}
-            <li className="search">
+            <li className="searchBtn" onClick={searchPageMove}>
               <div>검색</div>
               <AiOutlineSearch />
             </li>

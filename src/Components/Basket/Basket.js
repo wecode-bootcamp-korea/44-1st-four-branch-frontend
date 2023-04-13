@@ -9,6 +9,7 @@ function Basket({
   setBasket,
   orderMove,
   handleTotalPrice,
+  ReceivingInfo,
 }) {
   const token = localStorage.getItem('TOKEN');
 
@@ -102,9 +103,10 @@ function Basket({
             onClick={() => {
               handleTotalPrice(sumTotalPrice);
               orderMove();
+              ReceivingInfo();
             }}
           >
-            결제하기
+            주문하기
           </div>
         </div>
       </div>
