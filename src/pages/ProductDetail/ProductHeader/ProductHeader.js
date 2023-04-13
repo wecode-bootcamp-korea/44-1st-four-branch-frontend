@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { FiPlusCircle } from 'react-icons/fi';
 import Logo from '../../../assets/ProductDetail/aesop-logo.png';
 import ProductWishList from './ProductWishList/ProductWishList';
@@ -10,6 +11,9 @@ import './ProductHeader.scss';
 function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
   const [productDetailList, setProductDetailList] = useState([]);
   const [wishList, setWishList] = useState(false);
+
+  const params = useParams();
+  const { id } = params;
 
   function handleWIshList() {
     setWishList(wishList => !wishList);
@@ -24,7 +28,7 @@ function ProductHeader({ isOpenModal, modalView, slide, isCloseModal }) {
     //   .then(response => response.json())
     //   .then(result => setProductDetailList(result));
 
-    fetch('http://10.58.52.90:3000/products?pid=1', {
+    fetch(`http://10.58.52.90:3000/products?pid=${id}`, {
       // method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
