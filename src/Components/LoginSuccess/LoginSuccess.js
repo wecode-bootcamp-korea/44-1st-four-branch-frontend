@@ -5,12 +5,7 @@ function LoginSuccess({ userNameCheck, loginSuccessClose }) {
   return (
     <div className="loginSuccess">
       <div className="contents">
-        <div
-          className="closeBtn"
-          onClick={() => {
-            loginSuccessClose();
-          }}
-        >
+        <div className="closeBtn" onClick={loginSuccessClose}>
           ✕
         </div>
         <div className="greeting">{`돌아온 것을 환영합니다. ${userNameCheck} 님`}</div>

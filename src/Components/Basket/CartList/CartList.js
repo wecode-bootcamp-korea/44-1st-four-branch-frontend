@@ -1,34 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import CartItem from '../CartItem/CartItem';
 import './CartList.scss';
 
 function CartList({ cartClose, basket, handleQuantity, removeItem }) {
-  // const [cartList, setCartList] = useState([]);
-  // const token = localStorage.getItem('TOKEN');
-  // useEffect(() => {
-  //   fetch('http://10.58.52.90:3000/carts', {
-  //     headers: {
-  //       'Content-Type': 'application/json;charset=utf-8',
-  //       Authorization: token,
-  //     },
-  //   })
-  //     .then(response => response.json())
-  //     .then(result => {
-  //       setCartList(result);
-  //     });
-  // }, []);
   return (
     <ul className="cartList">
       <li className="cartListTitle">
         <div className="name">상품명</div>
         <div className="size">사이즈</div>
         <div className="quantity">수량</div>
-        <div
-          className="closeBtn"
-          onClick={() => {
-            cartClose();
-          }}
-        >
+        <div className="closeBtn" onClick={cartClose}>
           ✕
         </div>
       </li>

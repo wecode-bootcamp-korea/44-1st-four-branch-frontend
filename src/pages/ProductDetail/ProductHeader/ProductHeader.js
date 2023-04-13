@@ -40,22 +40,6 @@ function ProductHeader({
       .then(result => setProductDetailList(result[0]));
   }, [id]);
 
-  // function addDuplicate(id, quantity) {
-  //   const found = basket.filter(item => item.id === id)[0];
-  //   const indexNum = basket.indexOf(found);
-  //   const cartItem = {
-  //     id: productDetailList[0].id,
-  //     name: productDetailList[0].name,
-  //     price: productDetailList[0].price,
-  //     quantity: quantity,
-  //   };
-  //   setBasket([
-  //     ...basket.slice(0, indexNum),
-  //     cartItem,
-  //     ...basket.slice(indexNum + 1),
-  //   ]);
-  // }
-
   function shoppingBasket() {
     fetch('http://10.58.52.90:3000/carts', {
       method: 'POST',
@@ -69,24 +53,10 @@ function ProductHeader({
     })
       .then(response => response.json())
       .then(result => {
-        setBasket([...result]);
+        setBasket(result);
       });
 
     console.log(basket);
-
-    // const cartItem = {
-    //   productId: productDetailList[0].id,
-    //   name: productDetailList[0].name,
-    //   price: productDetailList[0].price,
-    //   quantity: 1,
-    // };
-    // const found = basket.find(item => item.id === cartItem.id);
-
-    // if (found) {
-    //   addDuplicate(cartItem.id, found.quantity + 1);
-    // } else {
-    //   setBasket([...basket, cartItem]);
-    // }
   }
 
   return (

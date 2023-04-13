@@ -26,6 +26,7 @@ function ProductList({ categoryName }) {
   function handlePageNation(offsetValue) {
     searchParams.set('offset', (offsetValue - 1) * 5);
     setSearchParams(searchParams);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function handleFilter() {
@@ -96,6 +97,14 @@ function ProductList({ categoryName }) {
           }}
         >
           2
+        </button>
+        <button
+          className="pageButton"
+          onClick={() => {
+            handlePageNation(3);
+          }}
+        >
+          3
         </button>
       </div>
     </div>

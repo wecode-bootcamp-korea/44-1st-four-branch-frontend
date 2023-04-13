@@ -93,7 +93,7 @@
   section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 790px 790px 790px;
+    grid-template-rows: 790px 790px;
     background-color: #f6f5e8;
   }
   .itemListInfo {
@@ -107,6 +107,24 @@
 
     .itemIntroduce {
       line-height: 2;
+    }
+  }
+  .pagenation {
+    padding-top: 40px;
+    padding-bottom: 50px;
+    background-color: #f6f5e8;
+    font-size: 30px;
+    text-align: center;
+    button {
+      margin: 0 10px;
+      border: none;
+      background-color: #f6f5e8;
+      color: #333333;
+      font-size: 20px;
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
     }
   }
 }

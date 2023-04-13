@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
-import './ItemDisplay.scss';
 import { useNavigate } from 'react-router-dom';
+import './ItemDisplay.scss';
 
 function ItemDisplay({ data }) {
   const [heartChange, setHeartChange] = useState(false);

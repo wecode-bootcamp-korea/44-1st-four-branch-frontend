@@ -22,9 +22,8 @@ function Basket({
     })
       .then(response => response.json())
       .then(result => {
-        setBasket([...result]);
+        setBasket(result);
       });
-    // setBasket(basket.filter(item => item.id !== targetId));
   }
 
   function handleQuantity(type, id, quantity) {
@@ -42,7 +41,7 @@ function Basket({
       })
         .then(response => response.json())
         .then(result => {
-          setBasket([...result]);
+          setBasket(result);
         });
     } else {
       if (quantity === 0) {
@@ -62,35 +61,9 @@ function Basket({
       })
         .then(response => response.json())
         .then(result => {
-          setBasket([...result]);
+          setBasket(result);
         });
     }
-    // const found = basket.filter(item => item.id === id)[0];
-    // const indexNum = basket.indexOf(found);
-    // const cartItem = {
-    //   id: found.id,
-    //   name: found.name,
-    //   price: found.price,
-    //   quantity: quantity,
-    // };
-
-    // if (type === 'plus') {
-    //   setBasket([
-    //     ...basket.slice(0, indexNum),
-    //     cartItem,
-    //     ...basket.slice(indexNum + 1),
-    //   ]);
-    // } else {
-    //   if (quantity === 0) {
-    //     return;
-    //   } else {
-    //     setBasket([
-    //       ...basket.slice(0, indexNum),
-    //       cartItem,
-    //       ...basket.slice(indexNum + 1),
-    //     ]);
-    //   }
-    // }
   }
 
   let totalPrice = [];

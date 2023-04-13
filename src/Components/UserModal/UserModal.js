@@ -43,10 +43,8 @@ function UserModal({
   function isPossible(e) {
     e.preventDefault();
     if (modalMode === '로그인') {
-      if (!emailCheck && passwordCheck) {
-        alert('아이디나 비밀번호 확인해주세요.');
-      } else if (emailCheck && passwordCheck) {
-        fetch('http://10.58.52.76:3000/users/signin', {
+      if (emailCheck && passwordCheck) {
+        fetch('http://10.58.52.90:3000/users/signin', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
@@ -78,7 +76,7 @@ function UserModal({
     } else if (modalMode === '회원가입') {
       if (!validation) {
         alert('회원가입 실패');
-      } else if (validation) {
+      } else {
         fetch('http://10.58.52.90:3000/users/signup', {
           method: 'POST',
           headers: {

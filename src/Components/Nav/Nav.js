@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CategoryForm from './CategoryForm/CategoryForm';
+import CategoryBox from './CategoryBox/CategoryBox';
 import CartBlackWindow from '../../pages/Main/CartBlackWindow/CartBlackWindow';
 import UserBlackWindow from '../../pages/Main/UserBlackWindow/UserBlackWindow';
 import Basket from '../Basket/Basket';
@@ -113,7 +113,7 @@ function Nav({ basket, setBasket, handleTotalPrice, handleCategoryName }) {
       )}
       {userInfo && <UserBlackWindow userInfoClose={userInfoClose} />}
       {category && (
-        <CategoryForm
+        <CategoryBox
           categoryChange={categoryChange}
           categoryHandle={categoryHandle}
           categoryBoxClose={categoryBoxClose}
