@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import logoImg from '../../assets/main/fourbsopLogo.png';
 import ItemDisplay from './ItemDisplay/ItemDisplay';
 import './ProductList.scss';
@@ -9,27 +9,41 @@ function ProductList({ categoryName }) {
   const [isOpenFilter, setIsOpenFilter] = useState(false);
   const params = useParams();
   const { id } = params;
+  const [searchParams, setSearchParams] = useSearchParams();
+  const offset = searchParams.get('offset');
+  const limit = searchParams.get('limit');
 
   useEffect(() => {
-    fetch(`http://10.58.52.90:3000/products?${id}`)
+    fetch(
+      `http://10.58.52.90:3000/products?${id}&offset=${offset}&limit=${limit}`
+    )
       .then(response => response.json())
       .then(result => {
         setProductData(result);
       });
-  }, [id]);
+  }, [id, offset]);
+
+  function handlePageNation(offsetValue) {
+    searchParams.set('offset', (offsetValue - 1) * 5);
+    setSearchParams(searchParams);
+  }
 
   function handleFilter() {
     setIsOpenFilter(prev => !prev);
   }
 
   function filterDesc() {
-    fetch(`http://10.58.52.90:3000/products?${id}&orderby=price&sorting=DESC`)
+    fetch(
+      `http://10.58.52.90:3000/products?${id}&offset=${offset}&limit=${limit}&orderby=price&sorting=DESC`
+    )
       .then(response => response.json())
       .then(result => setProductData(result));
   }
 
   function filterAsc() {
-    fetch(`http://10.58.52.90:3000/products?${id}&orderby=price&sorting=ASC`)
+    fetch(
+      `http://10.58.52.90:3000/products?${id}&offset=${offset}&limit=${limit}&orderby=price&sorting=ASC`
+    )
       .then(response => response.json())
       .then(result => setProductData(result));
   }
@@ -66,6 +80,24 @@ function ProductList({ categoryName }) {
           return <ItemDisplay key={data.id} data={data} />;
         })}
       </section>
+      <div className="pagenation">
+        <button
+          className="pageButton"
+          onClick={() => {
+            handlePageNation(1);
+          }}
+        >
+          1
+        </button>
+        <button
+          className="pageButton"
+          onClick={() => {
+            handlePageNation(2);
+          }}
+        >
+          2
+        </button>
+      </div>
     </div>
   );
 }

@@ -13,7 +13,7 @@ function CategoryBox({
   const navigate = useNavigate();
 
   function goToProductList(targetId) {
-    navigate(`/productlist/${targetId}`);
+    navigate(`/productlist/${targetId}?offset=0&limit=5`);
   }
 
   return (
