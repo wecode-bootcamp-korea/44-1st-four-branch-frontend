@@ -15,6 +15,7 @@ const Router = () => {
   const [categoryName, setCategoryName] = useState('');
   const [receiveInfo, setReceiveInfo] = useState({});
   const [orderConfirm, setOrderConfirm] = useState({});
+  const [cartPutIn, setCartPutIn] = useState(false);
   const token = localStorage.getItem('TOKEN');
 
   function handleTotalPrice(price) {
@@ -38,6 +39,18 @@ const Router = () => {
       });
   }
 
+  function emptyingBasket() {
+    setBasket([]);
+  }
+
+  function addBasket() {
+    setCartPutIn(true);
+  }
+
+  function addBasketClose() {
+    setCartPutIn(false);
+  }
+
   return (
     <BrowserRouter>
       <BandBanner />
@@ -52,7 +65,16 @@ const Router = () => {
         <Route path="/" element={<Main />} />
         <Route
           path="/productdetail/:id"
-          element={<ProductDetail basket={basket} setBasket={setBasket} />}
+          element={
+            <ProductDetail
+              basket={basket}
+              setBasket={setBasket}
+              cartPutIn={cartPutIn}
+              setCartPutIn={setCartPutIn}
+              addBasket={addBasket}
+              addBasketClose={addBasketClose}
+            />
+          }
         />
         <Route
           path="/productlist/:id"
@@ -65,6 +87,7 @@ const Router = () => {
               totalPrice={totalPrice}
               receiveInfo={receiveInfo}
               setOrderConfirm={setOrderConfirm}
+              emptyingBasket={emptyingBasket}
             />
           }
         />

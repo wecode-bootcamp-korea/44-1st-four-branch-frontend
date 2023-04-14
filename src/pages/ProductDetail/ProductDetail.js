@@ -6,7 +6,14 @@ import Recommend from './Recommend/Recommend';
 import Info from './Info/Info';
 import './ProductDetail.scss';
 
-function ProductDetail({ basket, setBasket }) {
+function ProductDetail({
+  basket,
+  setBasket,
+  cartPutIn,
+  setCartPutIn,
+  addBasketClose,
+  addBasket,
+}) {
   const [modalView, setModalView] = useState('');
 
   function isOpenModal() {
@@ -28,6 +35,10 @@ function ProductDetail({ basket, setBasket }) {
         modalView={modalView}
         basket={basket}
         setBasket={setBasket}
+        cartPutIn={cartPutIn}
+        setCartPutIn={setCartPutIn}
+        addBasket={addBasket}
+        addBasketClose={addBasketClose}
       />
       <Benefits />
       <HowToUse />

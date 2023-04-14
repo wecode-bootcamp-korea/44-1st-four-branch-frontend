@@ -67,7 +67,10 @@
     }
 
     .smallCategory {
+      transform: scale(1);
       &:hover {
+        transform: scale(1.2);
+        transition: transform 0.2s;
         cursor: pointer;
       }
     }

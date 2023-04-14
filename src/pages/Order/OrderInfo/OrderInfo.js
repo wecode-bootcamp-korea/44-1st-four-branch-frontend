@@ -10,6 +10,7 @@ function OrderInfo({
   totalPrice,
   receiveInfo,
   setOrderConfirm,
+  emptyingBasket,
 }) {
   const [userInfo, setUserInfo] = useState({
     firstName: '',
@@ -18,7 +19,6 @@ function OrderInfo({
     postCode: '',
     address: '',
   });
-  // const [orderNumber, setOrderNumber] = useState();
   const [receiveDelivery, setReceiveDelivery] = useState({});
   const navigate = useNavigate();
   const token = localStorage.getItem('TOKEN');
@@ -46,8 +46,6 @@ function OrderInfo({
         console.log(result);
       });
   }
-
-  console.log(receiveDelivery);
 
   function submitTotalPrice() {
     fetch(`http://10.58.52.90:3000/orders`, {
@@ -192,6 +190,7 @@ function OrderInfo({
                 onClick={() => {
                   pointPayment();
                   orderCompletedMove();
+                  emptyingBasket();
                 }}
               >
                 결제하기

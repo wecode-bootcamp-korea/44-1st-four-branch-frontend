@@ -74,7 +74,7 @@ function ProductList({ categoryName }) {
           <h3 className="title">최소한의 루틴</h3>
           <p className="itemIntroduce">
             있는 그대로 충분하다, 무언가를 더하기보다 있는 그대로의 모습을
-            들여다보고 그 본여의 가치를 살리려는 노력
+            들여다보고 그 본연의 가치를 살리려는 노력
           </p>
         </div>
         {productData.map(data => {
