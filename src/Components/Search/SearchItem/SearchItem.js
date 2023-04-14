@@ -3,7 +3,6 @@ import HoverItemView from '../HoverItemView/HoverItemView';
 import './SearchItem.scss';
 
 function SearchItem({ item }) {
-  const { name, id } = item;
   const [isHover, setIsHover] = useState(false);
 
   const showProduct = () => {
@@ -20,11 +19,11 @@ function SearchItem({ item }) {
       onMouseEnter={showProduct}
       onMouseLeave={hideProduct}
     >
-      <div className="searchName" id={id}>
+      <div className="searchName" id={item.id}>
         <div className="hoverItem">
           {isHover && <HoverItemView item={item} showProduct={showProduct} />}
         </div>
-        {name}
+        {item.name}
       </div>
     </div>
   );

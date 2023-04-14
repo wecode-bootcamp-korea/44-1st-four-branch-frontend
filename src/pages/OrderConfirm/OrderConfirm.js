@@ -1,15 +1,8 @@
-import React, { useState, useEffect } from 'react';
 import Logo from '../../assets/fourbsopLogo.png';
 import './OrderConfirm.scss';
 
-function OrderConfirm() {
-  const [orderInfo, setOrderInfo] = useState({});
-
-  let userAddressObject = {};
-  const userAddressString = orderInfo?.userAddress;
-  if (userAddressString) {
-    userAddressObject = JSON.parse(userAddressString);
-  }
+function OrderConfirm({ orderConfirm }) {
+  const { user, orderInfo } = orderConfirm;
 
   let orderItemsArray = [];
   let totalAmount = [];
@@ -25,23 +18,6 @@ function OrderConfirm() {
     0
   );
 
-  // const token = localStorage.getItem('token');
-  const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJpYXQiOjE2ODEyMDQ1NjMsImV4cCI6MTY4MTYzNjU2M30._cA8Gy_gfkTmjqLsoEcLqOPHCvYo5YK5j50oH4Vn5K0';
-
-  useEffect(() => {
-    fetch('http://10.58.52.76:3000/orders', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        Authorization: token,
-      },
-      body: JSON.stringify(),
-    })
-      .then(response => response.json())
-      .then(result => setOrderInfo(result[0]));
-  }, []);
-
   return (
     <div className="orderConfirm">
       <div className="orderConfirmWrap">
@@ -49,9 +25,9 @@ function OrderConfirm() {
           <img className="logo" src={Logo} alt="로고" />
         </section>
         <section className="contents">
-          <h2 className="comment">{`${orderInfo.userFirstName} ${orderInfo.userLastName} 님 감사합니다.`}</h2>
+          <h2 className="comment">{`${orderInfo?.userFirstName} ${orderInfo?.userLastName} 님 감사합니다.`}</h2>
           <p>
-            {`감사합니다. ${orderInfo.userFirstName} ${orderInfo.userLastName} 님. 주문이 완료되었습니다. 추가 문의 사항이
+            {`감사합니다. ${orderInfo?.userFirstName} ${orderInfo?.userLastName} 님. 주문이 완료되었습니다. 추가 문의 사항이
                 있으시면 연락 주시기 바랍니다.`}
           </p>
 
@@ -59,21 +35,21 @@ function OrderConfirm() {
             <div className="orderNum">
               <div>
                 <span>주문 번호 </span>
-                <span className="num">{orderInfo.orderNumber}</span>
+                <span className="num">{orderInfo?.orderNumber}</span>
               </div>
-              <p>{orderInfo.orderDate}</p>
+              <p>{orderInfo?.orderDate}</p>
             </div>
             <div className="detailInfo">
               <div>
                 <h6 className="title">배송 정보</h6>
-                <p>{`${orderInfo.userFirstName} ${orderInfo.userLastName}`}</p>
-                <p>{userAddressObject.country}</p>
-                <p>{userAddressObject.postcode}</p>
-                <p>{userAddressObject.detail}</p>
+                <p>{`${orderInfo?.userFirstName} ${orderInfo?.userLastName}`}</p>
+                <p>{orderInfo?.country}</p>
+                <p>{orderInfo?.postcode}</p>
+                <p>{orderInfo?.addressDetail}</p>
               </div>
               <div>
                 <h6 className="title">주문 상태</h6>
-                <p>{orderInfo.orderStatus}</p>
+                <p>{orderInfo?.orderStatus}</p>
               </div>
               <div>
                 <h6 className="title">지불 방법</h6>
@@ -81,7 +57,7 @@ function OrderConfirm() {
               </div>
               <div>
                 <p className="title">결제 후 My포인트</p>
-                <p>{`₩ ${Math.floor(orderInfo.point).toLocaleString()}`}</p>
+                <p>{`₩ ${Math.floor(user?.point).toLocaleString()}`}</p>
               </div>
             </div>
             <ul className="bills">

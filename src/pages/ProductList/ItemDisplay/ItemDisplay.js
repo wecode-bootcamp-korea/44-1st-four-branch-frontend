@@ -37,7 +37,7 @@ function ItemDisplay({ data }) {
       <div className="line" />
       <div className="specifics">
         <p className="additional">피부타입</p>
-        <p className="explain">모든 피부, 메이크컵을 한 피부</p>
+        <p className="explain">모든 피부, 메이크업을 한 피부</p>
       </div>
       <div className="specifics">
         <p className="additional">사용감</p>

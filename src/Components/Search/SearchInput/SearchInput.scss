@@ -8,6 +8,9 @@
 
   img {
     width: 120px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .searchBox {

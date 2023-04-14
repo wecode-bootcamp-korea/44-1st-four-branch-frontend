@@ -4,6 +4,7 @@ import logoImg from '../../../assets/main/fourbsopLogo.png';
 import ProductWishList from './ProductWishList/ProductWishList';
 import ModalDetailView from '../ModalDetailView/ModalDetailView';
 import { useParams } from 'react-router-dom';
+import CartMessage from '../../../Components/Basket/Cartma/CartMessage';
 import './ProductHeader.scss';
 
 function ProductHeader({
@@ -11,8 +12,10 @@ function ProductHeader({
   modalView,
   slide,
   isCloseModal,
-  basket,
   setBasket,
+  cartPutIn,
+  addBasketClose,
+  addBasket,
 }) {
   const [productDetailList, setProductDetailList] = useState({});
   const [wishList, setWishList] = useState(false);
@@ -59,6 +62,7 @@ function ProductHeader({
 
   return (
     <div>
+      {cartPutIn && <CartMessage addBasketClose={addBasketClose} />}
       {isOpenModal && (
         <ModalDetailView
           modalView={modalView}
@@ -108,6 +112,7 @@ function ProductHeader({
           <button
             onClick={() => {
               shoppingBasket();
+              addBasket();
             }}
             className="primarySolidButton"
           >{`카트에 추가하기 - ₩ ${Math.floor(
