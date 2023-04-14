@@ -1,17 +1,53 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import './Recommend.scss';
 
 function Recommend() {
   const [recommendList, setRecommendList] = useState([]);
+  const [itemSlide, setItemSlide] = useState(0);
+  const [scrollSlide, setScrollSlide] = useState(0);
+  const [rightButton, setRightButton] = useState(true);
+  const [leftButton, setLeftButton] = useState(false);
+
+  const itemCarousel = useRef();
+  const scrollCarousel = useRef();
+
+  function goRightButton() {
+    if (scrollSlide === 2) {
+      setRightButton(false);
+    } else if (scrollSlide === 1) {
+      setRightButton(true);
+    } else {
+      setLeftButton(true);
+    }
+    setItemSlide(itemSlide - 2);
+    setScrollSlide(scrollSlide + 1);
+  }
+
+  function goLeftButton() {
+    if (scrollSlide === 0) {
+      setLeftButton(true);
+      setRightButton(false);
+    } else if (scrollSlide === 1) {
+      setLeftButton(false);
+    } else {
+      setRightButton(true);
+    }
+    setItemSlide(itemSlide + 2);
+    setScrollSlide(scrollSlide - 1);
+  }
+
+  useEffect(() => {
+    itemCarousel.current.style.transform = `translateX(${itemSlide}0%)`;
+    scrollCarousel.current.style.transform = `translateX(${scrollSlide}00%)`;
+  }, [itemSlide, scrollSlide]);
 
   useEffect(() => {
     // fetch('/data/productDetailList.json')
     //   .then(response => response.json())
     //   .then(result => setRecommendList(result));
     fetch('http://10.58.52.90:3000/products', {
-      // method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
@@ -22,14 +58,18 @@ function Recommend() {
 
   return (
     <div className="recommend">
-      <div className="arrowPrevBtn">
-        <FiChevronLeft className="arrowLeft" color="#fff" />
-      </div>
-      <div className="arrowNextBtn">
-        <FiChevronRight className="arrowRight" color="#fff" />
-      </div>
+      {leftButton && (
+        <div className="arrowPrevBtn" onClick={goLeftButton}>
+          <FiChevronLeft className="arrowLeft" color="#fff" />
+        </div>
+      )}
+      {rightButton && (
+        <div className="arrowNextBtn" onClick={goRightButton}>
+          <FiChevronRight className="arrowRight" color="#fff" />
+        </div>
+      )}
       <div className="product">
-        <ul className="productList">
+        <ul className="productList" ref={itemCarousel}>
           <li>
             <h3 className="title">함께 사용하기 좋은 제품</h3>
           </li>
@@ -46,7 +86,7 @@ function Recommend() {
         </ul>
       </div>
       <div className="indicator">
-        <div className="indicatorBar " />
+        <div className="indicatorBar" ref={scrollCarousel} />
       </div>
     </div>
   );

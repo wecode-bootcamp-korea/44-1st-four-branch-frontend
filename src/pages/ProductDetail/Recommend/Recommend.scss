@@ -7,6 +7,7 @@
 
   .arrowPrevBtn {
     position: absolute;
+    z-index: 6;
     top: 50%;
     left: 0px;
     width: 80px;
@@ -27,7 +28,6 @@
     right: 0px;
     width: 80px;
     height: 80px;
-    transition: left 0.5s;
     background-color: #333;
     cursor: pointer;
 
@@ -42,7 +42,7 @@
 
     .productList {
       display: flex;
-      overflow-x: scroll;
+
       list-style: none;
 
       &::-webkit-scrollbar {
@@ -89,20 +89,8 @@
     background-color: #ccc;
 
     .indicatorBar {
-      width: 30%;
+      width: 25%;
       border-bottom: 2px solid #333;
-
-      &.rightScroll {
-        overflow-x: hidden;
-        transform: translate(233%, 0);
-        transition: transform 1s;
-      }
-
-      &.leftScroll {
-        overflow-x: hidden;
-        transform: translate(-233%, 0);
-        transition: transform 1s;
-      }
     }
   }
 }
