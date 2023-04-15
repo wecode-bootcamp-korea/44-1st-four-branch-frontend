@@ -31,7 +31,7 @@ const Router = () => {
         handleCategoryName={handleCategoryName}
       />
       <Routes>
-        <Route path="/main" element={<Main />} />
+        <Route path="/" element={<Main />} />
         <Route
           path="/productdetail/:id"
           element={<ProductDetail basket={basket} setBasket={setBasket} />}
