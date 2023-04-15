@@ -17,6 +17,17 @@ function Main() {
       <SlideItemList />
       <StoreLocator />
       <Footer />
+      <div
+        className="topButton"
+        onClick={() => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
+        }}
+      >
+        ⌃
+      </div>
     </div>
   );
 }
